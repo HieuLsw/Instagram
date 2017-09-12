@@ -26,6 +26,7 @@
 		A5C177E61F681098008D93AC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E51F681098008D93AC /* CFNetwork.framework */; };
 		A5C177E91F68115B008D93AC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E71F68115B008D93AC /* Bolts.framework */; };
 		A5C177EA1F68115B008D93AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E81F68115B008D93AC /* Parse.framework */; };
+		A5C177EC1F682326008D93AC /* wusondahu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A5C177EB1F682326008D93AC /* wusondahu.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		A5C177E51F681098008D93AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A5C177E71F68115B008D93AC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		A5C177E81F68115B008D93AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		A5C177EB1F682326008D93AC /* wusondahu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wusondahu.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				A5C177A61F680C1C008D93AC /* ViewController.swift */,
 				A5C177A81F680C1C008D93AC /* Main.storyboard */,
 				A5C177AB1F680C1D008D93AC /* Assets.xcassets */,
+				A5C177EB1F682326008D93AC /* wusondahu.jpg */,
 				A5C177AD1F680C1D008D93AC /* LaunchScreen.storyboard */,
 				A5C177B01F680C1D008D93AC /* Info.plist */,
 			);
@@ -294,6 +297,7 @@
 				A5C177AF1F680C1D008D93AC /* LaunchScreen.storyboard in Resources */,
 				A5C177AC1F680C1D008D93AC /* Assets.xcassets in Resources */,
 				A5C177AA1F680C1C008D93AC /* Main.storyboard in Resources */,
+				A5C177EC1F682326008D93AC /* wusondahu.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -578,6 +582,7 @@
 				A5C177CB1F680C1D008D93AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5C177CC1F680C1D008D93AC /* Build configuration list for PBXNativeTarget "InstagramTests" */ = {
 			isa = XCConfigurationList;
@@ -586,6 +591,7 @@
 				A5C177CE1F680C1D008D93AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A5C177CF1F680C1D008D93AC /* Build configuration list for PBXNativeTarget "InstagramUITests" */ = {
 			isa = XCConfigurationList;
@@ -594,6 +600,7 @@
 				A5C177D11F680C1D008D93AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
