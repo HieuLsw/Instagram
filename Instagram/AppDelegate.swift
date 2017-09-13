@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.initialize(with: parseConfig)
         
+        //call login() function to see tab bar if user has logined before
+        login()
+        
         return true
     }
 
@@ -57,6 +60,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    func login(){
+        
+        //remember user's login
+        let username:String? = UserDefaults.standard.string(forKey: "username")
+        
+        //if logged in
+        if username != nil {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let myTabBar = storyboard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+            window?.rootViewController = myTabBar
+            
+        }
+        
+    }
+    
 
 }
 

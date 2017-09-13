@@ -173,7 +173,13 @@ present(alert, animated: true, completion: nil)
         user.signUpInBackground { (success:Bool, error:Error?) in
             if success{
                 
-                print("Registered!")
+                //remember logged user 
+                UserDefaults.standard.set(user.username, forKey: "username")
+                UserDefaults.standard.synchronize()
+               
+                //call login func from AppleDelegate.swift class
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.login() 
                 
             }else{
                 

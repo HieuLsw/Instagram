@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class signInVC: UIViewController,UITextFieldDelegate {
 
@@ -55,7 +56,33 @@ passwordTxt.delegate = self
     //clicked sign in button
     @IBAction func signInBtn_click(_ sender: Any) {
    
-    
+        //if textfileds are empty
+        if (usernameTxt.text?.isEmpty)! || (passwordTxt.text?.isEmpty)!{
+         
+            let alert = UIAlertController(title: "Wow ~", message: "fill in fields", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+            
+        }
+        
+        //login funcitons
+        PFUser.logInWithUsername(inBackground: usernameTxt.text!, password: passwordTxt.text!) { (user:PFUser?, error:Error?) in
+            
+            if error == nil{
+               
+//remeber user or save in App memory did the user login or not
+                UserDefaults.standard.set(user?.username, forKey: "username")
+                UserDefaults.standard.synchronize()
+                
+   //call login function from AppDelegate.swift class
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                appDelegate.login()
+                
+            }
+            
+        }
+        
     }
     
     
