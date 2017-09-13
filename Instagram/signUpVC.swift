@@ -9,11 +9,41 @@
 import UIKit
 
 class signUpVC: UIViewController {
+    
+//ImageView
+    @IBOutlet weak var avaImg: UIImageView!
+    
+//TextFields
+    @IBOutlet weak var usernameTxt: UITextField!
+    @IBOutlet weak var passwordTxt: UITextField!
+    @IBOutlet weak var repeat_passwordTxt: UITextField!
 
+    @IBOutlet weak var fullnameTxt: UITextField!
+    @IBOutlet weak var bioTxt: UITextField!
+    @IBOutlet weak var webTxt: UITextField!
+ 
+//ScrollView
+    @IBOutlet weak var scrollView: UIScrollView!
+
+//Buttons
+    @IBOutlet weak var signUpBtn: UIButton!
+    @IBOutlet weak var cancelBtn: UIButton!
+    
+    //resert deault size
+    var scrollViewHeight:CGFloat = 0
+
+    //keyboard frame size
+    var keyboard = CGRect()
+    
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,4 +62,16 @@ class signUpVC: UIViewController {
     }
     */
 
+    //click sign up
+    @IBAction func signUpBtn_click(_ sender: Any) {
+   
+    }
+   
+    //click cancel
+    @IBAction func cancelBtn_click(_ sender: Any) {
+   self.dismiss(animated: true, completion: nil)
+    }
+
+    
+    
 }

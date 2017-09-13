@@ -1,2 +1,2 @@
-language: objective-c
+language: swift
 osx_image: xcode8.3
