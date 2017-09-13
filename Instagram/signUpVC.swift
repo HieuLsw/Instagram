@@ -8,7 +8,10 @@
 
 import UIKit
 
-class signUpVC: UIViewController {
+class signUpVC: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    
+//Auto layout height
+    @IBOutlet weak var scrollArea: NSLayoutConstraint!
     
 //ImageView
     @IBOutlet weak var avaImg: UIImageView!
@@ -28,30 +31,86 @@ class signUpVC: UIViewController {
 //Buttons
     @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
-    
-    //resert deault size
-    var scrollViewHeight:CGFloat = 0
 
-    //keyboard frame size
-    var keyboard = CGRect()
-    
-  
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        
-        
-    }
 
+    //round ava
+    avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
+    avaImg.clipsToBounds = true
+        
+ //recognize textfileddelegate
+usernameTxt.delegate = self
+passwordTxt.delegate = self
+repeat_passwordTxt.delegate = self
+fullnameTxt.delegate = self
+bioTxt.delegate = self
+webTxt.delegate = self
+
+//scrollview scroll area
+ scrollArea.constant = 800
+  
+//declare select image image
+        let avaTap = UITapGestureRecognizer(target: self, action: #selector(self.loadImg(recognizer:)))
+avaTap.numberOfTapsRequired = 1
+avaImg.isUserInteractionEnabled = true //user can click image
+avaImg.addGestureRecognizer(avaTap)
+        
+        }
+    
+    
+    
+    
+//the custom function
+    func loadImg(recognizer:UITapGestureRecognizer){
+    
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+        
+    }//choose the photo from the phone library
+  
+    
+    
+   
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+ 
+    
+    
+    
+//the delegate or datasource function
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        usernameTxt.resignFirstResponder()
+        passwordTxt.resignFirstResponder()
+        repeat_passwordTxt.resignFirstResponder()
+        fullnameTxt.resignFirstResponder()
+        bioTxt.resignFirstResponder()
+        webTxt.resignFirstResponder()
+        return true
+    }//func make that user clicks return can tab keyboard true
 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        avaImg.image = info[UIImagePickerControllerEditedImage] as? UIImage
+        self.dismiss(animated: true, completion: nil)
+    }//func connect selected image to our ImageView
+    
+    
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 

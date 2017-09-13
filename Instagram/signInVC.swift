@@ -8,7 +8,7 @@
 
 import UIKit
 
-class signInVC: UIViewController {
+class signInVC: UIViewController,UITextFieldDelegate {
 
     //TextFields
     @IBOutlet weak var usernameTxt: UITextField!
@@ -24,10 +24,18 @@ class signInVC: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+ usernameTxt.delegate = self
+passwordTxt.delegate = self
         
     }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        usernameTxt.resignFirstResponder()
+        passwordTxt.resignFirstResponder()
+        return true
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
