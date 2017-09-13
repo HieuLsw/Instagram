@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class signUpVC: UIViewController,UITextFieldDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -17,6 +18,7 @@ class signUpVC: UIViewController,UITextFieldDelegate,UIImagePickerControllerDele
     @IBOutlet weak var avaImg: UIImageView!
     
 //TextFields
+    @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var usernameTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
     @IBOutlet weak var repeat_passwordTxt: UITextField!
@@ -50,7 +52,8 @@ repeat_passwordTxt.delegate = self
 fullnameTxt.delegate = self
 bioTxt.delegate = self
 webTxt.delegate = self
-
+emailTxt.delegate = self
+        
 //scrollview scroll area
  scrollArea.constant = 800
   
@@ -97,6 +100,7 @@ avaImg.addGestureRecognizer(avaTap)
         fullnameTxt.resignFirstResponder()
         bioTxt.resignFirstResponder()
         webTxt.resignFirstResponder()
+        emailTxt.resignFirstResponder()
         return true
     }//func make that user clicks return can tab keyboard true
 
@@ -123,7 +127,61 @@ avaImg.addGestureRecognizer(avaTap)
 
     //click sign up
     @IBAction func signUpBtn_click(_ sender: Any) {
-   
+     
+        //dismiss keyboard
+   self.view.endEditing(true)
+  
+        //if fields are empty
+        if (usernameTxt.text?.isEmpty)! || (passwordTxt.text?.isEmpty)! || (repeat_passwordTxt.text?.isEmpty)! || (emailTxt.text?.isEmpty)! || (fullnameTxt.text?.isEmpty)! || (bioTxt.text?.isEmpty)! || (webTxt.text?.isEmpty)!{
+     
+   let alert = UIAlertController(title: "Hey Hey ~", message: "fill all fields", preferredStyle: .alert)
+   let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+  alert.addAction(ok)
+present(alert, animated: true, completion: nil)
+        
+        }
+    
+        //if different passwords
+        if passwordTxt.text != repeat_passwordTxt.text{
+            
+            let alert = UIAlertController(title: "Passwords !!", message: "do not match", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+            
+        }
+
+        //send data to server to relative columns
+        let user = PFUser()
+        user.username = usernameTxt.text?.lowercased()
+        user.email = emailTxt.text?.lowercased()
+        user.password = passwordTxt.text
+        user["fullname"] = fullnameTxt.text?.lowercased()
+        user["bio"] = bioTxt.text
+        user["web"] = webTxt.text?.lowercased()
+        
+        //in Edited Profile it's gonna be assigned
+        user["tel"] = ""
+        user["gender"] = ""
+        
+        //convert our image for sending to server
+       let avaData = UIImageJPEGRepresentation(avaImg.image!, 0.5)
+     let avaFile = PFFile(name: "ava.jpg", data: avaData!)
+     user["ava"] = avaFile
+      
+        //save data in server
+        user.signUpInBackground { (success:Bool, error:Error?) in
+            if success{
+                
+                print("Registered!")
+                
+            }else{
+                
+                print(error)
+                
+            }
+        }
+        
     }
    
     //click cancel

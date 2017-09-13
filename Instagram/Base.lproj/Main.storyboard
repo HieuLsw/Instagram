@@ -161,6 +161,13 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                             </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="tAt-iK-tSp">
+                                                <rect key="frame" x="8" y="293" width="359" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -196,6 +203,7 @@
                         <outlet property="avaImg" destination="eji-CT-g3K" id="7oy-4c-nhE"/>
                         <outlet property="bioTxt" destination="8sM-0o-UvK" id="k2m-bL-4UL"/>
                         <outlet property="cancelBtn" destination="iwK-CB-Y6N" id="Ez4-vf-Y7E"/>
+                        <outlet property="emailTxt" destination="tAt-iK-tSp" id="d6P-Mm-v8n"/>
                         <outlet property="fullnameTxt" destination="Tmv-A5-tRX" id="tRt-tt-KPv"/>
                         <outlet property="passwordTxt" destination="fwD-S0-cPT" id="VcP-3p-fGG"/>
                         <outlet property="repeat_passwordTxt" destination="OIm-RQ-sRr" id="IcH-P6-a9U"/>
