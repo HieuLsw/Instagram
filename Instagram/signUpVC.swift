@@ -66,32 +66,12 @@ avaImg.addGestureRecognizer(avaTap)
         }
     
     
-    
-    
-//the custom function
-    func loadImg(recognizer:UITapGestureRecognizer){
-    
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .photoLibrary
-        picker.allowsEditing = true
-        present(picker, animated: true, completion: nil)
-        
-    }//choose the photo from the phone library
-  
-    
-    
-   
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
- 
-    
-    
-    
+
 //the delegate or datasource function
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         usernameTxt.resignFirstResponder()
@@ -198,3 +178,21 @@ present(alert, animated: true, completion: nil)
     
     
 }
+
+extension signUpVC {
+    
+    //the custom function
+    func loadImg(recognizer:UITapGestureRecognizer){
+        
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+        
+    }//choose the photo from the phone library
+    
+    
+}
+
+

@@ -30,19 +30,20 @@ passwordTxt.delegate = self
         
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //the delegate or datasource function
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         usernameTxt.resignFirstResponder()
         passwordTxt.resignFirstResponder()
         return true
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
 
+    
     /*
     // MARK: - Navigation
 

@@ -27,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ParseMutableClientConfiguration.applicationId = "instagramid18950963325"
             ParseMutableClientConfiguration.clientKey = "instagramkey18950963325"
             ParseMutableClientConfiguration.server = "http://instagramlike1995.herokuapp.com/parse"
+            
         }
         
         
@@ -60,6 +61,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+
+}
+
+
+extension AppDelegate{
+    
     func login(){
         
         //remember user's login
@@ -75,7 +83,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
     }
-    
-
 }
 
