@@ -453,39 +453,115 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKd-GT-bTc">
-                                <rect key="frame" x="16" y="362" width="343" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Reset password">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resetBtn_click:" destination="vga-24-kaf" eventType="touchUpInside" id="rHz-wk-EBc"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdz-zD-BUc">
-                                <rect key="frame" x="16" y="420" width="343" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdz-zD-BUc" customClass="DesignableButton" customModule="Instagram" customModuleProvider="target">
+                                <rect key="frame" x="16" y="378.5" width="343" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="cancelBtn_click:" destination="vga-24-kaf" eventType="touchUpInside" id="tXE-fG-hKS"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cus-xZ-pfG">
-                                <rect key="frame" x="16" y="291" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cus-xZ-pfG">
+                                <rect key="frame" x="16" y="207.5" width="343" height="30"/>
                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKd-GT-bTc" customClass="DesignableButton" customModule="Instagram" customModuleProvider="target">
+                                <rect key="frame" x="16" y="295.5" width="343" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Reset password">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetBtn_click:" destination="vga-24-kaf" eventType="touchUpInside" id="rHz-wk-EBc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BW-U1-wXi">
+                                <rect key="frame" x="16" y="71" width="343" height="37"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLk-Wk-8JB">
+                                <rect key="frame" x="16" y="168.5" width="343" height="1"/>
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="bTG-qG-V25"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="au8-pS-pTe">
+                                <rect key="frame" x="16" y="20" width="343" height="18"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qod-YY-hBN">
+                                <rect key="frame" x="16" y="335.5" width="343" height="43"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We can help you reset your password using your the email address linked to your account." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0po-IK-eDT">
+                                <rect key="frame" x="16" y="118" width="343" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="au8-pS-pTe" firstAttribute="height" secondItem="rSw-vy-4K2" secondAttribute="height" multiplier="18:667" id="0YS-Mx-3Vg"/>
+                            <constraint firstItem="Pdz-zD-BUc" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="0e1-Ff-1Dy"/>
+                            <constraint firstItem="2BW-U1-wXi" firstAttribute="trailing" secondItem="rSw-vy-4K2" secondAttribute="trailingMargin" id="5Ji-9J-ItS"/>
+                            <constraint firstItem="2BW-U1-wXi" firstAttribute="top" secondItem="au8-pS-pTe" secondAttribute="bottom" constant="33" id="6OT-an-IkV"/>
+                            <constraint firstItem="hLk-Wk-8JB" firstAttribute="top" secondItem="0po-IK-eDT" secondAttribute="bottom" constant="19" id="7Le-U5-wq1"/>
+                            <constraint firstItem="qod-YY-hBN" firstAttribute="height" secondItem="rSw-vy-4K2" secondAttribute="height" multiplier="43:667" id="9Km-53-Xre"/>
+                            <constraint firstItem="qod-YY-hBN" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="DF6-nz-NAD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="au8-pS-pTe" secondAttribute="trailing" id="ECd-cU-3Ud"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hLk-Wk-8JB" secondAttribute="trailing" id="LZR-Fu-dx6"/>
+                            <constraint firstItem="2BW-U1-wXi" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="Sqs-xe-pHF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qod-YY-hBN" secondAttribute="trailing" id="XB3-Ud-QXr"/>
+                            <constraint firstItem="KKd-GT-bTc" firstAttribute="trailing" secondItem="rSw-vy-4K2" secondAttribute="trailingMargin" id="Zr5-xP-hV7"/>
+                            <constraint firstItem="Pdz-zD-BUc" firstAttribute="height" secondItem="rSw-vy-4K2" secondAttribute="height" multiplier="40:667" id="aVR-aB-SFU"/>
+                            <constraint firstItem="qod-YY-hBN" firstAttribute="top" secondItem="KKd-GT-bTc" secondAttribute="bottom" id="eMR-Ax-HI8"/>
+                            <constraint firstItem="KKd-GT-bTc" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="emm-Sc-dBG"/>
+                            <constraint firstItem="Pdz-zD-BUc" firstAttribute="top" secondItem="qod-YY-hBN" secondAttribute="bottom" id="gMN-1M-r5l"/>
+                            <constraint firstItem="au8-pS-pTe" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="k7s-h5-WKC"/>
+                            <constraint firstItem="cus-xZ-pfG" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="kFr-J1-Fhz"/>
+                            <constraint firstItem="KKd-GT-bTc" firstAttribute="height" secondItem="rSw-vy-4K2" secondAttribute="height" multiplier="40:667" id="oOh-QE-agP"/>
+                            <constraint firstItem="cus-xZ-pfG" firstAttribute="top" secondItem="hLk-Wk-8JB" secondAttribute="bottom" constant="38" id="pJ5-TM-UXo"/>
+                            <constraint firstItem="cus-xZ-pfG" firstAttribute="trailing" secondItem="rSw-vy-4K2" secondAttribute="trailingMargin" id="pSQ-nU-fhU"/>
+                            <constraint firstItem="au8-pS-pTe" firstAttribute="top" secondItem="69r-3e-PYd" secondAttribute="bottom" id="rej-ai-8C6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="0po-IK-eDT" secondAttribute="trailing" id="tGc-C7-22j"/>
+                            <constraint firstItem="0po-IK-eDT" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="v7Q-zM-wBA"/>
+                            <constraint firstItem="hLk-Wk-8JB" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="xBJ-Rd-fxU"/>
+                            <constraint firstItem="0po-IK-eDT" firstAttribute="top" secondItem="2BW-U1-wXi" secondAttribute="bottom" constant="10" id="y6S-5F-M0J"/>
+                            <constraint firstItem="KKd-GT-bTc" firstAttribute="top" secondItem="cus-xZ-pfG" secondAttribute="bottom" constant="58" id="yiy-X4-4xu"/>
+                            <constraint firstItem="Pdz-zD-BUc" firstAttribute="trailing" secondItem="rSw-vy-4K2" secondAttribute="trailingMargin" id="ywq-Tm-1cP"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="cancelBtn" destination="Pdz-zD-BUc" id="y6q-86-LdH"/>
@@ -495,7 +571,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oo8-B0-XdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1437.5999999999999" y="112.89355322338831"/>
+            <point key="canvasLocation" x="1436" y="91"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="ONa-cS-4Wl">
