@@ -22,7 +22,7 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+ //self - delegate
         emailTxt.delegate = self
         
     }
@@ -80,7 +80,7 @@ present(alert, animated: true, completion: nil)
                     
            })
            alert.addAction(ok)
-           present(alert, animated: ture, completion: nil)
+           self.present(alert, animated: true, completion: nil)
                 
             }
         }

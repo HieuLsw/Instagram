@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 class signInVC: UIViewController,UITextFieldDelegate {
-
+    
     //TextFields
     @IBOutlet weak var usernameTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
@@ -25,11 +25,14 @@ class signInVC: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+//self - delegate
  usernameTxt.delegate = self
 passwordTxt.delegate = self
-        
+
+
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -85,9 +88,5 @@ passwordTxt.delegate = self
         }
         
     }
-    
-    
-    
-    
     
 }

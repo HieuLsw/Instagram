@@ -55,7 +55,7 @@ webTxt.delegate = self
 emailTxt.delegate = self
         
 //scrollview scroll area
- scrollArea.constant = 800
+ scrollArea.constant = 850
   
 //declare select image image
         let avaTap = UITapGestureRecognizer(target: self, action: #selector(self.loadImg(recognizer:)))
