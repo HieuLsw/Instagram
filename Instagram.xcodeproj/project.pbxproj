@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A503D8311F8F08880023D232 /* Line View Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503D8301F8F08880023D232 /* Line View Mode.swift */; };
 		A549C14F1F692B8900207D42 /* signInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C14E1F692B8800207D42 /* signInVC.swift */; };
 		A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1501F692BBA00207D42 /* signUpVC.swift */; };
 		A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1521F692BE000207D42 /* resetPasswordVC.swift */; };
@@ -50,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A503D8301F8F08880023D232 /* Line View Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Line View Mode.swift"; sourceTree = "<group>"; };
 		A549C14E1F692B8800207D42 /* signInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signInVC.swift; sourceTree = "<group>"; };
 		A549C1501F692BBA00207D42 /* signUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signUpVC.swift; sourceTree = "<group>"; };
 		A549C1521F692BE000207D42 /* resetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resetPasswordVC.swift; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 			children = (
 				A549C1591F6AD10200207D42 /* Attributes.swift */,
 				A549C15B1F6AE28200207D42 /* Extension_Attributes.swift */,
+				A503D8301F8F08880023D232 /* Line View Mode.swift */,
 			);
 			name = "User Defined Attributes";
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A549C15C1F6AE28200207D42 /* Extension_Attributes.swift in Sources */,
+				A503D8311F8F08880023D232 /* Line View Mode.swift in Sources */,
 				A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */,
 				A549C14F1F692B8900207D42 /* signInVC.swift in Sources */,
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,

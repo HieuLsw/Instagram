@@ -2,16 +2,21 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "idiom" : "universal",
       "filename" : "Placeholder-Portrait.jpg",
-      "scale" : "2x"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "stretch",
+          "width" : 1,
+          "height" : 1
+        },
+        "cap-insets" : {
+          "bottom" : 288,
+          "top" : 287,
+          "right" : 260,
+          "left" : 259
+        }
+      }
     }
   ],
   "info" : {

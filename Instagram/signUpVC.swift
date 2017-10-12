@@ -43,6 +43,8 @@ class signUpVC: UIViewController,UITextFieldDelegate,UIImagePickerControllerDele
 
     //round ava
     avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
+    
+        //clip image
     avaImg.clipsToBounds = true
         
  //recognize textfileddelegate
@@ -55,7 +57,7 @@ webTxt.delegate = self
 emailTxt.delegate = self
         
 //scrollview scroll area
- scrollArea.constant = 850
+ scrollArea.constant = 900
   
 //declare select image image
         let avaTap = UITapGestureRecognizer(target: self, action: #selector(self.loadImg(recognizer:)))
@@ -182,7 +184,7 @@ present(alert, animated: true, completion: nil)
 extension signUpVC {
     
     //the custom function
-    func loadImg(recognizer:UITapGestureRecognizer){
+  @objc fileprivate func loadImg(recognizer:UITapGestureRecognizer){
         
         let picker = UIImagePickerController()
         picker.delegate = self
