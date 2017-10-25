@@ -70,7 +70,7 @@ extension AppDelegate{
     
     func login(){
         
-        //remember user's login
+        //get user's login "username"
         let username:String? = UserDefaults.standard.string(forKey: "username")
         
         //if logged in

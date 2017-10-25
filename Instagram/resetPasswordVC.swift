@@ -12,8 +12,8 @@ import Parse
 class resetPasswordVC: UIViewController,UITextFieldDelegate {
     
 //Textfield
-    @IBOutlet weak var emailTxt: UITextField!
- 
+    @IBOutlet weak var emailTxt: UITextField!{didSet{emailTxt.delegate = self}}
+
 //Buttons
     @IBOutlet weak var resetBtn: UIButton!
     @IBOutlet weak var cancelBtn: UIButton!
@@ -23,38 +23,36 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
 
         // Do any additional setup after loading the view.
  //self - delegate
-        emailTxt.delegate = self
+       
+//initialize button
+        initInputFirst()
+        
+        
         
     }
 
+    
+    //when users open this VC, the keyboard will appear at once
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        emailTxt.becomeFirstResponder()
+        
+    }
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    //the delegate or datasource function
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
-        emailTxt.resignFirstResponder()
-        
-        return true
-        
-    }
     
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
     //click reset button
     @IBAction func resetBtn_click(_ sender: Any) {
-  
+  /*
  //if emailfield is empty
         if (emailTxt.text?.isEmpty)!{
             
@@ -63,7 +61,7 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
 alert.addAction(ok)
 present(alert, animated: true, completion: nil)
 
-        }
+        }*/
    
         //request for reseting password
         PFUser.requestPasswordResetForEmail(inBackground: emailTxt.text!) { (success:Bool, error:Error?) in
@@ -90,12 +88,70 @@ present(alert, animated: true, completion: nil)
     //click cancel button
     @IBAction func cancelBtn_click(_ sender: Any) {
     
-    
-    
+ 
     
     
     }
     
+
+}//class over line
+
+
+//textfield - delegate
+extension  resetPasswordVC{
+
+    //if all textfields are be inputed the button is enable
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+    resetBtn.isEnabled = (emailTxt.text?.isEmpty)!
+        
+        if resetBtn.isEnabled{
+            emailTxt.alpha = AlphaValue.enableClickAlpha.rawValue
+        }
+        else {
+            emailTxt.alpha = AlphaValue.disableClickAlpha.rawValue
+        }
+        
+    }
+   
+    
+    //the delegate or datasource function
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        emailTxt.resignFirstResponder()
+        
+        return true
+        
+    }
     
     
 }
+
+//custom functions
+extension resetPasswordVC {
+
+    //initialize text fields false isEnable input
+    fileprivate  func initInputFirst(){
+        resetBtn.isEnabled = (emailTxt.text?.isEmpty)!
+    
+        resetBtn.alpha = AlphaValue.disableClickAlpha.rawValue
+        
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

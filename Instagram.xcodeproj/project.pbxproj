@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A503D8311F8F08880023D232 /* Line View Mode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503D8301F8F08880023D232 /* Line View Mode.swift */; };
+		A503D8311F8F08880023D232 /* UIView_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503D8301F8F08880023D232 /* UIView_Attributes.swift */; };
+		A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */; };
+		A51826881FA091AA005B50D0 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51826871FA091AA005B50D0 /* HexColor.swift */; };
+		A518268A1FA0A37B005B50D0 /* AlphaEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51826891FA0A37B005B50D0 /* AlphaEnum.swift */; };
 		A549C14F1F692B8900207D42 /* signInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C14E1F692B8800207D42 /* signInVC.swift */; };
 		A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1501F692BBA00207D42 /* signUpVC.swift */; };
 		A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1521F692BE000207D42 /* resetPasswordVC.swift */; };
-		A549C15A1F6AD10200207D42 /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1591F6AD10200207D42 /* Attributes.swift */; };
-		A549C15C1F6AE28200207D42 /* Extension_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C15B1F6AE28200207D42 /* Extension_Attributes.swift */; };
+		A549C15A1F6AD10200207D42 /* UIButton_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */; };
 		A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C177A41F680C1C008D93AC /* AppDelegate.swift */; };
 		A5C177AA1F680C1C008D93AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C177A81F680C1C008D93AC /* Main.storyboard */; };
 		A5C177AC1F680C1D008D93AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C177AB1F680C1D008D93AC /* Assets.xcassets */; };
@@ -51,12 +53,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A503D8301F8F08880023D232 /* Line View Mode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Line View Mode.swift"; sourceTree = "<group>"; };
+		A503D8301F8F08880023D232 /* UIView_Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Attributes.swift; sourceTree = "<group>"; };
+		A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField_Attributes.swift; sourceTree = "<group>"; };
+		A51826871FA091AA005B50D0 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
+		A51826891FA0A37B005B50D0 /* AlphaEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaEnum.swift; sourceTree = "<group>"; };
 		A549C14E1F692B8800207D42 /* signInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signInVC.swift; sourceTree = "<group>"; };
 		A549C1501F692BBA00207D42 /* signUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signUpVC.swift; sourceTree = "<group>"; };
 		A549C1521F692BE000207D42 /* resetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resetPasswordVC.swift; sourceTree = "<group>"; };
-		A549C1591F6AD10200207D42 /* Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
-		A549C15B1F6AE28200207D42 /* Extension_Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension_Attributes.swift; sourceTree = "<group>"; };
+		A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_Attributes.swift; sourceTree = "<group>"; };
 		A5C177A11F680C1C008D93AC /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C177A41F680C1C008D93AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C177A91F680C1C008D93AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,9 +127,11 @@
 		A549C1541F6AC77F00207D42 /* User Defined Attributes */ = {
 			isa = PBXGroup;
 			children = (
-				A549C1591F6AD10200207D42 /* Attributes.swift */,
-				A549C15B1F6AE28200207D42 /* Extension_Attributes.swift */,
-				A503D8301F8F08880023D232 /* Line View Mode.swift */,
+				A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */,
+				A503D8301F8F08880023D232 /* UIView_Attributes.swift */,
+				A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */,
+				A51826871FA091AA005B50D0 /* HexColor.swift */,
+				A51826891FA0A37B005B50D0 /* AlphaEnum.swift */,
 			);
 			name = "User Defined Attributes";
 			sourceTree = "<group>";
@@ -341,12 +347,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A549C15C1F6AE28200207D42 /* Extension_Attributes.swift in Sources */,
-				A503D8311F8F08880023D232 /* Line View Mode.swift in Sources */,
+				A503D8311F8F08880023D232 /* UIView_Attributes.swift in Sources */,
 				A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */,
 				A549C14F1F692B8900207D42 /* signInVC.swift in Sources */,
+				A518268A1FA0A37B005B50D0 /* AlphaEnum.swift in Sources */,
+				A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */,
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,
-				A549C15A1F6AD10200207D42 /* Attributes.swift in Sources */,
+				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
+				A549C15A1F6AD10200207D42 /* UIButton_Attributes.swift in Sources */,
 				A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
