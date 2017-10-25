@@ -59,10 +59,15 @@ class signInVC: UIViewController,UITextFieldDelegate{
    //call login function from AppDelegate.swift class
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.login()
-                }
+            }else{
+                //another case
+            let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alert.addAction(ok)
+                self.present(alert, animated: true, completion: nil)
             }
         }
-
+    }
 }//class over line
 
 //textfield - delegate
