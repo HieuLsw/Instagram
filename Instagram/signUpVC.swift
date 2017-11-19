@@ -84,17 +84,7 @@ initInputFirst()
         
         //dismiss keyboard
    self.view.endEditing(true)
-  /*
-        //if fields are empty
-        if (usernameTxt.text?.isEmpty)! || (passwordTxt.text?.isEmpty)! || (repeat_passwordTxt.text?.isEmpty)! || (emailTxt.text?.isEmpty)! || (fullnameTxt.text?.isEmpty)! || (bioTxt.text?.isEmpty)! || (webTxt.text?.isEmpty)!{
-     
-   let alert = UIAlertController(title: "Hey Hey ~", message: "fill all fields", preferredStyle: .alert)
-   let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-  alert.addAction(ok)
-present(alert, animated: true, completion: nil)
-        
-        }*/
-    
+ 
         //if different passwords
         if passwordTxt.text != repeat_passwordTxt.text{
             
@@ -119,8 +109,8 @@ present(alert, animated: true, completion: nil)
         user["gender"] = ""
         
         //convert our image for sending to server
-       let avaData = UIImageJPEGRepresentation(avaImg.image!, 0.5)
-     let avaFile = PFFile(name: "ava.jpg", data: avaData!)
+        guard let avaData = UIImageJPEGRepresentation(avaImg.image!, 0.5),let avaFile = PFFile(name: "ava.jpg", data: avaData) else {return}
+     
      user["ava"] = avaFile
       
         //save data in server
@@ -219,7 +209,7 @@ extension signUpVC {
     //initialize text fields false isEnable input
  fileprivate   func initInputFirst(){
     
-    signUpBtn.setGraidentBacground(color1: .black, color2: UIColor(hex: "004080"),stP: CGPoint(x: 0.0, y: 1.0),edP: CGPoint(x: 0.0, y: 0.0))
+    signUpBtn.setGraidentBackground(color1: .black, color2: UIColor(hex: "004080"),stP: CGPoint(x: 0.0, y: 1.0),edP: CGPoint(x: 0.0, y: 0.0))
     
     signUpBtn.isEnabled = (usernameTxt.text?.isEmpty)! && (passwordTxt.text?.isEmpty)! && (repeat_passwordTxt.text?.isEmpty)! && (emailTxt.text?.isEmpty)! && (fullnameTxt.text?.isEmpty)! && (bioTxt.text?.isEmpty)! && (webTxt.text?.isEmpty)!
     

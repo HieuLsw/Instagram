@@ -24,28 +24,40 @@ class signInVC: UIViewController,UITextFieldDelegate{
 
     @IBOutlet weak var forgotBtn: UIButton!
     
+    @IBOutlet weak var signInBtnHeight: NSLayoutConstraint!
+    
+    
+    @IBOutlet weak var assisView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
  
+ 
+  
+        
   //initialize text fields false isEnable input
         initInputFirst()
+        
+   //observe sign In button is or not hidden
+        createObserver()
+    
+   //check text fields is or not written all
+            setupAddTargetIsNotEmptyTextFields()
+        
+        
     }
 
 
+   /* deinit {
+        NotificationCenter.removeObserver(Notification.Name.init("isHidden"))
+        NotificationCenter.removeObserver(Notification.Name.init("NotHidden"))
+ }
+ */
+    
 
     //clicked sign in button
     @IBAction func signInBtn_click(_ sender: Any) {
-   
-/*
-        //if textfileds are empty
-        if (usernameTxt.text?.isEmpty)! || (passwordTxt.text?.isEmpty)!{
-         
-            let alert = UIAlertController(title: "Wow ~", message: "fill in fields", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
-            
-        }*/
+
         
         //login funcitons
         PFUser.logInWithUsername(inBackground: usernameTxt.text!, password: passwordTxt.text!) { (user:PFUser?, error:Error?) in
@@ -68,10 +80,24 @@ class signInVC: UIViewController,UITextFieldDelegate{
             }
         }
     }
+    
+    
 }//class over line
 
 //textfield - delegate
 extension signInVC{
+    
+   fileprivate func setupAddTargetIsNotEmptyTextFields() {
+        
+        //hidden sign In Button
+        signInBtn.isHidden = true
+        
+        usernameTxt.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+                                    for: .editingChanged)
+        passwordTxt.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+                                     for: .editingChanged)
+    
+    }
     
     //click keyboard return to close keyboard
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -81,19 +107,7 @@ extension signInVC{
         return true
     }
     
-    //if usernameTxt or passwordTxt has not been inputed, the sign In button can't be clicked
-     func textFieldDidEndEditing(_ textField: UITextField)  {
-        
-        
-        signInBtn.isEnabled = ((usernameTxt.text! as NSString).length > 0) && ((passwordTxt.text! as NSString).length > 0)
-        if signInBtn.isEnabled {
-            signInBtn.alpha = AlphaValue.enableClickAlpha.rawValue
-            
-        }
-        else {
-            signInBtn.alpha = AlphaValue.disableClickAlpha.rawValue
-        }
-    }
+ 
 
     
 }
@@ -101,14 +115,52 @@ extension signInVC{
 //custom functions
 extension signInVC{
     
-
+    //observe the sign In button is or not hidden
+    func createObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(signInVC.btnHiddenStackLocation(argu:)), name: NSNotification.Name.init("isHidden"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(signInVC.btnNotHiddenStackLocation(argu:)), name: NSNotification.Name.init("NotHidden"), object:nil)
+    }
     
-    //initialize text fields false isEnable input
+    //if the sign In button is or not hidden, change the stack location
+    func btnHiddenStackLocation(argu: Notification){
+signInBtnHeight.constant = 0
+        
+        
+    }
+    
+    func btnNotHiddenStackLocation(argu: Notification){
+ signInBtnHeight.constant = 49
+     
+    }
+    
+ //if all text fields has not been written anything, the sign In button will be hidden
+    @objc fileprivate func textFieldsIsNotEmpty(sender: UITextField) {
+    sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+    
+    guard
+        let username = usernameTxt.text, !username.isEmpty ,
+        let password = passwordTxt.text, !password.isEmpty
+        else
+    {
+        self.signInBtn.isHidden = true
+        NotificationCenter.default.post(name: NSNotification.Name.init("isHidden"), object: nil)
+        return
+    }
+    // enable okButton if all conditions are met
+
+    self.signInBtn.isHidden = false
+ NotificationCenter.default.post(name: NSNotification.Name.init("NotHidden"), object: nil)
+ 
+    }
+    
+    //initialize signInt button layout and background
   fileprivate  func initInputFirst(){
-        
-signInBtn.setGraidentBacground(color1: .white, color2: UIColor(hex: "531B93"),stP: CGPoint(x: 0.0, y: 1.0),edP: CGPoint(x: 0.0, y: 0.0))
-        
-        signInBtn.isEnabled = (usernameTxt.text?.isEmpty)! && (passwordTxt.text?.isEmpty)!
-    signInBtn.alpha = AlphaValue.disableClickAlpha.rawValue
+    
+   signInBtnHeight.constant = 0
+    
+signInBtn.setGraidentBackground(color1: .white, color2: UIColor(hex: "531B93"),stP: CGPoint(x: 0.0, y: 1.0),edP: CGPoint(x: 0.0, y: 0.0))
+    
+    
     }
 }

@@ -26,7 +26,7 @@ extension UIButton {
     
     
  
-    func setGraidentBacground(color1: UIColor, color2: UIColor,stP:CGPoint, edP:CGPoint){
+    func setGraidentBackground(color1: UIColor, color2: UIColor,stP:CGPoint, edP:CGPoint){
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         gradientLayer.colors = [color1.cgColor, color2.cgColor]
