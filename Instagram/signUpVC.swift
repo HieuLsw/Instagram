@@ -153,12 +153,16 @@ extension signUpVC{
         
       signUpBtn.isEnabled = (usernameTxt.text?.isEmpty)! && (passwordTxt.text?.isEmpty)! && (repeat_passwordTxt.text?.isEmpty)! && (emailTxt.text?.isEmpty)! && (fullnameTxt.text?.isEmpty)! && (bioTxt.text?.isEmpty)! && (webTxt.text?.isEmpty)!
         
+        /*
         if signUpBtn.isEnabled {
             signUpBtn.alpha = AlphaValue.enableClickAlpha.rawValue}
         else {
             signUpBtn.alpha = AlphaValue.disableClickAlpha.rawValue
         }
+ */
+        
     }
+    
     
     //the delegate or datasource function
  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -209,11 +213,12 @@ extension signUpVC {
     //initialize text fields false isEnable input
  fileprivate   func initInputFirst(){
     
-    signUpBtn.setGraidentBackground(color1: .black, color2: UIColor(hex: "004080"),stP: CGPoint(x: 0.0, y: 1.0),edP: CGPoint(x: 0.0, y: 0.0))
+    
+    signUpBtn.applyGradient(colours: [UIColor(hex:"833AB4"),UIColor(hex:"FD1D1D"),UIColor(hex:"FCB045")], locations: [0.0, 0.5, 1.0], stP: CGPoint(x:0.0,y:0.0), edP: CGPoint(x:1.0,y:0.0))
+    
+    cancelBtn.applyGradient(colours: [UIColor(hex: "00F260"), UIColor(hex: "0575E6")], locations:[0.0,1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
     
     signUpBtn.isEnabled = (usernameTxt.text?.isEmpty)! && (passwordTxt.text?.isEmpty)! && (repeat_passwordTxt.text?.isEmpty)! && (emailTxt.text?.isEmpty)! && (fullnameTxt.text?.isEmpty)! && (bioTxt.text?.isEmpty)! && (webTxt.text?.isEmpty)!
-    
-        signUpBtn.alpha = AlphaValue.disableClickAlpha.rawValue
     
     }
     

@@ -24,20 +24,17 @@ class UIButton_Attributes: UIButton {
 //UIButton
 extension UIButton {
     
-    
- 
-    func setGraidentBackground(color1: UIColor, color2: UIColor,stP:CGPoint, edP:CGPoint){
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = bounds
-        gradientLayer.colors = [color1.cgColor, color2.cgColor]
-        gradientLayer.locations = [0.0, 1.0]
-        gradientLayer.startPoint = stP
-        gradientLayer.endPoint = edP
-        
-        layer.insertSublayer(gradientLayer, at: 0)
+//can get gradient color in default loaction or actual loacation
+    func applyGradient(colours: [UIColor], locations: [NSNumber]? = nil, stP:CGPoint, edP:CGPoint){
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.colors = colours.map { $0.cgColor }
+        gradient.locations = locations
+        gradient.startPoint = stP
+        gradient.endPoint = edP
+        self.layer.insertSublayer(gradient, at: 0)
     }
-    
-    
+ 
     
     @IBInspectable
     var cornerRadius: CGFloat {

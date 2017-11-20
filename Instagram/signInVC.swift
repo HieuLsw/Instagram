@@ -44,7 +44,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
    //check text fields is or not written all
             setupAddTargetIsNotEmptyTextFields()
         
-        
+     
     }
 
 
@@ -130,7 +130,7 @@ signInBtnHeight.constant = 0
     }
     
     func btnNotHiddenStackLocation(argu: Notification){
- signInBtnHeight.constant = 49
+ signInBtnHeight.constant = 60
      
     }
     
@@ -158,8 +158,8 @@ signInBtnHeight.constant = 0
   fileprivate  func initInputFirst(){
     
    signInBtnHeight.constant = 0
-    
-signInBtn.setGraidentBackground(color1: .white, color2: UIColor(hex: "531B93"),stP: CGPoint(x: 0.0, y: 1.0),edP: CGPoint(x: 0.0, y: 0.0))
+ 
+  signInBtn.applyGradient(colours:[UIColor(hex:"00C3FF"), UIColor(hex:"FFFF1C")], locations:[0.0, 1.0], stP:CGPoint(x:0.0, y:0.0), edP:CGPoint(x:1.0, y:0.0))
     
     
     }

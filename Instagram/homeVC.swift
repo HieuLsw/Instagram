@@ -11,6 +11,16 @@ import Parse
 
 class homeVC: UICollectionViewController {
 
+    //declare refresher variable
+    var refresher: UIRefreshControl!
+    
+    //size of page
+    var page = 10
+    
+    var uuidArrary = [String]()
+    var picArray = [PFFile]()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     

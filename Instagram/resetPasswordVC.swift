@@ -100,19 +100,7 @@ present(alert, animated: true, completion: nil)
 //textfield - delegate
 extension  resetPasswordVC{
 
-    //if all textfields are be inputed the button is enable
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-    resetBtn.isEnabled = (emailTxt.text?.isEmpty)!
-        
-        if resetBtn.isEnabled{
-            emailTxt.alpha = AlphaValue.enableClickAlpha.rawValue
-        }
-        else {
-            emailTxt.alpha = AlphaValue.disableClickAlpha.rawValue
-        }
-        
-    }
+    
    
     
     //the delegate or datasource function
@@ -130,11 +118,16 @@ extension  resetPasswordVC{
 //custom functions
 extension resetPasswordVC {
 
+    
+    
+    
+    
     //initialize text fields false isEnable input
     fileprivate  func initInputFirst(){
-        resetBtn.isEnabled = (emailTxt.text?.isEmpty)!
-    
-        resetBtn.alpha = AlphaValue.disableClickAlpha.rawValue
+       
+        self.resetBtn.applyGradient(colours: [UIColor(hex: "FDFC47"), UIColor(hex: "24FE41")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
+        
+        self.cancelBtn.applyGradient(colours: [UIColor(hex: "004FF9"), UIColor(hex: "833AB4")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
         
     }
     
