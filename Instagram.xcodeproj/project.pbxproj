@@ -19,6 +19,10 @@
 		A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1521F692BE000207D42 /* resetPasswordVC.swift */; };
 		A549C15A1F6AD10200207D42 /* UIButton_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */; };
 		A54A35991FC27255002DD885 /* Themes.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A54A35981FC27255002DD885 /* Themes.xcassets */; };
+		A54A359C1FC2A6E7002DD885 /* Knight Brush Demo.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A359B1FC2A69A002DD885 /* Knight Brush Demo.otf */; };
+		A54A35A01FC2ACE9002DD885 /* ZingScriptRustSBDemo-Base.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A359F1FC2ACCB002DD885 /* ZingScriptRustSBDemo-Base.otf */; };
+		A54A35A21FC2AF46002DD885 /* Crabmeal.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */; };
+		A54A35A61FC2B572002DD885 /* SG_Alternative_High-Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */; };
 		A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C177A41F680C1C008D93AC /* AppDelegate.swift */; };
 		A5C177AA1F680C1C008D93AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C177A81F680C1C008D93AC /* Main.storyboard */; };
 		A5C177AC1F680C1D008D93AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C177AB1F680C1D008D93AC /* Assets.xcassets */; };
@@ -69,6 +73,10 @@
 		A549C1521F692BE000207D42 /* resetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resetPasswordVC.swift; sourceTree = "<group>"; };
 		A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton_Attributes.swift; sourceTree = "<group>"; };
 		A54A35981FC27255002DD885 /* Themes.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Themes.xcassets; sourceTree = "<group>"; };
+		A54A359B1FC2A69A002DD885 /* Knight Brush Demo.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Knight Brush Demo.otf"; sourceTree = "<group>"; };
+		A54A359F1FC2ACCB002DD885 /* ZingScriptRustSBDemo-Base.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZingScriptRustSBDemo-Base.otf"; sourceTree = "<group>"; };
+		A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Crabmeal.otf; sourceTree = "<group>"; };
+		A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SG_Alternative_High-Alt.otf"; sourceTree = "<group>"; };
 		A5C177A11F680C1C008D93AC /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C177A41F680C1C008D93AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C177A91F680C1C008D93AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -144,6 +152,17 @@
 			name = "User Defined Attributes";
 			sourceTree = "<group>";
 		};
+		A54A359A1FC2A5F0002DD885 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				A54A359B1FC2A69A002DD885 /* Knight Brush Demo.otf */,
+				A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */,
+				A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */,
+				A54A359F1FC2ACCB002DD885 /* ZingScriptRustSBDemo-Base.otf */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
 		A5C177981F680C1C008D93AC = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +200,7 @@
 				A5C177AD1F680C1D008D93AC /* LaunchScreen.storyboard */,
 				A5C177B01F680C1D008D93AC /* Info.plist */,
 				A549C1541F6AC77F00207D42 /* User Defined Attributes */,
+				A54A359A1FC2A5F0002DD885 /* Font */,
 			);
 			path = Instagram;
 			sourceTree = "<group>";
@@ -332,6 +352,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A54A35A61FC2B572002DD885 /* SG_Alternative_High-Alt.otf in Resources */,
+				A54A35A21FC2AF46002DD885 /* Crabmeal.otf in Resources */,
+				A54A35A01FC2ACE9002DD885 /* ZingScriptRustSBDemo-Base.otf in Resources */,
+				A54A359C1FC2A6E7002DD885 /* Knight Brush Demo.otf in Resources */,
 				A5C177AF1F680C1D008D93AC /* LaunchScreen.storyboard in Resources */,
 				A54A35991FC27255002DD885 /* Themes.xcassets in Resources */,
 				A5C177AC1F680C1D008D93AC /* Assets.xcassets in Resources */,
@@ -529,6 +553,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Instagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ShaoKahn.Instagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -546,6 +571,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Instagram/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ShaoKahn.Instagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";

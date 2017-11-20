@@ -42,5 +42,12 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SG_Alternative_High-Alt.otf</string>
+		<string>Crabmeal.otf</string>
+		<string>ZingScriptRustSBDemo-Base.otf</string>
+		<string>Knight Brush Demo.otf</string>
+	</array>
 </dict>
 </plist>
