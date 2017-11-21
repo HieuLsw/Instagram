@@ -115,16 +115,16 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yHm-Kh-kAM" userLabel="Help Stack">
-                                <rect key="frame" x="62.666666666666657" y="506.33333333333326" width="249.99999999999997" height="28"/>
+                                <rect key="frame" x="60.333333333333329" y="506.33333333333326" width="254.66666666666669" height="25"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgoten something?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-tV-eZT">
-                                        <rect key="frame" x="0.0" y="6.3333333333333153" width="124" height="15.333333333333336"/>
+                                        <rect key="frame" x="0.0" y="6.0000000000000568" width="126.33333333333333" height="13"/>
                                         <fontDescription key="fontDescription" name="SGAlternative-High-Alt" family="SG Alternative" pointSize="13"/>
                                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t0L-0Q-V6f">
-                                        <rect key="frame" x="126" y="0.0" width="124" height="28"/>
+                                        <rect key="frame" x="128.33333333333331" y="0.0" width="126.33333333333331" height="25"/>
                                         <fontDescription key="fontDescription" name="SGAlternative-High-Alt" family="SG Alternative" pointSize="13"/>
                                         <state key="normal" title="Get help signing in">
                                             <color key="titleColor" red="0.47684186699999997" green="0.50480759139999998" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -744,7 +744,7 @@
         <scene sceneID="kTY-Kp-KgQ">
             <objects>
                 <collectionViewController storyboardIdentifier="homeVC" id="BEf-b8-oXe" customClass="homeVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="KEL-9V-Cqw">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="KEL-9V-Cqw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -774,7 +774,7 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="header" id="F2s-Id-8wd" customClass="headerView" customModule="Instagram" customModuleProvider="target">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Header" id="F2s-Id-8wd" customClass="headerView" customModule="Instagram" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>

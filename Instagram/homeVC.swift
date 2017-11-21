@@ -27,26 +27,74 @@ class homeVC: UICollectionViewController {
 //set the title in the top
         setTopTitle()
         
+ //load posts func
+   loadPosts()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-  
-
-   
-
     
 }//homeVC class over line
 
-
+//custom functions
 extension homeVC{
 
     //title of the top
-    func setTopTitle(){
+  fileprivate  func setTopTitle(){
+     
+      //background color
+    collectionView?.backgroundColor = UIColor.white
+
+        //title at the top
     navigationItem.title = PFUser.current()?.username?.uppercased()
+    
+    //pull to refresh
+    refresher = UIRefreshControl()
+    refresher.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    
+    collectionView?.addSubview(refresher)
+    }
+    
+    
+    //refreshing func
+    @objc fileprivate func refresh(){
+        
+        //reload data information
+        collectionView?.reloadData()
+        
+        // stop refresher animating
+        refresher.endRefreshing()
+    }
+   
+    //load post func
+    fileprivate func loadPosts(){
+    
+        let query = PFQuery(className: "posts")
+        
+        guard let currentUsername = PFUser.current()?.username else{return}
+        
+        query.whereKey("username", equalTo: currentUsername)
+        query.limit = page
+        
+        //clean up
+        self.uuidArrary.removeAll(keepingCapacity: false)
+        self.picArray.removeAll(keepingCapacity: false)
+        
+        //find objects related to my request
+        query.findObjectsInBackground { (objects, error) in
+            if error == nil{
+                for object in objects!{
+          self.uuidArrary.append(object.value(forKey: "uuid") as! String)
+        self.picArray.append(object.value(forKey: "pic") as! PFFile)
+                }
+            self.collectionView?.reloadData()
+            }else{
+                print(error!.localizedDescription)
+            }
+        }
+        
     }
     
 }
@@ -55,26 +103,24 @@ extension homeVC{
 //colleciton view data source
 extension homeVC {
   
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-    
-    
+    //number of cells
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 0
+        return picArray.count
     }
-    
+   
+    //cell config
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
-        // Configure the cell
-        
+        //define cell
+       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! pictureCell
+        //get picture from the array
+        picArray[indexPath.row].getDataInBackground { (data, error) in
+            if error == nil{
+                cell.picImg.image = UIImage(data: data!)
+            }
+        }
         return cell
     }
-
-    
     
 }
 
@@ -82,6 +128,7 @@ extension homeVC {
 //collection view delegate
 extension homeVC{
     
+    //header config
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
        //get header
