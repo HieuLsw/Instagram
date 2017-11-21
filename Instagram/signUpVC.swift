@@ -68,9 +68,9 @@ setAvaImgLayer()
  
 //initialize text fields false isEnable input
 initInputFirst()
+      
         
 }
-    
     
     
     override func didReceiveMemoryWarning() {
@@ -138,7 +138,9 @@ initInputFirst()
    
     //click cancel
     @IBAction func cancelBtn_click(_ sender: Any) {
-   self.dismiss(animated: true, completion: nil)
+        
+    self.dismiss(animated: true, completion: nil)
+
     }
 
     

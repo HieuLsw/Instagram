@@ -566,7 +566,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdz-zD-BUc" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="491.66666666666674" width="343" height="61"/>
+                                <rect key="frame" x="16" y="481.66666666666674" width="343" height="61"/>
                                 <fontDescription key="fontDescription" name="KnightBrushDemo" family="Knight Brush Demo" pointSize="30"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Cancel">
@@ -591,7 +591,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cus-xZ-pfG" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="307.33333333333331" width="343" height="40"/>
+                                <rect key="frame" x="16" y="297.33333333333331" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="mu2-Ce-XDB"/>
                                 </constraints>
@@ -613,7 +613,10 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKd-GT-bTc" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="405.33333333333331" width="343" height="60.666666666666686"/>
+                                <rect key="frame" x="16" y="395.33333333333331" width="343" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="NTE-SR-AaP"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="KnightBrushDemo" family="Knight Brush Demo" pointSize="30"/>
                                 <state key="normal" title="Reset password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -637,13 +640,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BW-U1-wXi">
-                                <rect key="frame" x="16" y="99" width="343" height="52"/>
+                                <rect key="frame" x="16" y="99" width="343" height="42"/>
                                 <fontDescription key="fontDescription" name="Crabmeal" family="Crabmeal" pointSize="36"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLk-Wk-8JB" userLabel="Line View" customClass="UIView_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="268.33333333333331" width="343" height="1"/>
+                                <rect key="frame" x="16" y="258.33333333333331" width="343" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="bTG-qG-V25"/>
@@ -654,17 +657,17 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qod-YY-hBN" userLabel="Button AspectView">
-                                <rect key="frame" x="16" y="466" width="343" height="25.666666666666686"/>
+                                <rect key="frame" x="16" y="456.33333333333331" width="343" height="25.333333333333314"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We can help you reset your password using your the email address linked to your account." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0po-IK-eDT">
-                                <rect key="frame" x="16" y="161" width="343" height="93.333333333333314"/>
+                                <rect key="frame" x="16" y="151" width="343" height="93.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHy-0N-G21">
-                                <rect key="frame" x="16" y="349.33333333333331" width="343" height="1"/>
+                                <rect key="frame" x="16" y="339.33333333333331" width="343" height="1"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="GI2-HI-Z97"/>
@@ -687,15 +690,14 @@
                             <constraint firstItem="2BW-U1-wXi" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="Sqs-xe-pHF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qod-YY-hBN" secondAttribute="trailing" id="XB3-Ud-QXr"/>
                             <constraint firstItem="KKd-GT-bTc" firstAttribute="trailing" secondItem="rSw-vy-4K2" secondAttribute="trailingMargin" id="Zr5-xP-hV7"/>
-                            <constraint firstItem="Pdz-zD-BUc" firstAttribute="height" secondItem="rSw-vy-4K2" secondAttribute="height" multiplier="50:667" id="aVR-aB-SFU"/>
                             <constraint firstItem="qod-YY-hBN" firstAttribute="top" secondItem="KKd-GT-bTc" secondAttribute="bottom" id="eMR-Ax-HI8"/>
                             <constraint firstItem="KKd-GT-bTc" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="emm-Sc-dBG"/>
                             <constraint firstItem="Pdz-zD-BUc" firstAttribute="top" secondItem="qod-YY-hBN" secondAttribute="bottom" id="gMN-1M-r5l"/>
                             <constraint firstItem="au8-pS-pTe" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="k7s-h5-WKC"/>
                             <constraint firstItem="cus-xZ-pfG" firstAttribute="leading" secondItem="rSw-vy-4K2" secondAttribute="leadingMargin" id="kFr-J1-Fhz"/>
-                            <constraint firstItem="KKd-GT-bTc" firstAttribute="height" secondItem="rSw-vy-4K2" secondAttribute="height" multiplier="50:667" id="oOh-QE-agP"/>
                             <constraint firstItem="cus-xZ-pfG" firstAttribute="top" secondItem="hLk-Wk-8JB" secondAttribute="bottom" constant="38" id="pJ5-TM-UXo"/>
                             <constraint firstItem="cus-xZ-pfG" firstAttribute="trailing" secondItem="rSw-vy-4K2" secondAttribute="trailingMargin" id="pSQ-nU-fhU"/>
+                            <constraint firstItem="Pdz-zD-BUc" firstAttribute="height" secondItem="rSw-vy-4K2" secondAttribute="height" multiplier="61:812" id="pWg-yP-Olb"/>
                             <constraint firstItem="au8-pS-pTe" firstAttribute="top" secondItem="69r-3e-PYd" secondAttribute="bottom" id="rej-ai-8C6"/>
                             <constraint firstItem="dHy-0N-G21" firstAttribute="top" secondItem="cus-xZ-pfG" secondAttribute="bottom" constant="2" id="sGw-9W-3qf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0po-IK-eDT" secondAttribute="trailing" id="tGc-C7-22j"/>
@@ -709,13 +711,15 @@
                     <navigationItem key="navigationItem" id="gM3-ee-3CK"/>
                     <connections>
                         <outlet property="cancelBtn" destination="Pdz-zD-BUc" id="y6q-86-LdH"/>
+                        <outlet property="distanceOfBtnAndTxtF" destination="yiy-X4-4xu" id="Te0-M7-Wo7"/>
                         <outlet property="emailTxt" destination="cus-xZ-pfG" id="1I3-M7-XST"/>
                         <outlet property="resetBtn" destination="KKd-GT-bTc" id="ntB-eB-9Bd"/>
+                        <outlet property="resetBtnHeight" destination="NTE-SR-AaP" id="xgk-5z-FS3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oo8-B0-XdO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1436" y="90.886699507389167"/>
+            <point key="canvasLocation" x="1434.375" y="90"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PSJ-tX-Agf">
