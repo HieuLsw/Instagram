@@ -24,11 +24,12 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
         // Do any additional setup after loading the view.
  //self - delegate
        
-//initialize button
+//initalize button
         initInputFirst()
-        
-        
-        
+ 
+  //initalize reset btn
+ initResetBtn()
+    
     }
 
     
@@ -50,7 +51,7 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
     
     
     
-    //click reset button
+    
     @IBAction func resetBtn_click(_ sender: Any) {
   /*
  //if emailfield is empty
@@ -83,6 +84,7 @@ present(alert, animated: true, completion: nil)
             }
         }
         
+        
     }
     
     //click cancel button
@@ -92,7 +94,13 @@ present(alert, animated: true, completion: nil)
     
     
     }
-    
+   
+    @IBAction func emailTextFieldTap(_ sender: UITextField) {
+
+ sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+        
+        resetBtn.isHidden = (emailTxt.text?.isEmpty)!
+    }
 
 }//class over line
 
@@ -118,9 +126,10 @@ extension  resetPasswordVC{
 //custom functions
 extension resetPasswordVC {
 
-    
-    
-    
+    //initalize reset button
+    fileprivate func initResetBtn(){
+        resetBtn.isHidden = true
+    }
     
     //initialize text fields false isEnable input
     fileprivate  func initInputFirst(){

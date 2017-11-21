@@ -32,27 +32,30 @@ class signInVC: UIViewController,UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
  
- 
-  
-        
   //initialize text fields false isEnable input
         initInputFirst()
         
-   //observe sign In button is or not hidden
-        createObserver()
-    
    //check text fields is or not written all
             setupAddTargetIsNotEmptyTextFields()
-        
-     
     }
-
-
-   /* deinit {
-        NotificationCenter.removeObserver(Notification.Name.init("isHidden"))
-        NotificationCenter.removeObserver(Notification.Name.init("NotHidden"))
- }
- */
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(true)
+        
+        //observe sign In button is or not hidden
+        createObserver()
+    }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(true)
+        
+        //release the observers
+      releaseObservers()
+    }
     
 
     //clicked sign in button
@@ -82,7 +85,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
     }
     
     
-}//class over line
+}//signInVC class over line
 
 //textfield - delegate
 extension signInVC{
@@ -92,9 +95,9 @@ extension signInVC{
         //hidden sign In Button
         signInBtn.isHidden = true
         
-        usernameTxt.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+        usernameTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),
                                     for: .editingChanged)
-        passwordTxt.addTarget(self, action: #selector(textFieldsIsNotEmpty),
+        passwordTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),
                                      for: .editingChanged)
     
     }
@@ -116,43 +119,50 @@ extension signInVC{
 extension signInVC{
     
     //observe the sign In button is or not hidden
-    func createObserver(){
+  fileprivate  func createObserver(){
+    
         NotificationCenter.default.addObserver(self, selector: #selector(signInVC.btnHiddenStackLocation(argu:)), name: NSNotification.Name.init("isHidden"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(signInVC.btnNotHiddenStackLocation(argu:)), name: NSNotification.Name.init("NotHidden"), object:nil)
     }
     
+    
     //if the sign In button is or not hidden, change the stack location
-    func btnHiddenStackLocation(argu: Notification){
+    @objc fileprivate func btnHiddenStackLocation(argu: Notification){
 signInBtnHeight.constant = 0
         
         
     }
     
-    func btnNotHiddenStackLocation(argu: Notification){
+    @objc fileprivate func btnNotHiddenStackLocation(argu: Notification){
  signInBtnHeight.constant = 60
      
     }
+   
     
  //if all text fields has not been written anything, the sign In button will be hidden
-    @objc fileprivate func textFieldsIsNotEmpty(sender: UITextField) {
+    @objc fileprivate func textFieldsIsOrNotEmpty(sender: UITextField) {
     sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-    
-    guard
-        let username = usernameTxt.text, !username.isEmpty ,
-        let password = passwordTxt.text, !password.isEmpty
-        else
-    {
-        self.signInBtn.isHidden = true
-        NotificationCenter.default.post(name: NSNotification.Name.init("isHidden"), object: nil)
-        return
-    }
-    // enable okButton if all conditions are met
+   
 
-    self.signInBtn.isHidden = false
+    self.signInBtn.isHidden = (usernameTxt.text?.isEmpty)! || (passwordTxt.text?.isEmpty)!
+      
+        if self.signInBtn.isHidden{
+          NotificationCenter.default.post(name: NSNotification.Name.init("isHidden"), object: nil)
+        }else{
  NotificationCenter.default.post(name: NSNotification.Name.init("NotHidden"), object: nil)
- 
+        }
+        
     }
+    
+    //release the observers
+    fileprivate func releaseObservers(){
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "isHidden"), object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "NotHidden"), object: nil)
+    }
+    
     
     //initialize signInt button layout and background
   fileprivate  func initInputFirst(){

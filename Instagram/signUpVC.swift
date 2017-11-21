@@ -54,6 +54,8 @@ class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
 
         // Do any additional setup after loading the view.
 
+//buttons add the isEnable target
+initSignUpButton()
         
 //scrollview scroll area
 setScrollArea()
@@ -141,27 +143,12 @@ initInputFirst()
 
     
     
-}//class over line
+}//signUpVC class over line
 
 
 //textfield - delegate
 extension signUpVC{
-    
-    
-   //if all textfields are be inputed the button is enable
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-      signUpBtn.isEnabled = (usernameTxt.text?.isEmpty)! && (passwordTxt.text?.isEmpty)! && (repeat_passwordTxt.text?.isEmpty)! && (emailTxt.text?.isEmpty)! && (fullnameTxt.text?.isEmpty)! && (bioTxt.text?.isEmpty)! && (webTxt.text?.isEmpty)!
-        
-        /*
-        if signUpBtn.isEnabled {
-            signUpBtn.alpha = AlphaValue.enableClickAlpha.rawValue}
-        else {
-            signUpBtn.alpha = AlphaValue.disableClickAlpha.rawValue
-        }
- */
-        
-    }
+
     
     
     //the delegate or datasource function
@@ -175,7 +162,6 @@ _ = [usernameTxt,passwordTxt,repeat_passwordTxt,fullnameTxt,bioTxt,webTxt,emailT
 
 //imagepick - delegate
 extension signUpVC{
-    
     
     
     //func connect selected image to our ImageView
@@ -210,15 +196,33 @@ extension signUpVC{
 //custom functions
 extension signUpVC {
     
+    
+    fileprivate func initSignUpButton(){
+       signUpBtn.isEnabled = false
+_ = [usernameTxt,passwordTxt,repeat_passwordTxt,fullnameTxt,bioTxt,webTxt,emailTxt].map{$0?.addTarget(self, action: #selector(self.signUpIsEnable(sender:)), for: .editingChanged)}
+       
+    }
+    
+    //control sign up button isEnable
+   @objc fileprivate func signUpIsEnable(sender: UITextField){
+   
+      sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+    
+    signUpBtn.isEnabled = !((usernameTxt.text?.isEmpty)!) && !((passwordTxt.text?.isEmpty)!) && !((repeat_passwordTxt.text?.isEmpty)!) && !((emailTxt.text?.isEmpty)!) && !((fullnameTxt.text?.isEmpty)!) && !((bioTxt.text?.isEmpty)!) && !((webTxt.text?.isEmpty)!)
+    
+    
+        
+    }
+    
+    
     //initialize text fields false isEnable input
  fileprivate   func initInputFirst(){
-    
     
     signUpBtn.applyGradient(colours: [UIColor(hex:"833AB4"),UIColor(hex:"FD1D1D"),UIColor(hex:"FCB045")], locations: [0.0, 0.5, 1.0], stP: CGPoint(x:0.0,y:0.0), edP: CGPoint(x:1.0,y:0.0))
     
     cancelBtn.applyGradient(colours: [UIColor(hex: "00F260"), UIColor(hex: "0575E6")], locations:[0.0,1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
     
-    signUpBtn.isEnabled = (usernameTxt.text?.isEmpty)! && (passwordTxt.text?.isEmpty)! && (repeat_passwordTxt.text?.isEmpty)! && (emailTxt.text?.isEmpty)! && (fullnameTxt.text?.isEmpty)! && (bioTxt.text?.isEmpty)! && (webTxt.text?.isEmpty)!
+   
     
     }
     
