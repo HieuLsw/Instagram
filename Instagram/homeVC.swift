@@ -150,6 +150,33 @@ extension homeVC{
         }
         header.button.setTitle("edit profile", for: .normal)
         
+        //count total posts
+        let posts = PFQuery(className: "posts")
+        posts.whereKey("username", equalTo: (PFUser.current()?.username)!)
+        posts.countObjectsInBackground { (count, error) in
+            if error == nil{
+                header.posts.text = "\(count)"
+            }
+        }
+        
+        //count total followers
+        let followers = PFQuery(className: "followers")
+        followers.whereKey("follower", equalTo: (PFUser.current()?.username)!)
+        followers.countObjectsInBackground { (count, error) in
+            if error == nil{
+              header.followers.text = "\(count)"
+            }
+        }
+        
+        //count total following
+        let followings = PFQuery(className: "followings")
+        followings.whereKey("following", equalTo: (PFUser.current()?.username)!)
+        followings.countObjectsInBackground { (count, error) in
+            if error == nil{
+                header.followings.text = "\(count)"
+            }
+        }
+        
         return header
     }
     
