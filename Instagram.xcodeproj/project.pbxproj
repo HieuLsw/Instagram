@@ -23,6 +23,8 @@
 		A54A35A01FC2ACE9002DD885 /* ZingScriptRustSBDemo-Base.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A359F1FC2ACCB002DD885 /* ZingScriptRustSBDemo-Base.otf */; };
 		A54A35A21FC2AF46002DD885 /* Crabmeal.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */; };
 		A54A35A61FC2B572002DD885 /* SG_Alternative_High-Alt.otf in Resources */ = {isa = PBXBuildFile; fileRef = A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */; };
+		A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A588A6B91FC5381E0083AAEC /* followersVC.swift */; };
+		A588A6BC1FC538670083AAEC /* followersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A588A6BB1FC538670083AAEC /* followersCell.swift */; };
 		A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C177A41F680C1C008D93AC /* AppDelegate.swift */; };
 		A5C177AA1F680C1C008D93AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C177A81F680C1C008D93AC /* Main.storyboard */; };
 		A5C177AC1F680C1D008D93AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C177AB1F680C1D008D93AC /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		A54A359F1FC2ACCB002DD885 /* ZingScriptRustSBDemo-Base.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ZingScriptRustSBDemo-Base.otf"; sourceTree = "<group>"; };
 		A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Crabmeal.otf; sourceTree = "<group>"; };
 		A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SG_Alternative_High-Alt.otf"; sourceTree = "<group>"; };
+		A588A6B91FC5381E0083AAEC /* followersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = followersVC.swift; sourceTree = "<group>"; };
+		A588A6BB1FC538670083AAEC /* followersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = followersCell.swift; sourceTree = "<group>"; };
 		A5C177A11F680C1C008D93AC /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C177A41F680C1C008D93AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5C177A91F680C1C008D93AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,7 +153,9 @@
 				A549C1501F692BBA00207D42 /* signUpVC.swift */,
 				A549C1521F692BE000207D42 /* resetPasswordVC.swift */,
 				A518268B1FA0D4B8005B50D0 /* homeVC.swift */,
+				A588A6B91FC5381E0083AAEC /* followersVC.swift */,
 				A518268D1FA0D517005B50D0 /* headerView.swift */,
+				A588A6BB1FC538670083AAEC /* followersCell.swift */,
 				A518268F1FA0D8B2005B50D0 /* pictureCell.swift */,
 				A5C177A81F680C1C008D93AC /* Main.storyboard */,
 				A5C177AB1F680C1D008D93AC /* Assets.xcassets */,
@@ -265,8 +271,10 @@
 				A518268E1FA0D517005B50D0 /* headerView.swift in Sources */,
 				A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */,
 				A549C14F1F692B8900207D42 /* signInVC.swift in Sources */,
+				A588A6BC1FC538670083AAEC /* followersCell.swift in Sources */,
 				A518268A1FA0A37B005B50D0 /* AlphaEnum.swift in Sources */,
 				A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */,
+				A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */,
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,

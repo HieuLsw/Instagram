@@ -134,6 +134,9 @@ extension homeVC{
        //get header
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! headerView
         
+        
+        //STEP 1. Fetch user data
+        
         //get users data with connections to collumns of PFUser class
         header.fullnameLbl.text = (PFUser.current()?.object(forKey: "fullname") as? String)?.uppercased()
         
@@ -149,6 +152,9 @@ extension homeVC{
             header.avaImg.image = UIImage(data: data!)
         }
         header.button.setTitle("edit profile", for: .normal)
+        
+        
+        //STEP 2. Count statistics
         
         //count total posts
         let posts = PFQuery(className: "posts")
@@ -177,10 +183,74 @@ extension homeVC{
             }
         }
         
-        return header
+        
+        //STEP 3. Impelement top gestures
+        
+        //tap posts
+        let postsTap = UITapGestureRecognizer(target: self, action: #selector(postsT))
+        postsTap.numberOfTapsRequired = 1
+        header.posts.isUserInteractionEnabled = true
+        header.posts.addGestureRecognizer(postsTap)
+        
+        //tap followers
+        let followersTap = UITapGestureRecognizer(target: self, action: #selector(followersT))
+        followersTap.numberOfTapsRequired = 1
+        header.followers.isUserInteractionEnabled = true
+        header.followers.addGestureRecognizer(followersTap)
+        
+        //tap followings
+        let followingsTap = UITapGestureRecognizer(target: self, action: #selector(followingsT))
+       followingsTap.numberOfTapsRequired = 1
+      header.followings.isUserInteractionEnabled = true
+     header.followings.addGestureRecognizer(followingsTap)
+        
+return header
     }
     
+}// homeVC class over line
+
+//custom functions
+extension homeVC{
     
+    //taped posts label
+    @objc fileprivate func postsT() {
+        
+        if !picArray.isEmpty{
+         let indexPath = IndexPath(item: 0, section: 0)
+        collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+            }
+    }
+ 
+   //taped followers label
+   @objc fileprivate func followersT() {
     
+    varUser = (PFUser.current()?.username)!
+    varShow = "followers"
+    
+    //make references to followersVC
+let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+    
+//present
+ navigationController?.show(followers, sender: nil)
+    }
+  
+    //taped following label
+    @objc fileprivate func followingsT() {
+        
+varUser = (PFUser.current()?.username)!
+varShow = "followings"
+ 
+//make references to followersVC
+let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+        
+//present
+navigationController?.show(followers, sender: nil)
+    }
+    
+  
     
 }
+
+
+
+
