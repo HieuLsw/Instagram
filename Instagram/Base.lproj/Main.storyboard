@@ -939,27 +939,27 @@
         <scene sceneID="xFx-iX-qjP">
             <objects>
                 <tableViewController storyboardIdentifier="followersVC" id="pZQ-29-ygx" customClass="followersVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jgB-jN-9vq">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jgB-jN-9vq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="92" id="BoS-qN-7Q2" customClass="followersCell" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="92"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="BoS-qN-7Q2" customClass="followersCell" customModule="Instagram" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BoS-qN-7Q2" id="X2G-pi-11T">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="HfO-0S-xQB">
-                                            <rect key="frame" x="8" y="11" width="70" height="70"/>
+                                            <rect key="frame" x="8" y="15" width="70" height="70"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="70" id="66k-ai-IhY"/>
                                                 <constraint firstAttribute="height" constant="70" id="Cke-qh-Uev"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="und-Sa-1a4">
-                                            <rect key="frame" x="93" y="35.666666666666664" width="90" height="21"/>
+                                            <rect key="frame" x="93" y="39.666666666666664" width="90" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="WnX-5g-65y"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="mtj-Up-PfX"/>
@@ -969,24 +969,27 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-NG-NYU">
-                                            <rect key="frame" x="278" y="31" width="82" height="30"/>
+                                            <rect key="frame" x="263" y="35" width="97" height="30"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="CuD-7o-JGP"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <state key="normal" title="FOLLOWING">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="followBtn_click:" destination="BoS-qN-7Q2" eventType="touchUpInside" id="7e3-vq-Lb9"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="HfO-0S-xQB" firstAttribute="centerY" secondItem="X2G-pi-11T" secondAttribute="centerY" id="1KB-BE-hX6"/>
+                                        <constraint firstItem="e6a-NG-NYU" firstAttribute="leading" relation="lessThanOrEqual" secondItem="und-Sa-1a4" secondAttribute="trailing" constant="80" id="Pkk-qC-c2D"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="und-Sa-1a4" secondAttribute="trailing" constant="20" symbolic="YES" id="bSF-lf-NmD"/>
                                         <constraint firstItem="und-Sa-1a4" firstAttribute="centerY" secondItem="X2G-pi-11T" secondAttribute="centerY" id="ebe-0t-q0Z"/>
                                         <constraint firstItem="und-Sa-1a4" firstAttribute="leading" secondItem="HfO-0S-xQB" secondAttribute="trailing" constant="15" id="eol-1l-f6v"/>
                                         <constraint firstItem="e6a-NG-NYU" firstAttribute="centerY" secondItem="X2G-pi-11T" secondAttribute="centerY" id="iTM-Pk-vui"/>
-                                        <constraint firstItem="e6a-NG-NYU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X2G-pi-11T" secondAttribute="leading" constant="20" symbolic="YES" id="pkB-r8-ZsS"/>
                                         <constraint firstItem="HfO-0S-xQB" firstAttribute="leading" secondItem="X2G-pi-11T" secondAttribute="leading" constant="8" id="xFF-aT-BxK"/>
                                         <constraint firstAttribute="trailing" secondItem="e6a-NG-NYU" secondAttribute="trailing" constant="15" id="z81-7m-bAi"/>
                                     </constraints>

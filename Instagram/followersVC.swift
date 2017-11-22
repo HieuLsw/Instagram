@@ -174,7 +174,7 @@ extension followersVC{
     if error == nil{
     if count == 0{
     cell.followBtn.setTitle("FOLLOW", for: .normal)
-cell.followBtn.backgroundColor = UIColor.red
+cell.followBtn.backgroundColor = UIColor.purple
     }else{
 cell.followBtn.setTitle("FOLLOWING", for: .normal)
  cell.followBtn.backgroundColor = UIColor.green

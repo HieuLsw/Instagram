@@ -33,7 +33,25 @@ class headerView: UICollectionReusableView {
     @IBOutlet weak var button: UIButton!
  
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        //round img layer
+        setImgLayer()
+    }
     
     
+}// headerView class over line
+
+extension headerView{
     
+    //set image layer
+    fileprivate func setImgLayer(){
+       avaImg.layer.cornerRadius = self.avaImg.bounds.size.width / 2
+        avaImg.layer.borderWidth = 0.01
+        avaImg.layer.borderColor = UIColor.white.cgColor
+        avaImg.clipsToBounds = true
+    }
 }
+
+
