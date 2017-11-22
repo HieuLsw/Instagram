@@ -42,6 +42,7 @@
 		A5C177E91F68115B008D93AC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E71F68115B008D93AC /* Bolts.framework */; };
 		A5C177EA1F68115B008D93AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E81F68115B008D93AC /* Parse.framework */; };
 		A5EEB2801FC5C594002CB038 /* murdoink.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5EEB27F1FC5C542002CB038 /* murdoink.ttf */; };
+		A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEB2831FC5E2AA002CB038 /* guestVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		A5C177E71F68115B008D93AC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		A5C177E81F68115B008D93AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A5EEB27F1FC5C542002CB038 /* murdoink.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = murdoink.ttf; sourceTree = "<group>"; };
+		A5EEB2831FC5E2AA002CB038 /* guestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 				A588A6BD1FC58F8E0083AAEC /* Profile Part */,
 				A588A6BE1FC58FE50083AAEC /* Home Page Part */,
 				A588A6BF1FC58FFD0083AAEC /* Follower Page Part */,
+				A5EEB2851FC5E2B8002CB038 /* Guest Page Part */,
 				A549C1541F6AC77F00207D42 /* User Defined Attributes */,
 				A54A359A1FC2A5F0002DD885 /* Font */,
 			);
@@ -212,6 +215,14 @@
 				A5C177D31F680D67008D93AC /* SystemConfiguration.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5EEB2851FC5E2B8002CB038 /* Guest Page Part */ = {
+			isa = PBXGroup;
+			children = (
+				A5EEB2831FC5E2AA002CB038 /* guestVC.swift */,
+			);
+			name = "Guest Page Part";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,6 +311,7 @@
 				A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */,
 				A549C14F1F692B8900207D42 /* signInVC.swift in Sources */,
 				A588A6BC1FC538670083AAEC /* followersCell.swift in Sources */,
+				A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */,
 				A518268A1FA0A37B005B50D0 /* AlphaEnum.swift in Sources */,
 				A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */,
 				A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */,

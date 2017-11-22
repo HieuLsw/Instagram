@@ -23,12 +23,15 @@ class homeVC: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+ 
+//hold scroll direction
+    holdCollectionViewDirection()
+        
 //set the title in the top
-        setTopTitle()
+   setTopTitle()
         
  //load posts func
-   loadPosts()
+loadPosts()
     }
 
     override func didReceiveMemoryWarning() {
@@ -212,6 +215,12 @@ return header
 
 //custom functions
 extension homeVC{
+    
+    //hold scroll direction
+    fileprivate func holdCollectionViewDirection(){
+        
+      collectionView?.alwaysBounceVertical = true
+    }
     
     //taped posts label
     @objc fileprivate func postsT() {

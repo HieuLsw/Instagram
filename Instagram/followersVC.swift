@@ -42,6 +42,7 @@ class followersVC: UITableViewController {
 //custom functions
 extension followersVC{
     
+    
     fileprivate func setBarInfo(){
     navigationItem.title = varShow.uppercased()
      
