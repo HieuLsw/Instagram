@@ -128,6 +128,35 @@
 			name = Font;
 			sourceTree = "<group>";
 		};
+		A588A6BD1FC58F8E0083AAEC /* Profile Part */ = {
+			isa = PBXGroup;
+			children = (
+				A549C14E1F692B8800207D42 /* signInVC.swift */,
+				A549C1501F692BBA00207D42 /* signUpVC.swift */,
+				A549C1521F692BE000207D42 /* resetPasswordVC.swift */,
+			);
+			name = "Profile Part";
+			sourceTree = "<group>";
+		};
+		A588A6BE1FC58FE50083AAEC /* Home Page Part */ = {
+			isa = PBXGroup;
+			children = (
+				A518268B1FA0D4B8005B50D0 /* homeVC.swift */,
+				A518268D1FA0D517005B50D0 /* headerView.swift */,
+				A518268F1FA0D8B2005B50D0 /* pictureCell.swift */,
+			);
+			name = "Home Page Part";
+			sourceTree = "<group>";
+		};
+		A588A6BF1FC58FFD0083AAEC /* Follower Page Part */ = {
+			isa = PBXGroup;
+			children = (
+				A588A6B91FC5381E0083AAEC /* followersVC.swift */,
+				A588A6BB1FC538670083AAEC /* followersCell.swift */,
+			);
+			name = "Follower Page Part";
+			sourceTree = "<group>";
+		};
 		A5C177981F680C1C008D93AC = {
 			isa = PBXGroup;
 			children = (
@@ -149,19 +178,14 @@
 			isa = PBXGroup;
 			children = (
 				A5C177A41F680C1C008D93AC /* AppDelegate.swift */,
-				A549C14E1F692B8800207D42 /* signInVC.swift */,
-				A549C1501F692BBA00207D42 /* signUpVC.swift */,
-				A549C1521F692BE000207D42 /* resetPasswordVC.swift */,
-				A518268B1FA0D4B8005B50D0 /* homeVC.swift */,
-				A588A6B91FC5381E0083AAEC /* followersVC.swift */,
-				A518268D1FA0D517005B50D0 /* headerView.swift */,
-				A588A6BB1FC538670083AAEC /* followersCell.swift */,
-				A518268F1FA0D8B2005B50D0 /* pictureCell.swift */,
 				A5C177A81F680C1C008D93AC /* Main.storyboard */,
 				A5C177AB1F680C1D008D93AC /* Assets.xcassets */,
 				A54A35981FC27255002DD885 /* Themes.xcassets */,
 				A5C177AD1F680C1D008D93AC /* LaunchScreen.storyboard */,
 				A5C177B01F680C1D008D93AC /* Info.plist */,
+				A588A6BD1FC58F8E0083AAEC /* Profile Part */,
+				A588A6BE1FC58FE50083AAEC /* Home Page Part */,
+				A588A6BF1FC58FFD0083AAEC /* Follower Page Part */,
 				A549C1541F6AC77F00207D42 /* User Defined Attributes */,
 				A54A359A1FC2A5F0002DD885 /* Font */,
 			);

@@ -29,4 +29,13 @@ class followersCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}// followersCell class over line
+
+extension followersCell{
+    
+    fileprivate func setImgLayer(){
+avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
+ avaImg.clipsToBounds = true
+    }
+    
 }

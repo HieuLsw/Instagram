@@ -779,11 +779,11 @@
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Sf-w5n">
-                                    <rect key="frame" x="8" y="8" width="90" height="90"/>
+                                    <rect key="frame" x="21" y="17" width="90" height="90"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Bobby Brown" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZZ-wm-qd4">
-                                    <rect key="frame" x="8" y="115" width="359" height="21"/>
+                                    <rect key="frame" x="8" y="115" width="118" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <color key="textColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -846,7 +846,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBb-8D-r7O">
-                                    <rect key="frame" x="128" y="68" width="228" height="30"/>
+                                    <rect key="frame" x="139" y="77" width="228" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" title="edit profile">
@@ -877,22 +877,22 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tla-dJ-Uj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3610" y="91"/>
+            <point key="canvasLocation" x="3608.8000000000002" y="90.886699507389167"/>
         </scene>
         <!--FollowersVC-->
         <scene sceneID="xFx-iX-qjP">
             <objects>
                 <tableViewController storyboardIdentifier="followersVC" id="pZQ-29-ygx" customClass="followersVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jgB-jN-9vq">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jgB-jN-9vq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="109" id="BoS-qN-7Q2" customClass="followersCell" customModule="Instagram" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="109" id="BoS-qN-7Q2" customClass="followersCell" customModule="Instagram" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BoS-qN-7Q2" id="X2G-pi-11T">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="108.66666666666667"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="109"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="HfO-0S-xQB">
@@ -910,7 +910,9 @@
                                             <rect key="frame" x="255" y="44" width="104" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <state key="normal" title="FOLLOWING"/>
+                                            <state key="normal" title="FOLLOWING">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
