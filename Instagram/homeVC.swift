@@ -84,12 +84,13 @@ extension homeVC{
         
         //find objects related to my request
         query.findObjectsInBackground { (objects, error) in
+            
             if error == nil{
-                for object in objects!{
-          self.uuidArrary.append(object.value(forKey: "uuid") as! String)
-        self.picArray.append(object.value(forKey: "pic") as! PFFile)
-                }
-            self.collectionView?.reloadData()
+                
+self.picArray = objects!.map{$0.value(forKey: "pic") as! PFFile}
+self.uuidArrary = objects!.map{$0.value(forKey: "uuid") as! String}
+
+    self.collectionView?.reloadData()
             }else{
                 print(error!.localizedDescription)
             }

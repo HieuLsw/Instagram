@@ -55,7 +55,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
         
         super.viewWillDisappear(true)
         
-        //release the observers
+        //delete the observers
       releaseObservers()
     }
     
