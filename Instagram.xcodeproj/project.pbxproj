@@ -41,6 +41,7 @@
 		A5C177E61F681098008D93AC /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E51F681098008D93AC /* CFNetwork.framework */; };
 		A5C177E91F68115B008D93AC /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E71F68115B008D93AC /* Bolts.framework */; };
 		A5C177EA1F68115B008D93AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E81F68115B008D93AC /* Parse.framework */; };
+		A5EEB2801FC5C594002CB038 /* murdoink.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5EEB27F1FC5C542002CB038 /* murdoink.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		A5C177E51F681098008D93AC /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A5C177E71F68115B008D93AC /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		A5C177E81F68115B008D93AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		A5EEB27F1FC5C542002CB038 /* murdoink.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = murdoink.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			children = (
 				A54A359B1FC2A69A002DD885 /* Knight Brush Demo.otf */,
 				A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */,
+				A5EEB27F1FC5C542002CB038 /* murdoink.ttf */,
 				A54A35A51FC2B563002DD885 /* SG_Alternative_High-Alt.otf */,
 				A54A359F1FC2ACCB002DD885 /* ZingScriptRustSBDemo-Base.otf */,
 			);
@@ -272,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5EEB2801FC5C594002CB038 /* murdoink.ttf in Resources */,
 				A54A35A61FC2B572002DD885 /* SG_Alternative_High-Alt.otf in Resources */,
 				A54A35A21FC2AF46002DD885 /* Crabmeal.otf in Resources */,
 				A54A35A01FC2ACE9002DD885 /* ZingScriptRustSBDemo-Base.otf in Resources */,
