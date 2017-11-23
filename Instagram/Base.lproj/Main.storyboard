@@ -1100,6 +1100,9 @@
                                     <state key="normal" title="FOLLOW">
                                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <action selector="followBtn_clicked:" destination="3eI-wM-YR6" eventType="touchUpInside" id="HAm-Ls-VfM"/>
+                                    </connections>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="www.bobby.com" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="erz-x1-qOM">
                                     <rect key="frame" x="0.0" y="202" width="375" height="23"/>
