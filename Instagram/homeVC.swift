@@ -39,6 +39,27 @@ loadPosts()
         // Dispose of any resources that can be recreated.
     }
     
+  // clicked log out
+    @IBAction func logout(_ sender: Any) {
+        
+    // implement log out
+        PFUser.logOutInBackground { (error) in
+            if error == nil {
+                
+    // remove logged in user from App memory
+        UserDefaults.standard.removeObject(forKey: "username")
+        UserDefaults.standard.synchronize()
+                
+        let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
+                
+        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = signIn
+                
+            }
+        }
+        
+    }
+    
 }//homeVC class over line
 
 //custom functions

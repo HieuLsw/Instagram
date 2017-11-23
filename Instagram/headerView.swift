@@ -13,14 +13,12 @@ class headerView: UICollectionReusableView {
     
     @IBOutlet weak var avaImg: UIImageView!
  
-    
     @IBOutlet weak var fullnameLbl: UILabel!
     
     @IBOutlet weak var webTxt: UITextView!
     
     @IBOutlet weak var bioLbl: UITextView!
   
-
     @IBOutlet weak var posts: UILabel!
     
     @IBOutlet weak var followers: UILabel!
@@ -116,7 +114,7 @@ for object in objects! {object.deleteEventually()}
     
         }
 }
-        
+    
 }// headerView class over line
 
 extension headerView{
