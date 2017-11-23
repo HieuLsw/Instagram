@@ -70,11 +70,10 @@ PFUser.requestPasswordResetForEmail(inBackground: emailTxt.text!) { (success:Boo
 let alert = UIAlertController(title: "Email for reseting password", message: "has been sent to texted Email", preferredStyle: .alert)
                 
     //if press OK call self.dismiss... function
-                let ok = UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
+   let ok = UIAlertAction(title: "OK", style: .default, handler: { (action:UIAlertAction) in
                     
-            self.dismiss(animated: true, completion: nil)
-                    
-           })
+     self.dismiss(animated: true, completion: nil)
+})
            alert.addAction(ok)
            self.present(alert, animated: true, completion: nil)
                 

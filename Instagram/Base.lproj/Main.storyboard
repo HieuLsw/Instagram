@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -43,11 +43,11 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button hidden="YES" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gg5-aP-2fK" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="308" width="288" height="60"/>
+                                <rect key="frame" x="16" y="446.33333333333331" width="343" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="F5i-sd-jOt"/>
                                 </constraints>
@@ -71,7 +71,7 @@
                                 </connections>
                             </button>
                             <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="CeF-UW-hwx" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="211" width="288" height="34"/>
+                                <rect key="frame" x="16" y="316.33333333333331" width="343" height="48.666666666666686"/>
                                 <color key="textColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
@@ -85,11 +85,11 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.svg" translatesAutoresizingMaskIntoConstraints="NO" id="j3b-LJ-BuY">
-                                <rect key="frame" x="0.0" y="68.5" width="320" height="113.5"/>
+                                <rect key="frame" x="0.0" y="113.33333333333333" width="375" height="162.33333333333337"/>
                                 <color key="tintColor" name="LogoColor"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kkk-CL-aJ9">
-                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <rect key="frame" x="0.0" y="706.33333333333337" width="375" height="71.666666666666629"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="ZingScriptRustSBDemo-Base" family="Zing Script Rust SemiBold Demo" pointSize="20"/>
                                 <state key="normal" title="Don't have an account ? Sign Up.">
@@ -109,22 +109,22 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RF5-XY-Lv1">
-                                <rect key="frame" x="16" y="298.5" width="288" height="8.5"/>
+                                <rect key="frame" x="16" y="433" width="343" height="12.333333333333314"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3sC-1D-3VA">
-                                <rect key="frame" x="16" y="182" width="288" height="27.5"/>
+                                <rect key="frame" x="16" y="275.66666666666669" width="343" height="39"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCY-ry-7cF">
-                                <rect key="frame" x="16" y="20" width="288" height="48.5"/>
+                                <rect key="frame" x="16" y="43.999999999999993" width="343" height="69.333333333333314"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="yHm-Kh-kAM" userLabel="Help Stack">
-                                <rect key="frame" x="35" y="368" width="250" height="28"/>
+                                <rect key="frame" x="62.666666666666657" y="506.33333333333326" width="249.99999999999997" height="28"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgoten something?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-tV-eZT">
-                                        <rect key="frame" x="0.0" y="6.5" width="124" height="15.5"/>
+                                        <rect key="frame" x="0.0" y="6.3333333333333153" width="124" height="15.333333333333336"/>
                                         <fontDescription key="fontDescription" name="SGAlternative-High-Alt" family="SG Alternative" pointSize="13"/>
                                         <color key="textColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -142,21 +142,21 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rpx-sK-ABG">
-                                <rect key="frame" x="16" y="245.5" width="288" height="1"/>
+                                <rect key="frame" x="16" y="365.33333333333331" width="343" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="DRW-h8-TG0"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aMX-lm-TZC">
-                                <rect key="frame" x="16" y="297.5" width="288" height="1"/>
+                                <rect key="frame" x="16" y="432" width="343" height="1"/>
                                 <color key="backgroundColor" red="0.0" green="0.97680455450000003" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="yH1-CY-gY5"/>
                                 </constraints>
                             </view>
                             <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="cz6-3g-Mrd" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="261.5" width="288" height="34"/>
+                                <rect key="frame" x="16" y="381.33333333333331" width="343" height="48.666666666666686"/>
                                 <color key="textColor" red="1" green="0.2527923882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
@@ -236,20 +236,20 @@
                         <viewControllerLayoutGuide type="bottom" id="bbM-dV-qvG"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Dw8-mK-xkB" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bPX-mr-KC7">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7M2-hr-x8B" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="700"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Ans-bI-xZB">
-                                                <rect key="frame" x="18" y="183" width="284" height="313"/>
+                                                <rect key="frame" x="18" y="183" width="339" height="313"/>
                                                 <subviews>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="his-sz-ds2" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="284" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="339" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="IBa-xA-pd0"/>
                                                         </constraints>
@@ -269,14 +269,14 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5if-Xg-TIA">
-                                                        <rect key="frame" x="0.0" y="42" width="284" height="1"/>
+                                                        <rect key="frame" x="0.0" y="42" width="339" height="1"/>
                                                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="faU-Pu-4WR"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="fwD-S0-cPT" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="45" width="284" height="40"/>
+                                                        <rect key="frame" x="0.0" y="45" width="339" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Oyj-vb-hDO"/>
                                                         </constraints>
@@ -296,14 +296,14 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tda-j0-cmV">
-                                                        <rect key="frame" x="0.0" y="87" width="284" height="1"/>
+                                                        <rect key="frame" x="0.0" y="87" width="339" height="1"/>
                                                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="bYU-le-1CG"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="repeat password" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="OIm-RQ-sRr" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="90" width="284" height="40"/>
+                                                        <rect key="frame" x="0.0" y="90" width="339" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="tP2-R9-8hG"/>
                                                         </constraints>
@@ -323,14 +323,14 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5a4-Ru-8mc">
-                                                        <rect key="frame" x="0.0" y="132" width="284" height="1"/>
+                                                        <rect key="frame" x="0.0" y="132" width="339" height="1"/>
                                                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="eEZ-tP-nre"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="tAt-iK-tSp" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="135" width="284" height="40"/>
+                                                        <rect key="frame" x="0.0" y="135" width="339" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="ijV-de-3qq"/>
                                                         </constraints>
@@ -350,14 +350,14 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RqI-EY-NAY">
-                                                        <rect key="frame" x="0.0" y="177" width="284" height="1"/>
+                                                        <rect key="frame" x="0.0" y="177" width="339" height="1"/>
                                                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="ZrT-mF-IUf"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="fullname" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="Tmv-A5-tRX" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="180" width="284" height="40"/>
+                                                        <rect key="frame" x="0.0" y="180" width="339" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="H3v-CA-dld"/>
                                                         </constraints>
@@ -377,14 +377,14 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdR-es-esc">
-                                                        <rect key="frame" x="0.0" y="222" width="284" height="1"/>
+                                                        <rect key="frame" x="0.0" y="222" width="339" height="1"/>
                                                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="52l-fV-9ib"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="bio" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="8sM-0o-UvK" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="225" width="284" height="40"/>
+                                                        <rect key="frame" x="0.0" y="225" width="339" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="GSw-ga-KfQ"/>
                                                         </constraints>
@@ -404,14 +404,14 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VIl-fI-Yv9">
-                                                        <rect key="frame" x="0.0" y="267" width="284" height="1"/>
+                                                        <rect key="frame" x="0.0" y="267" width="339" height="1"/>
                                                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="all-qr-clh"/>
                                                         </constraints>
                                                     </view>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="website" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="lej-tB-mnN" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="270" width="284" height="40"/>
+                                                        <rect key="frame" x="0.0" y="270" width="339" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="uiv-UI-uYh"/>
                                                         </constraints>
@@ -431,7 +431,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aZ0-om-XL3">
-                                                        <rect key="frame" x="0.0" y="312" width="284" height="1"/>
+                                                        <rect key="frame" x="0.0" y="312" width="339" height="1"/>
                                                         <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="1" id="ETO-YJ-wrI"/>
@@ -441,7 +441,7 @@
                                                 <color key="backgroundColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </stackView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="eji-CT-g3K">
-                                                <rect key="frame" x="115.5" y="37" width="90" height="90"/>
+                                                <rect key="frame" x="143" y="37" width="90" height="90"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="90" id="TFN-uA-irg"/>
                                                     <constraint firstAttribute="width" constant="90" id="lX3-PW-vpA"/>
@@ -453,7 +453,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx3-Z0-lZC" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                                <rect key="frame" x="18" y="544" width="284" height="55"/>
+                                                <rect key="frame" x="18" y="544" width="339" height="55"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="jvb-QH-iBl"/>
                                                 </constraints>
@@ -496,7 +496,7 @@
                                         <directionalEdgeInsets key="directionalLayoutMargins" top="18" leading="18" bottom="18" trailing="18"/>
                                     </view>
                                     <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iwK-CB-Y6N" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                        <rect key="frame" x="18" y="629" width="284" height="55"/>
+                                        <rect key="frame" x="18" y="629" width="339" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="0pv-oe-xcc"/>
                                         </constraints>
@@ -568,11 +568,11 @@
                         <viewControllerLayoutGuide type="bottom" id="5yi-Kx-kaj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="rSw-vy-4K2" userLabel="Main View">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pdz-zD-BUc" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="443.5" width="288" height="43"/>
+                                <rect key="frame" x="16" y="481.66666666666674" width="343" height="61"/>
                                 <fontDescription key="fontDescription" name="KnightBrushDemo" family="Knight Brush Demo" pointSize="30"/>
                                 <size key="titleShadowOffset" width="0.0" height="1"/>
                                 <state key="normal" title="Cancel">
@@ -598,7 +598,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cus-xZ-pfG" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="267" width="288" height="40"/>
+                                <rect key="frame" x="16" y="297.33333333333331" width="343" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="mu2-Ce-XDB"/>
                                 </constraints>
@@ -620,7 +620,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KKd-GT-bTc" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="365" width="288" height="61"/>
+                                <rect key="frame" x="16" y="395.33333333333331" width="343" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="NTE-SR-AaP"/>
                                 </constraints>
@@ -647,34 +647,34 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reset Password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BW-U1-wXi">
-                                <rect key="frame" x="16" y="68.5" width="288" height="42"/>
+                                <rect key="frame" x="16" y="99" width="343" height="42"/>
                                 <fontDescription key="fontDescription" name="Crabmeal" family="Crabmeal" pointSize="36"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hLk-Wk-8JB" userLabel="Line View" customClass="UIView_Attributes" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="16" y="228" width="288" height="1"/>
+                                <rect key="frame" x="16" y="258.33333333333331" width="343" height="1"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="bTG-qG-V25"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="au8-pS-pTe" userLabel="Top AspectView">
-                                <rect key="frame" x="16" y="20" width="288" height="15.5"/>
+                                <rect key="frame" x="16" y="44" width="343" height="22"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qod-YY-hBN" userLabel="Button AspectView">
-                                <rect key="frame" x="16" y="426" width="288" height="17.5"/>
+                                <rect key="frame" x="16" y="456.33333333333331" width="343" height="25.333333333333314"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We can help you reset your password using your the email address linked to your account." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0po-IK-eDT">
-                                <rect key="frame" x="16" y="120.5" width="288" height="93.5"/>
+                                <rect key="frame" x="16" y="151" width="343" height="93.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dHy-0N-G21">
-                                <rect key="frame" x="16" y="309" width="288" height="1"/>
+                                <rect key="frame" x="16" y="339.33333333333331" width="343" height="1"/>
                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="GI2-HI-Z97"/>
@@ -751,7 +751,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="homeVC" id="BEf-b8-oXe" customClass="homeVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="KEL-9V-Cqw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6wf-er-nKY">
@@ -781,7 +781,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Header" id="F2s-Id-8wd" customClass="headerView" customModule="Instagram" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="225"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="s8f-Sf-w5n">
@@ -792,13 +792,13 @@
                                     </constraints>
                                 </imageView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="www.bobby.com" translatesAutoresizingMaskIntoConstraints="NO" id="XOr-Ou-Az4">
-                                    <rect key="frame" x="0.0" y="136" width="320" height="66"/>
+                                    <rect key="frame" x="0.0" y="136" width="375" height="66"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bobby Brown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZZ-wm-qd4">
-                                    <rect key="frame" x="4" y="112" width="316" height="21"/>
+                                    <rect key="frame" x="4" y="112" width="371" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="7Kn-dl-W8u"/>
                                     </constraints>
@@ -807,7 +807,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBb-8D-r7O">
-                                    <rect key="frame" x="105" y="69" width="205" height="30"/>
+                                    <rect key="frame" x="137" y="69" width="228" height="30"/>
                                     <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="ebk-7a-WGS"/>
@@ -818,7 +818,7 @@
                                     </state>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="www.bobby.com" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AhP-Rs-xKD">
-                                    <rect key="frame" x="0.0" y="202" width="320" height="23"/>
+                                    <rect key="frame" x="0.0" y="202" width="375" height="23"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="23" id="j1D-d0-oqI"/>
@@ -827,19 +827,19 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="URL" enablesReturnKeyAutomatically="YES" textContentType="url"/>
                                 </textView>
                                 <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="rGS-He-uyO">
-                                    <rect key="frame" x="105" y="17" width="205" height="49"/>
+                                    <rect key="frame" x="137" y="17" width="228" height="49"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hhp-K9-Ktg" userLabel="posts stack">
-                                            <rect key="frame" x="0.0" y="0.0" width="65" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="49"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MSM-Nl-0Ok">
-                                                    <rect key="frame" x="27.5" y="0.0" width="10.5" height="24.5"/>
+                                                    <rect key="frame" x="31.333333333333339" y="0.0" width="10.333333333333332" height="24.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="posts       " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0l5-df-Q5J">
-                                                    <rect key="frame" x="1.5" y="24.5" width="62.5" height="24.5"/>
+                                                    <rect key="frame" x="5.3333333333333464" y="24.666666666666664" width="62.333333333333343" height="24.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -847,16 +847,16 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="opg-H9-hI0" userLabel="followers stack">
-                                            <rect key="frame" x="70" y="0.0" width="65" height="49"/>
+                                            <rect key="frame" x="77.666666666666657" y="0.0" width="72.666666666666657" height="49"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jns-mc-Q0Y">
-                                                    <rect key="frame" x="27.5" y="0.0" width="10.5" height="24.5"/>
+                                                    <rect key="frame" x="31.333333333333339" y="0.0" width="10.333333333333332" height="24.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8HI-y6-9in">
-                                                    <rect key="frame" x="0.0" y="24.5" width="65" height="24.5"/>
+                                                    <rect key="frame" x="0.0" y="24.666666666666664" width="72.666666666666671" height="24.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -867,16 +867,16 @@
                                             </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6as-OP-yCe" userLabel="followings stack">
-                                            <rect key="frame" x="140" y="0.0" width="65" height="49"/>
+                                            <rect key="frame" x="155.33333333333331" y="0.0" width="72.666666666666686" height="49"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSs-Wu-rNs">
-                                                    <rect key="frame" x="27" y="0.0" width="11" height="24.5"/>
+                                                    <rect key="frame" x="27" y="0.0" width="18.666666666666671" height="24.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="followings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dUV-la-EWU">
-                                                    <rect key="frame" x="0.0" y="24.5" width="65" height="24.5"/>
+                                                    <rect key="frame" x="4" y="24.666666666666664" width="65" height="24.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -940,15 +940,15 @@
             <objects>
                 <tableViewController storyboardIdentifier="followersVC" id="pZQ-29-ygx" customClass="followersVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="jgB-jN-9vq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="100" id="BoS-qN-7Q2" customClass="followersCell" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="100"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BoS-qN-7Q2" id="X2G-pi-11T">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="HfO-0S-xQB">
@@ -959,7 +959,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="und-Sa-1a4">
-                                            <rect key="frame" x="93" y="39.5" width="90" height="21"/>
+                                            <rect key="frame" x="93" y="39.666666666666664" width="90" height="21"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="21" id="WnX-5g-65y"/>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="mtj-Up-PfX"/>
@@ -969,7 +969,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e6a-NG-NYU">
-                                            <rect key="frame" x="223" y="35" width="82" height="30"/>
+                                            <rect key="frame" x="263" y="35" width="97" height="30"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="CuD-7o-JGP"/>
@@ -1018,7 +1018,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="vV9-gu-Ec8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4sb-ga-6EK">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1035,7 +1035,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="guestVC" id="G4E-Ph-yj9" customClass="guestVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="Lyy-Yz-Hn9">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LjH-FC-PWK">
@@ -1065,7 +1065,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Header" id="3eI-wM-YR6" customClass="headerView" customModule="Instagram" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="225"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="LdO-lu-U1b">
@@ -1076,13 +1076,13 @@
                                     </constraints>
                                 </imageView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="www.bobby.com" translatesAutoresizingMaskIntoConstraints="NO" id="OLX-Wt-YNz">
-                                    <rect key="frame" x="0.0" y="136" width="320" height="66"/>
+                                    <rect key="frame" x="0.0" y="136" width="375" height="66"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bobby Brown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lh8-nA-p1P">
-                                    <rect key="frame" x="4" y="112" width="316" height="21"/>
+                                    <rect key="frame" x="4" y="112" width="371" height="21"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="21" id="3Ko-gG-SlI"/>
                                     </constraints>
@@ -1091,7 +1091,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZPF-ka-MDe">
-                                    <rect key="frame" x="105" y="69" width="205" height="30"/>
+                                    <rect key="frame" x="137" y="69" width="228" height="30"/>
                                     <color key="backgroundColor" red="0.32369780539999998" green="0.1063579395" blue="0.574860394" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="gXd-AB-B9g"/>
@@ -1102,7 +1102,7 @@
                                     </state>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="www.bobby.com" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="erz-x1-qOM">
-                                    <rect key="frame" x="0.0" y="202" width="320" height="23"/>
+                                    <rect key="frame" x="0.0" y="202" width="375" height="23"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="23" id="pC1-1r-a65"/>
@@ -1111,19 +1111,19 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="URL" enablesReturnKeyAutomatically="YES" textContentType="url"/>
                                 </textView>
                                 <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3XR-8l-hJ9">
-                                    <rect key="frame" x="105" y="17" width="205" height="49"/>
+                                    <rect key="frame" x="137" y="17" width="228" height="49"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="R7F-OG-h3q" userLabel="posts stack">
-                                            <rect key="frame" x="0.0" y="0.0" width="65" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="72.666666666666671" height="49"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MJz-fX-lAA">
-                                                    <rect key="frame" x="27.5" y="0.0" width="10.5" height="24.5"/>
+                                                    <rect key="frame" x="31.333333333333339" y="0.0" width="10.333333333333332" height="24.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="posts       " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lm6-Ft-Oye">
-                                                    <rect key="frame" x="1.5" y="24.5" width="62.5" height="24.5"/>
+                                                    <rect key="frame" x="5.3333333333333464" y="24.666666666666664" width="62.333333333333343" height="24.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1131,16 +1131,16 @@
                                             </subviews>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4kW-eG-vK5" userLabel="followers stack">
-                                            <rect key="frame" x="70" y="0.0" width="65" height="49"/>
+                                            <rect key="frame" x="77.666666666666657" y="0.0" width="72.666666666666657" height="49"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGi-k4-XBx">
-                                                    <rect key="frame" x="27.5" y="0.0" width="10.5" height="24.5"/>
+                                                    <rect key="frame" x="31.333333333333339" y="0.0" width="10.333333333333332" height="24.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5x-Wk-s3x">
-                                                    <rect key="frame" x="0.0" y="24.5" width="65" height="24.5"/>
+                                                    <rect key="frame" x="0.0" y="24.666666666666664" width="72.666666666666671" height="24.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1151,16 +1151,16 @@
                                             </constraints>
                                         </stackView>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TSr-WZ-yEA" userLabel="followings stack">
-                                            <rect key="frame" x="140" y="0.0" width="65" height="49"/>
+                                            <rect key="frame" x="155.33333333333331" y="0.0" width="72.666666666666686" height="49"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="glT-4y-mYR">
-                                                    <rect key="frame" x="27" y="0.0" width="11" height="24.5"/>
+                                                    <rect key="frame" x="27" y="0.0" width="18.666666666666671" height="24.666666666666668"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="followings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCd-In-Wgu">
-                                                    <rect key="frame" x="0.0" y="24.5" width="65" height="24.5"/>
+                                                    <rect key="frame" x="4" y="24.666666666666664" width="65" height="24.333333333333336"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

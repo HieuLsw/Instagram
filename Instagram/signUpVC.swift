@@ -90,7 +90,7 @@ initInputFirst()
         //if different passwords
         if passwordTxt.text != repeat_passwordTxt.text{
             
-            let alert = UIAlertController(title: "Passwords !!", message: "do not match", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Passwords Error !!", message: "do not match", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)

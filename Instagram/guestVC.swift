@@ -46,6 +46,7 @@ class guestVC: UICollectionViewController {
    
 }// gusetVC class over line
 
+//custom functions
 extension guestVC{
     
     fileprivate func holdScrollDirection(){
@@ -129,6 +130,10 @@ self.collectionView?.reloadData()
     })
    }
     
+  
+    
+    
+    
     
 }
 
@@ -140,8 +145,11 @@ extension guestVC{
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+   
+   //dequeue
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! pictureCell
-        
+
+ //connect data from array to picImg object from pictureCell class
 picArray[indexPath.row].getDataInBackground { (data, error) in
     if error == nil{
         cell.picImg.image = UIImage(data: data!)
@@ -152,4 +160,111 @@ picArray[indexPath.row].getDataInBackground { (data, error) in
     }
     
 }
+
+//collection view --delegate
+extension guestVC{
+    
+   //header config
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! headerView
+        
+        //STEP 1. Load data of guest
+        let infoQuery = PFQuery(className: "_User")
+        infoQuery.whereKey("username", equalTo: (guestName.last)!)
+        infoQuery.findObjectsInBackground { (objects, error) in
+            
+    if error == nil{
+        
+           //shown wrong user
+        if objects!.isEmpty{
+            print("wrong user")
+        }
+        
+        // find related to user infomation
+        _ = objects!.map{
+            header.fullnameLbl.text = ($0.object(forKey: "fullname") as? String)?.uppercased()
+            header.bioLbl.text = $0.object(forKey: "bio") as? String
+            header.bioLbl.sizeToFit()
+            header.webTxt.text = $0.object(forKey: "web") as? String
+             header.webTxt.sizeToFit()
+            let avaFile = ($0.object(forKey: "ava") as? PFFile)!
+            avaFile.getDataInBackground(block: { (data, error) -> Void in
+                header.avaImg.image = UIImage(data: data!)
+            })
+        }
+            }
+    else{print(error!.localizedDescription)}
+        
+        }
+        
+    // STEP 2. Show do current user follow guest or do not
+        let followQuery = PFQuery(className: "follow")
+        followQuery.whereKey("follower", equalTo: (PFUser.current()!.username)!)
+        followQuery.whereKey("following", equalTo: (guestName.last)!)
+        followQuery.countObjectsInBackground { (count, error) in
+            if error == nil{
+                if count == 0 {
+                    header.button.setTitle("FOLLOW", for: UIControlState())
+                    header.button.backgroundColor = .lightGray
+                } else {
+                    header.button.setTitle("FOLLOWING", for: UIControlState())
+                    header.button.backgroundColor = .green
+                }
+            }else {
+                print(error!.localizedDescription)
+            }
+
+        }
+        
+        // STEP 3. Count statistics
+        // count posts
+        let posts = PFQuery(className: "posts")
+        posts.whereKey("username", equalTo: (guestName.last)!)
+        posts.countObjectsInBackground { (count, error) in
+            if error == nil {
+                header.posts.text = "\(count)"
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        
+        
+        // count followers
+        let followers = PFQuery(className: "follow")
+        followers.whereKey("following", equalTo: (guestName.last)!)
+        followers.countObjectsInBackground
+            { (count, error)  in
+            if error == nil {
+                header.followers.text = "\(count)"
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+
+        // count followings
+        let followings = PFQuery(className: "follow")
+        followings.whereKey("follower", equalTo: (guestName.last)!)
+        followings.countObjectsInBackground
+            { (count, error) in
+            if error == nil {
+                header.followings.text = "\(count)"
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        
+       
+        
+        
+        
+return header
+    }
+    
+    
+    
+}
+
+
+
 

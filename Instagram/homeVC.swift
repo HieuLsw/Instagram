@@ -76,9 +76,7 @@ extension homeVC{
     
         let query = PFQuery(className: "posts")
         
-        guard let currentUsername = PFUser.current()?.username else{return}
-        
-        query.whereKey("username", equalTo: currentUsername)
+        query.whereKey("username", equalTo: (PFUser.current()?.username)!)
         query.limit = page
         
         //clean up
