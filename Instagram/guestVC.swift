@@ -308,8 +308,6 @@ header.followings.addGestureRecognizer(followingsTap)
 return header
     }
     
-    
-    
 }
 
 

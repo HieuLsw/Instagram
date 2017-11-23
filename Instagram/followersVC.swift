@@ -193,3 +193,28 @@ cell.followBtn.setTitle("FOLLOWING", for: .normal)
         return cell
     }
 }
+
+//tableview --delegate
+extension followersVC{
+    
+    // selected some user
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // recall cell to call further cell's data
+        let cell = tableView.cellForRow(at: indexPath) as! followersCell
+        
+        // if user tapped on himself, go his home page, else go guest
+        if cell.username.text! == PFUser.current()!.username! {
+            let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
+            self.navigationController?.pushViewController(home, animated: true)
+        } else {
+            guestName.append(cell.username.text!)
+            let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
+            self.navigationController?.pushViewController(guest, animated: true)
+        }
+    }
+    
+}
+
+
+
