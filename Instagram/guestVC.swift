@@ -131,6 +131,38 @@ self.collectionView?.reloadData()
    }
     
   
+    // tapped posts label
+   @objc func _postsTap() {
+        
+        if !picArray.isEmpty {
+            let index = IndexPath(item: 0, section: 0)
+            self.collectionView?.scrollToItem(at: index, at: UICollectionViewScrollPosition.top, animated: true)
+        }
+    }
+    
+    // tapped followers label
+    @objc func _followersTap() {
+        varUser = (guestName.last)!
+        varShow = "followers"
+        
+        // defind followersVC
+        let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+        
+        // navigate to it
+self.navigationController?.pushViewController(followers, animated: true)
+    }
+    
+    // tapped followings label
+    @objc func _followingsTap() {
+        varUser = (guestName.last)!
+        varShow = "followings"
+        
+        // define followersVC
+        let followings = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+        
+        // navigate to it
+self.navigationController?.pushViewController(followings, animated: true)
+    }
     
     
     
@@ -254,9 +286,24 @@ extension guestVC{
             }
         }
         
-       
+        // STEP 4. Implement tap gestures
+        // tap to posts label
+        let postsTap = UITapGestureRecognizer(target: self, action: #selector(_postsTap))
+        postsTap.numberOfTapsRequired = 1
+        header.posts.isUserInteractionEnabled = true
+        header.posts.addGestureRecognizer(postsTap)
         
+        // tap to followers label
+        let followersTap = UITapGestureRecognizer(target: self, action: #selector(_followersTap))
+        followersTap.numberOfTapsRequired = 1
+        header.followers.isUserInteractionEnabled = true
+        header.followers.addGestureRecognizer(followersTap)
         
+        // tap to followings label
+        let followingsTap = UITapGestureRecognizer(target: self, action: #selector(_followingsTap))
+       followingsTap.numberOfTapsRequired = 1
+header.followings.isUserInteractionEnabled = true
+header.followings.addGestureRecognizer(followingsTap)
         
 return header
     }
