@@ -930,7 +930,8 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="WZF-Jj-3o5">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="xYr-id-TOv">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="logout" id="xYr-id-TOv">
+                            <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="logout:" destination="BEf-b8-oXe" id="zrE-Me-wWx"/>
                             </connections>
@@ -1017,11 +1018,11 @@
             </objects>
             <point key="canvasLocation" x="4344.8000000000002" y="91.625615763546804"/>
         </scene>
-        <!--Item-->
+        <!--home-->
         <scene sceneID="jPN-fg-0e3">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dY1-NC-p1n" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="vV9-gu-Ec8"/>
+                    <tabBarItem key="tabBarItem" title="home" image="home" id="vV9-gu-Ec8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4sb-ga-6EK">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -1230,7 +1231,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="home" width="25" height="25"/>
         <image name="logo.svg" width="2000" height="714"/>
+        <image name="logout" width="25" height="25"/>
         <image name="profile" width="683" height="616"/>
         <namedColor name="LogoColor">
             <color red="0.017000000923871994" green="0.19799999892711639" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

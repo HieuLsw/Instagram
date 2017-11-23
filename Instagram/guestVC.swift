@@ -63,7 +63,7 @@ extension guestVC{
         navigationItem.hidesBackButton = true
         
         //new back button
-        let backBtn = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back(sender:)))
+        let backBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "back"), style: .plain, target: self, action: #selector(back(sender:)))
         navigationItem.leftBarButtonItem = backBtn
         
         //swipe to go back
