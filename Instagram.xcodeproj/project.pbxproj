@@ -14,6 +14,8 @@
 		A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518268B1FA0D4B8005B50D0 /* homeVC.swift */; };
 		A518268E1FA0D517005B50D0 /* headerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518268D1FA0D517005B50D0 /* headerView.swift */; };
 		A51826901FA0D8B2005B50D0 /* pictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518268F1FA0D8B2005B50D0 /* pictureCell.swift */; };
+		A526D5801FC7DCFA00B41468 /* navVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A526D57F1FC7DCFA00B41468 /* navVC.swift */; };
+		A526D5831FC7DD7A00B41468 /* editVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A526D5821FC7DD7A00B41468 /* editVC.swift */; };
 		A549C14F1F692B8900207D42 /* signInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C14E1F692B8800207D42 /* signInVC.swift */; };
 		A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1501F692BBA00207D42 /* signUpVC.swift */; };
 		A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A549C1521F692BE000207D42 /* resetPasswordVC.swift */; };
@@ -53,6 +55,8 @@
 		A518268B1FA0D4B8005B50D0 /* homeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeVC.swift; sourceTree = "<group>"; };
 		A518268D1FA0D517005B50D0 /* headerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = headerView.swift; sourceTree = "<group>"; };
 		A518268F1FA0D8B2005B50D0 /* pictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pictureCell.swift; sourceTree = "<group>"; };
+		A526D57F1FC7DCFA00B41468 /* navVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navVC.swift; sourceTree = "<group>"; };
+		A526D5821FC7DD7A00B41468 /* editVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editVC.swift; sourceTree = "<group>"; };
 		A549C14E1F692B8800207D42 /* signInVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signInVC.swift; sourceTree = "<group>"; };
 		A549C1501F692BBA00207D42 /* signUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = signUpVC.swift; sourceTree = "<group>"; };
 		A549C1521F692BE000207D42 /* resetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = resetPasswordVC.swift; sourceTree = "<group>"; };
@@ -109,6 +113,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A526D5811FC7DD1E00B41468 /* Profile Part */ = {
+			isa = PBXGroup;
+			children = (
+				A526D57F1FC7DCFA00B41468 /* navVC.swift */,
+				A526D5821FC7DD7A00B41468 /* editVC.swift */,
+			);
+			name = "Profile Part";
+			sourceTree = "<group>";
+		};
 		A549C1541F6AC77F00207D42 /* User Defined Attributes */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,14 +146,14 @@
 			name = Font;
 			sourceTree = "<group>";
 		};
-		A588A6BD1FC58F8E0083AAEC /* Profile Part */ = {
+		A588A6BD1FC58F8E0083AAEC /* Login Part */ = {
 			isa = PBXGroup;
 			children = (
 				A549C14E1F692B8800207D42 /* signInVC.swift */,
 				A549C1501F692BBA00207D42 /* signUpVC.swift */,
 				A549C1521F692BE000207D42 /* resetPasswordVC.swift */,
 			);
-			name = "Profile Part";
+			name = "Login Part";
 			sourceTree = "<group>";
 		};
 		A588A6BE1FC58FE50083AAEC /* Home Page Part */ = {
@@ -188,10 +201,11 @@
 				A54A35981FC27255002DD885 /* Themes.xcassets */,
 				A5C177AD1F680C1D008D93AC /* LaunchScreen.storyboard */,
 				A5C177B01F680C1D008D93AC /* Info.plist */,
-				A588A6BD1FC58F8E0083AAEC /* Profile Part */,
+				A588A6BD1FC58F8E0083AAEC /* Login Part */,
 				A588A6BE1FC58FE50083AAEC /* Home Page Part */,
 				A588A6BF1FC58FFD0083AAEC /* Follower Page Part */,
 				A5EEB2851FC5E2B8002CB038 /* Guest Page Part */,
+				A526D5811FC7DD1E00B41468 /* Profile Part */,
 				A549C1541F6AC77F00207D42 /* User Defined Attributes */,
 				A54A359A1FC2A5F0002DD885 /* Font */,
 			);
@@ -308,7 +322,9 @@
 				A51826901FA0D8B2005B50D0 /* pictureCell.swift in Sources */,
 				A503D8311F8F08880023D232 /* UIView_Attributes.swift in Sources */,
 				A518268E1FA0D517005B50D0 /* headerView.swift in Sources */,
+				A526D5831FC7DD7A00B41468 /* editVC.swift in Sources */,
 				A549C1511F692BBA00207D42 /* signUpVC.swift in Sources */,
+				A526D5801FC7DCFA00B41468 /* navVC.swift in Sources */,
 				A549C14F1F692B8900207D42 /* signInVC.swift in Sources */,
 				A588A6BC1FC538670083AAEC /* followersCell.swift in Sources */,
 				A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */,

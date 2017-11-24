@@ -816,6 +816,9 @@
                                     <state key="normal" title="edit profile">
                                         <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <connections>
+                                        <segue destination="6Eq-ow-PqK" kind="presentation" id="iun-Lu-fUP"/>
+                                    </connections>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="www.bobby.com" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AhP-Rs-xKD">
                                     <rect key="frame" x="0.0" y="202" width="375" height="23"/>
@@ -930,7 +933,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="WZF-Jj-3o5">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="logout" id="xYr-id-TOv">
+                        <barButtonItem key="rightBarButtonItem" image="logout" id="xYr-id-TOv">
                             <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="logout:" destination="BEf-b8-oXe" id="zrE-Me-wWx"/>
@@ -941,6 +944,232 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tla-dJ-Uj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3607.1999999999998" y="89.408866995073893"/>
+        </scene>
+        <!--EditVC-->
+        <scene sceneID="xJf-Or-vEs">
+            <objects>
+                <viewController id="0pQ-To-sNL" customClass="editVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ifS-Cq-rbk"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zth-o3-lT7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PAT-Pc-qcq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5iH-2o-SAR">
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="03l-DS-2gP">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="809"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="fullname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d0h-n6-LEV" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="70" width="245" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="3vL-Ln-Nnh"/>
+                                                </constraints>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7JE-F6-SB0" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="124" width="245" height="31"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="web" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yFW-Ku-yQY" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="179" width="359" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PRIVAT INFORMATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeI-a5-0CV">
+                                                <rect key="frame" x="8" y="338" width="359" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="qh9-Rp-cvt"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mgq-5r-vx0" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="382" width="359" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="tel" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PJ2-g9-BuN" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="436" width="359" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="gender" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rdM-Zo-bs4" customClass="UITextField_Attributes" customModule="Instagram" customModuleProvider="target">
+                                                <rect key="frame" x="8" y="490" width="359" height="30"/>
+                                                <nil key="textColor"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="2"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </textField>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IzR-RJ-LXa">
+                                                <rect key="frame" x="282" y="70" width="85" height="85"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="85" id="Txg-eo-HZR"/>
+                                                    <constraint firstAttribute="width" constant="85" id="UJP-HP-6CA"/>
+                                                </constraints>
+                                            </imageView>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iK7-x8-fUy">
+                                                <rect key="frame" x="8" y="236" width="359" height="85"/>
+                                                <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="85" id="M6N-hu-HPF"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="yeI-a5-0CV" secondAttribute="trailing" constant="8" id="1mC-Kn-SFJ"/>
+                                            <constraint firstItem="iK7-x8-fUy" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="2eC-2E-gLm"/>
+                                            <constraint firstItem="mgq-5r-vx0" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="3MN-o6-Wo3"/>
+                                            <constraint firstAttribute="trailing" secondItem="yFW-Ku-yQY" secondAttribute="trailing" constant="8" id="3vw-iQ-WLZ"/>
+                                            <constraint firstItem="rdM-Zo-bs4" firstAttribute="top" secondItem="PJ2-g9-BuN" secondAttribute="bottom" constant="24" id="6YQ-6O-eK4"/>
+                                            <constraint firstItem="IzR-RJ-LXa" firstAttribute="leading" relation="lessThanOrEqual" secondItem="7JE-F6-SB0" secondAttribute="trailing" constant="29" id="8Yr-XV-ohu"/>
+                                            <constraint firstItem="yFW-Ku-yQY" firstAttribute="top" secondItem="7JE-F6-SB0" secondAttribute="bottom" constant="24" id="9g2-WB-oNb"/>
+                                            <constraint firstItem="7JE-F6-SB0" firstAttribute="top" secondItem="d0h-n6-LEV" secondAttribute="bottom" constant="24" id="DAg-2o-ucg"/>
+                                            <constraint firstItem="yeI-a5-0CV" firstAttribute="top" secondItem="iK7-x8-fUy" secondAttribute="bottom" constant="17" id="DPi-4T-0kJ"/>
+                                            <constraint firstAttribute="trailing" secondItem="mgq-5r-vx0" secondAttribute="trailing" constant="8" id="INJ-W1-TmK"/>
+                                            <constraint firstItem="IzR-RJ-LXa" firstAttribute="bottom" secondItem="7JE-F6-SB0" secondAttribute="bottom" id="NOH-P8-OTc"/>
+                                            <constraint firstItem="mgq-5r-vx0" firstAttribute="top" secondItem="yeI-a5-0CV" secondAttribute="bottom" constant="23" id="Nje-14-Z5b"/>
+                                            <constraint firstItem="d0h-n6-LEV" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="PqD-Ia-pri"/>
+                                            <constraint firstAttribute="trailing" secondItem="iK7-x8-fUy" secondAttribute="trailing" constant="8" id="SUn-6s-0Np"/>
+                                            <constraint firstItem="d0h-n6-LEV" firstAttribute="top" secondItem="03l-DS-2gP" secondAttribute="top" constant="70" id="XGj-y6-KHF"/>
+                                            <constraint firstAttribute="height" constant="809" id="ZBd-tY-LKB"/>
+                                            <constraint firstItem="IzR-RJ-LXa" firstAttribute="top" secondItem="d0h-n6-LEV" secondAttribute="top" id="aHf-0p-UFY"/>
+                                            <constraint firstItem="PJ2-g9-BuN" firstAttribute="top" secondItem="mgq-5r-vx0" secondAttribute="bottom" constant="24" id="aUc-jw-ePQ"/>
+                                            <constraint firstItem="rdM-Zo-bs4" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="cMk-QW-TCO"/>
+                                            <constraint firstAttribute="trailing" secondItem="rdM-Zo-bs4" secondAttribute="trailing" constant="8" id="cNM-Gi-UOt"/>
+                                            <constraint firstItem="IzR-RJ-LXa" firstAttribute="leading" relation="lessThanOrEqual" secondItem="d0h-n6-LEV" secondAttribute="trailing" constant="29" id="cfi-Fr-TTG"/>
+                                            <constraint firstItem="yeI-a5-0CV" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="dmA-cw-RIf"/>
+                                            <constraint firstItem="yFW-Ku-yQY" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="eXM-Bs-ZIv"/>
+                                            <constraint firstItem="PJ2-g9-BuN" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="ixp-AT-xcy"/>
+                                            <constraint firstAttribute="trailing" secondItem="IzR-RJ-LXa" secondAttribute="trailing" constant="8" id="k1w-ds-ueh"/>
+                                            <constraint firstItem="7JE-F6-SB0" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="mHE-W5-UrG"/>
+                                            <constraint firstAttribute="trailing" secondItem="PJ2-g9-BuN" secondAttribute="trailing" constant="8" id="qcw-Ew-bSH"/>
+                                            <constraint firstItem="iK7-x8-fUy" firstAttribute="top" secondItem="yFW-Ku-yQY" secondAttribute="bottom" constant="27" id="zYC-Wp-IxY"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="03l-DS-2gP" firstAttribute="leading" secondItem="5iH-2o-SAR" secondAttribute="leading" id="5rg-gu-t1y"/>
+                                    <constraint firstAttribute="bottom" secondItem="03l-DS-2gP" secondAttribute="bottom" constant="-85" id="9op-tG-mml"/>
+                                    <constraint firstItem="03l-DS-2gP" firstAttribute="top" secondItem="5iH-2o-SAR" secondAttribute="top" id="fd1-eZ-OMA"/>
+                                    <constraint firstAttribute="trailing" secondItem="03l-DS-2gP" secondAttribute="trailing" id="scm-oJ-69N"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5iH-2o-SAR" firstAttribute="top" secondItem="ifS-Cq-rbk" secondAttribute="bottom" id="0SN-sT-Mkv"/>
+                            <constraint firstAttribute="bottom" secondItem="5iH-2o-SAR" secondAttribute="bottom" id="Elg-Og-yAe"/>
+                            <constraint firstItem="03l-DS-2gP" firstAttribute="width" secondItem="PAT-Pc-qcq" secondAttribute="width" id="EyW-rg-qZf"/>
+                            <constraint firstAttribute="trailing" secondItem="5iH-2o-SAR" secondAttribute="trailing" id="jnh-FI-xSw"/>
+                            <constraint firstItem="5iH-2o-SAR" firstAttribute="leading" secondItem="PAT-Pc-qcq" secondAttribute="leading" id="kxC-Al-3e3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="tuX-kK-00f">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="BUm-tP-MJZ">
+                            <connections>
+                                <action selector="cancel_clicked:" destination="0pQ-To-sNL" id="uIN-Ge-hmP"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="wRb-hw-eNW">
+                            <connections>
+                                <action selector="save_clicked:" destination="0pQ-To-sNL" id="4xD-YQ-65p"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="avaImg" destination="IzR-RJ-LXa" id="aPy-z3-ZMO"/>
+                        <outlet property="bioTxt" destination="iK7-x8-fUy" id="7e2-8o-aBJ"/>
+                        <outlet property="emailTxt" destination="mgq-5r-vx0" id="JNl-3y-bQ1"/>
+                        <outlet property="fullnameTxt" destination="d0h-n6-LEV" id="XlZ-Y7-6g1"/>
+                        <outlet property="genderTxt" destination="rdM-Zo-bs4" id="2se-vQ-Egy"/>
+                        <outlet property="telTxt" destination="PJ2-g9-BuN" id="WBh-ve-iw5"/>
+                        <outlet property="usernameTxt" destination="7JE-F6-SB0" id="rcH-Op-5M5"/>
+                        <outlet property="webTxt" destination="yFW-Ku-yQY" id="KbD-2m-gYJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="blt-3V-Lie" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5109.6000000000004" y="84.975369458128085"/>
         </scene>
         <!--FollowersVC-->
         <scene sceneID="xFx-iX-qjP">
@@ -1016,7 +1245,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMT-g3-qVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4344.8000000000002" y="91.625615763546804"/>
+            <point key="canvasLocation" x="3170" y="-621"/>
         </scene>
         <!--home-->
         <scene sceneID="jPN-fg-0e3">
@@ -1227,7 +1456,25 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddw-wt-n09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5090" y="92"/>
+            <point key="canvasLocation" x="4076" y="-641"/>
+        </scene>
+        <!--NavVC-->
+        <scene sceneID="RPQ-Ln-Qpx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Eq-ow-PqK" customClass="navVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UUW-ml-Dza">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0pQ-To-sNL" kind="relationship" relationship="rootViewController" id="2bS-VL-83V"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zR9-RB-h0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4356" y="85"/>
         </scene>
     </scenes>
     <resources>
