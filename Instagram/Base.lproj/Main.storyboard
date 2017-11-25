@@ -1077,7 +1077,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IzR-RJ-LXa">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="IzR-RJ-LXa">
                                                 <rect key="frame" x="282" y="70" width="85" height="85"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="85" id="Txg-eo-HZR"/>

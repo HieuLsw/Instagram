@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
@@ -55,6 +56,9 @@ var keyboard = CGRect()
         
         //some taps
         setTapGestures()
+        
+        // call information function
+        information()
     }
 
     override func didReceiveMemoryWarning() {
@@ -167,6 +171,26 @@ extension editVC{
         picker.sourceType = .photoLibrary
         picker.allowsEditing = true
         present(picker, animated: true, completion: nil)
+    }
+    
+    //user information function
+    fileprivate func information(){
+       
+     //receive profile picture
+        let ava = PFUser.current()?.object(forKey: "ava") as! PFFile
+        ava.getDataInBackground { (data, error) in
+            self.avaImg.image = UIImage(data: data!)
+        }
+      
+        // receive text information
+        usernameTxt.text = PFUser.current()?.username
+        fullnameTxt.text = PFUser.current()?.object(forKey: "fullname") as? String
+        bioTxt.text = PFUser.current()?.object(forKey: "bio") as? String
+        webTxt.text = PFUser.current()?.object(forKey: "web") as? String
+        
+        emailTxt.text = PFUser.current()?.email
+        telTxt.text = PFUser.current()?.object(forKey: "tel") as? String
+        genderTxt.text = PFUser.current()?.object(forKey: "gender") as? String
     }
 }
 
