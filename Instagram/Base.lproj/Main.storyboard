@@ -1162,6 +1162,7 @@
                         <outlet property="emailTxt" destination="mgq-5r-vx0" id="JNl-3y-bQ1"/>
                         <outlet property="fullnameTxt" destination="d0h-n6-LEV" id="XlZ-Y7-6g1"/>
                         <outlet property="genderTxt" destination="rdM-Zo-bs4" id="2se-vQ-Egy"/>
+                        <outlet property="scrollView" destination="5iH-2o-SAR" id="6QP-y3-eVQ"/>
                         <outlet property="telTxt" destination="PJ2-g9-BuN" id="WBh-ve-iw5"/>
                         <outlet property="usernameTxt" destination="7JE-F6-SB0" id="rcH-Op-5M5"/>
                         <outlet property="webTxt" destination="yFW-Ku-yQY" id="KbD-2m-gYJ"/>
@@ -1245,7 +1246,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMT-g3-qVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3170" y="-621"/>
+            <point key="canvasLocation" x="4356" y="785"/>
         </scene>
         <!--home-->
         <scene sceneID="jPN-fg-0e3">
@@ -1456,7 +1457,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddw-wt-n09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4076" y="-641"/>
+            <point key="canvasLocation" x="3607" y="785"/>
         </scene>
         <!--NavVC-->
         <scene sceneID="RPQ-Ln-Qpx">
