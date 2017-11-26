@@ -55,32 +55,31 @@ loadPosts()
     
   // clicked log out
     @IBAction func logout(_ sender: Any) {
-        
-    // implement log out
+
+        // implement log out
         PFUser.logOutInBackground { (error) in
-            if error == nil {
-                
-    // remove logged in user from App memory
-        UserDefaults.standard.removeObject(forKey: "username")
-        UserDefaults.standard.synchronize()
-                
-        let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
-                
-        let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = signIn
-                
-            }
-        }
+            
+    if error == nil {
         
-    }
-    
+     let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
+        
+    // remove logged in user from App memory
+    //UserDefaults.standard.removeObject(forKey: "username")
+//UserDefaults.standard.synchronize()
+        
+        
+ let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window?.rootViewController = signIn
+            }
+      }
+     }
 }//homeVC class over line
 
 //custom functions
 extension homeVC{
-
-    //create observer
-    fileprivate func createObserver(){
+    
+ //create observer
+fileprivate func createObserver(){
         
         NotificationCenter.default.addObserver(self, selector: #selector(reload(_:)), name: NSNotification.Name!.init(NSNotification.Name(rawValue: "reload")), object: nil)
     }
@@ -307,9 +306,6 @@ let followers = self.storyboard?.instantiateViewController(withIdentifier: "foll
 //present
 navigationController?.show(followers, sender: nil)
     }
-    
-  
-    
 }
 
 

@@ -48,6 +48,8 @@ class signInVC: UIViewController,UITextFieldDelegate{
         
         //observe sign In button is or not hidden
         createObserver()
+        
+        usernameTxt.text = UserDefaults.standard.string(forKey: "username")
     }
     
     
@@ -70,12 +72,13 @@ class signInVC: UIViewController,UITextFieldDelegate{
             if error == nil{
                
 //remeber user or save in App memory did the user login or not
-                UserDefaults.standard.set(user?.username, forKey: "username")
-                UserDefaults.standard.synchronize()
+               // UserDefaults.standard.set(user?.username, forKey: "username")
+               // UserDefaults.standard.synchronize()
                 
    //call login function from AppDelegate.swift class
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 appDelegate.login()
+                
             }else{
                 //another case
             let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)

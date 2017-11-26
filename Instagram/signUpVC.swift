@@ -124,7 +124,8 @@ initInputFirst()
                 UserDefaults.standard.synchronize()
                
                 //call login func from AppleDelegate.swift class
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.login() 
                 
             }else{
