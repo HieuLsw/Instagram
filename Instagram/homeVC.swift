@@ -33,7 +33,21 @@ class homeVC: UICollectionViewController {
  //load posts func
 loadPosts()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+       super.viewWillAppear(true)
+        
+        //create observer
+        createObserver()
+    }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        //deallocate observer
+        deallocateObserver()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -65,6 +79,18 @@ loadPosts()
 //custom functions
 extension homeVC{
 
+    //create observer
+    fileprivate func createObserver(){
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reload(_:)), name: NSNotification.Name!.init(NSNotification.Name(rawValue: "reload")), object: nil)
+    }
+    
+    //deallocate observer
+    fileprivate func deallocateObserver(){
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "reload"), object: nil)
+    }
+    
     //title of the top
   fileprivate  func setTopTitle(){
      
@@ -86,7 +112,7 @@ extension homeVC{
     @objc fileprivate func refresh(){
         
         //reload data information
-        collectionView?.reloadData()
+        loadPosts()
         
         // stop refresher animating
         refresher.endRefreshing()
@@ -119,6 +145,12 @@ self.uuidArrary = objects!.map{$0.value(forKey: "uuid") as! String}
         }
         
     }
+    
+    // reloading func after received notification
+ @objc fileprivate func reload(_ notification:Notification) {
+        collectionView?.reloadData()
+    }
+    
     
 }
 
