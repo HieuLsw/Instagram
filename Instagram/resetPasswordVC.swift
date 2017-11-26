@@ -56,7 +56,7 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
         super.viewWillDisappear(true)
         
         //deallocate observers
-        deallocateObservers()()
+        deallocateObservers()
     }
     
     override func didReceiveMemoryWarning() {

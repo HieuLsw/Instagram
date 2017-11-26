@@ -68,8 +68,6 @@ if title == "FOLLOW" {
             newsObj["type"] = "follow"
             newsObj["checked"] = "no"
             newsObj.saveEventually()
-            
-            
         } else {
             print(error!.localizedDescription)
         }
