@@ -792,7 +792,7 @@
                                     </constraints>
                                 </imageView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="www.bobby.com" translatesAutoresizingMaskIntoConstraints="NO" id="XOr-Ou-Az4">
-                                    <rect key="frame" x="0.0" y="136" width="375" height="66"/>
+                                    <rect key="frame" x="0.0" y="136" width="375" height="24"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -821,10 +821,10 @@
                                     </connections>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="www.bobby.com" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AhP-Rs-xKD">
-                                    <rect key="frame" x="0.0" y="202" width="375" height="23"/>
+                                    <rect key="frame" x="0.0" y="160" width="375" height="65"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="23" id="j1D-d0-oqI"/>
+                                        <constraint firstAttribute="height" constant="65" id="j1D-d0-oqI"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="URL" enablesReturnKeyAutomatically="YES" textContentType="url"/>
@@ -1313,7 +1313,7 @@
                                     </constraints>
                                 </imageView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="www.bobby.com" translatesAutoresizingMaskIntoConstraints="NO" id="OLX-Wt-YNz">
-                                    <rect key="frame" x="0.0" y="136" width="375" height="66"/>
+                                    <rect key="frame" x="0.0" y="136" width="375" height="24"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -1342,10 +1342,10 @@
                                     </connections>
                                 </button>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="www.bobby.com" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="erz-x1-qOM">
-                                    <rect key="frame" x="0.0" y="202" width="375" height="23"/>
+                                    <rect key="frame" x="0.0" y="160" width="375" height="65"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="23" id="pC1-1r-a65"/>
+                                        <constraint firstAttribute="height" constant="65" id="pC1-1r-a65"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="13"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardType="URL" enablesReturnKeyAutomatically="YES" textContentType="url"/>
