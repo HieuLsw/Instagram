@@ -179,7 +179,7 @@ signInBtnHeight.constant = 0
     
  //if all text fields has not been written anything, the sign In button will be hidden
     @objc fileprivate func textFieldsIsOrNotEmpty(sender: UITextField) {
-    sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
+    //sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
    
 
     self.signInBtn.isHidden = (usernameTxt.text?.isEmpty)! || (passwordTxt.text?.isEmpty)!

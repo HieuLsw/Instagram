@@ -126,14 +126,14 @@ extension homeVC{
         query.whereKey("username", equalTo: (PFUser.current()?.username)!)
         query.limit = page
         
-        //clean up
-        self.uuidArrary.removeAll(keepingCapacity: false)
-        self.picArray.removeAll(keepingCapacity: false)
-        
         //find objects related to my request
         query.findObjectsInBackground { (objects, error) in
             
             if error == nil{
+                
+    //clean up
+self.uuidArrary.removeAll(keepingCapacity: false)
+self.picArray.removeAll(keepingCapacity: false)
                 
 self.picArray = objects!.map{$0.value(forKey: "pic") as! PFFile}
 self.uuidArrary = objects!.map{$0.value(forKey: "uuid") as! String}
