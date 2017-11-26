@@ -44,6 +44,7 @@
 		A5C177EA1F68115B008D93AC /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C177E81F68115B008D93AC /* Parse.framework */; };
 		A5EEB2801FC5C594002CB038 /* murdoink.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5EEB27F1FC5C542002CB038 /* murdoink.ttf */; };
 		A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEB2831FC5E2AA002CB038 /* guestVC.swift */; };
+		A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD76271FCAB6BD007355BF /* Regex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,6 +87,7 @@
 		A5C177E81F68115B008D93AC /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		A5EEB27F1FC5C542002CB038 /* murdoink.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = murdoink.ttf; sourceTree = "<group>"; };
 		A5EEB2831FC5E2AA002CB038 /* guestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
+		A5FD76271FCAB6BD007355BF /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				A503D8301F8F08880023D232 /* UIView_Attributes.swift */,
 				A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */,
 				A51826871FA091AA005B50D0 /* HexColor.swift */,
+				A5FD76271FCAB6BD007355BF /* Regex.swift */,
 			);
 			name = "User Defined Attributes";
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */,
 				A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */,
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,
+				A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,
 				A549C15A1F6AD10200207D42 /* UIButton_Attributes.swift in Sources */,

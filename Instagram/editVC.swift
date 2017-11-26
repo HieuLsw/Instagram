@@ -70,7 +70,14 @@ var keyboard = CGRect()
 // clicked save button
     @IBAction func save_clicked(_ sender: Any) {
     
-    }
+ guard Validate.email(emailTxt.text!).isRight else{
+    alert("Incorrect email", message: "please provide correct email address")
+return}
+  
+    guard Validate.URL(webTxt.text!).isRight else{
+    alert("Incorrect web-link", message: "please provide correct website")
+return}
+}
     
 // clicked cancel button
     @IBAction func cancel_clicked(_ sender: Any) {
@@ -191,6 +198,15 @@ extension editVC{
         emailTxt.text = PFUser.current()?.email
         telTxt.text = PFUser.current()?.object(forKey: "tel") as? String
         genderTxt.text = PFUser.current()?.object(forKey: "gender") as? String
+    }
+    
+    
+    // alert message function
+  fileprivate func alert (_ error: String, message : String) {
+        let alert = UIAlertController(title: error, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
