@@ -46,10 +46,8 @@ class signInVC: UIViewController,UITextFieldDelegate{
         
         super.viewWillAppear(true)
         
-        //observe sign In button is or not hidden
+        //observe sign In button if is or not hidden
         createObserver()
-        
-        usernameTxt.text = UserDefaults.standard.string(forKey: "username")
     }
     
     
@@ -72,8 +70,8 @@ class signInVC: UIViewController,UITextFieldDelegate{
             if error == nil{
                
 //remeber user or save in App memory did the user login or not
-               // UserDefaults.standard.set(user?.username, forKey: "username")
-               // UserDefaults.standard.synchronize()
+                UserDefaults.standard.set(user?.username, forKey: "username")
+                UserDefaults.standard.synchronize()
                 
    //call login function from AppDelegate.swift class
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -100,8 +98,8 @@ extension signInVC{
    fileprivate func setupAddTargetIsNotEmptyTextFields() {
         
         //hidden sign In Button
-        signInBtn.isHidden = true
-        
+    signInBtnHeight.constant = 0
+    
         usernameTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),
                                     for: .editingChanged)
         passwordTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),
@@ -143,13 +141,14 @@ extension signInVC{
     
     //if the sign In button is or not hidden, change the stack location
     @objc fileprivate func btnHiddenStackLocation(argu: Notification){
+        
 signInBtnHeight.constant = 0
-        
-        
     }
+    
     @objc fileprivate func btnNotHiddenStackLocation(argu: Notification){
+        
  signInBtnHeight.constant = 60
-     
+        
     }
    
     @objc fileprivate func keyboardDidShow(argu: Notification){
@@ -163,6 +162,7 @@ signInBtnHeight.constant = 0
         {return}
        
         if self.view.frame.origin.y >= 0{
+            
       //Checking if the textfield is really hidden behind the keyboard
         if editingTextField > keyboardY - 60{
             UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
@@ -182,8 +182,6 @@ signInBtnHeight.constant = 0
     
  //if all text fields has not been written anything, the sign In button will be hidden
     @objc fileprivate func textFieldsIsOrNotEmpty(sender: UITextField) {
-    //sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
-   
 
     self.signInBtn.isHidden = (usernameTxt.text?.isEmpty)! || (passwordTxt.text?.isEmpty)!
       

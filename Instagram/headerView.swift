@@ -18,7 +18,7 @@ class headerView: UICollectionReusableView {
     @IBOutlet weak var webTxt: UITextView!
     
     @IBOutlet weak var bioLbl: UITextView!
-  
+    
     @IBOutlet weak var posts: UILabel!
     
     @IBOutlet weak var followers: UILabel!
@@ -115,6 +115,7 @@ for object in objects! {object.deleteEventually()}
     
 }// headerView class over line
 
+//custom functions
 extension headerView{
     
     //set image layer
@@ -125,5 +126,7 @@ extension headerView{
         avaImg.clipsToBounds = true
     }
 }
+
+
 
 

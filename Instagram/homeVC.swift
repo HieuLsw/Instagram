@@ -20,7 +20,6 @@ class homeVC: UICollectionViewController {
     var uuidArrary = [String]()
     var picArray = [PFFile]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
  
@@ -61,18 +60,17 @@ loadPosts()
             
     if error == nil {
         
-     let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
-        
+ let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
+     
     // remove logged in user from App memory
-    //UserDefaults.standard.removeObject(forKey: "username")
-//UserDefaults.standard.synchronize()
-        
+    UserDefaults.standard.removeObject(forKey: "username")
+UserDefaults.standard.synchronize()
         
  let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = signIn
             }
       }
-     }
+   }
 }//homeVC class over line
 
 //custom functions

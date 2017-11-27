@@ -6,9 +6,6 @@
 //  Copyright © 2017 Mac. All rights reserved.
 //
 
-
-
-
 import UIKit
 import Parse
 
@@ -36,9 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         Parse.initialize(with: parseConfig)
         
-        //call login() function to see tab bar if user has logined before
-        //login()
         
+        //call login() function to see tab bar if user has logined before
+
+        login()
         return true
     }
 
@@ -74,11 +72,10 @@ extension AppDelegate{
     func login(){
         
         //get user's login "username" and "password"
-        let currentUsername:String? = UserDefaults.standard.string(forKey: "username")
-        //let currentPassword:String? = UserDefaults.standard.string(forKey: "password")
+        let currentUsername = UserDefaults.standard.value(forKey: "username")
         
         //if logged in
-        if  currentUsername != nil{
+        if currentUsername != nil{
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let myTabBar = storyboard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController

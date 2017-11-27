@@ -9,23 +9,29 @@
 import UIKit
 import Parse
 
-class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UITextViewDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
         
     @IBOutlet weak var fullnameTxt: UITextField_Attributes!
+    {didSet{self.fullnameTxt.delegate = self}}
     
     @IBOutlet weak var usernameTxt: UITextField_Attributes!
+        {didSet{self.usernameTxt.delegate = self}}
     
     @IBOutlet weak var avaImg: UIImageView!
     
     @IBOutlet weak var webTxt: UITextField_Attributes!
+    {didSet{self.webTxt.delegate = self}}
     
     @IBOutlet weak var bioTxt: UITextView!
+        {didSet{self.bioTxt.delegate = self}}
     
     @IBOutlet weak var emailTxt: UITextField_Attributes!
+    {didSet{self.emailTxt.delegate = self}}
     
     @IBOutlet weak var telTxt: UITextField_Attributes!
+    {didSet{self.telTxt.delegate = self}}
     
     @IBOutlet weak var genderTxt: UITextField_Attributes!
 
@@ -37,10 +43,17 @@ var genderPicker : UIPickerView!
     }
 }
     
-let genders = ["male","female"]
+    var genders = [""]
     
     // value to hold keyboard frame size
-var keyboard = CGRect()
+    var keyboard:CGRect!
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.genders = ["male","female"]
+        self.keyboard = CGRect()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,6 +90,55 @@ return}
     guard Validate.URL(webTxt.text!).isRight else{
     alert("Incorrect web-link", message: "please provide correct website")
 return}
+        
+        // save filled in information
+        let user = PFUser.current()!
+        user.username = usernameTxt.text?.lowercased()
+        user.email = emailTxt.text?.lowercased()
+        user["fullname"] = fullnameTxt.text?.lowercased()
+        user["web"] = webTxt.text?.lowercased()
+        user["bio"] = bioTxt.text
+        
+        // if "tel" is empty, send empty data, else entered data
+        if telTxt.text!.isEmpty {
+            user["tel"] = ""
+        } else {
+            user["tel"] = telTxt.text
+        }
+        
+        // if "gender" is empty, send empty data, else entered data
+        if genderTxt.text!.isEmpty {
+            user["gender"] = ""
+        } else {
+            user["gender"] = genderTxt.text
+        }
+        
+        // send profile picture
+        let avaData = UIImageJPEGRepresentation(avaImg.image!, 0.5)
+        let avaFile = PFFile(name: "ava.jpg", data: avaData!)
+        user["ava"] = avaFile
+        
+        UserDefaults.standard.removeObject(forKey: "username")
+        UserDefaults.standard.set(user.username, forKey: "username")
+        UserDefaults.standard.synchronize()
+        
+        // send filled information to server
+user.saveInBackground (block: { (success, error) in
+            if success{
+                
+                // hide keyboard
+                self.view.endEditing(true)
+                
+                // dismiss editVC
+                self.dismiss(animated: true, completion: nil)
+                
+                // send notification to homeVC to be reloaded
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "reload"), object: nil)
+                
+            } else {
+                print(error!.localizedDescription)
+            }
+        })
 }
     
 // clicked cancel button
@@ -251,5 +313,26 @@ extension editVC{
         
         avaImg.image = info[UIImagePickerControllerEditedImage] as? UIImage
         self.dismiss(animated: true, completion: nil)
+    }
+}
+
+//text view --delegate
+extension editVC{
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        self.bioTxt.resignFirstResponder()
+        return true
+    }
+}
+
+//text field --delegate
+extension editVC{
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+_ = [fullnameTxt,usernameTxt,webTxt,emailTxt,telTxt].map{$0?.resignFirstResponder()
+        }
+        return true
     }
 }

@@ -119,15 +119,13 @@ initInputFirst()
         user.signUpInBackground { (success:Bool, error:Error?) in
             if success{
                 
-                //remember logged user 
-                UserDefaults.standard.set(user.username, forKey: "username")
-                UserDefaults.standard.synchronize()
+    //remember logged user
+      UserDefaults.standard.set(user.username, forKey: "username")
+    UserDefaults.standard.synchronize()
                
-                //call login func from AppleDelegate.swift class
-    
+    //call login func from AppleDelegate.swift class
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.login() 
-                
+            appDelegate.login()
             }else{
                 
                 print(error ?? "")
@@ -152,9 +150,7 @@ initInputFirst()
 //textfield - delegate
 extension signUpVC{
 
-    
-    
-    //the delegate or datasource function
+//the delegate or datasource function
  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 _ = [usernameTxt,passwordTxt,repeat_passwordTxt,fullnameTxt,bioTxt,webTxt,emailTxt].map{ $0.resignFirstResponder()}
   
@@ -165,7 +161,6 @@ _ = [usernameTxt,passwordTxt,repeat_passwordTxt,fullnameTxt,bioTxt,webTxt,emailT
 
 //imagepick - delegate
 extension signUpVC{
-    
     
     //func connect selected image to our ImageView
    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -182,7 +177,6 @@ extension signUpVC{
  fileprivate func setScrollArea(){
         //scrollview scroll area
         scrollArea.constant = 900
-        
     }
     
   fileprivate  func setAvaImgLayer(){
