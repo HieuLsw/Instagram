@@ -45,6 +45,7 @@
 		A5EEB2801FC5C594002CB038 /* murdoink.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A5EEB27F1FC5C542002CB038 /* murdoink.ttf */; };
 		A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEB2831FC5E2AA002CB038 /* guestVC.swift */; };
 		A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD76271FCAB6BD007355BF /* Regex.swift */; };
+		A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762A1FCBEA59007355BF /* uploadVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +89,7 @@
 		A5EEB27F1FC5C542002CB038 /* murdoink.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = murdoink.ttf; sourceTree = "<group>"; };
 		A5EEB2831FC5E2AA002CB038 /* guestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
 		A5FD76271FCAB6BD007355BF /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		A5FD762A1FCBEA59007355BF /* uploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,7 +118,6 @@
 		A526D5811FC7DD1E00B41468 /* Profile Part */ = {
 			isa = PBXGroup;
 			children = (
-				A526D57F1FC7DCFA00B41468 /* navVC.swift */,
 				A526D5821FC7DD7A00B41468 /* editVC.swift */,
 			);
 			name = "Profile Part";
@@ -201,6 +202,8 @@
 				A54A35981FC27255002DD885 /* Themes.xcassets */,
 				A5C177AD1F680C1D008D93AC /* LaunchScreen.storyboard */,
 				A5C177B01F680C1D008D93AC /* Info.plist */,
+				A526D57F1FC7DCFA00B41468 /* navVC.swift */,
+				A5FD76291FCBEA2F007355BF /* Upload Part */,
 				A588A6BD1FC58F8E0083AAEC /* Login Part */,
 				A588A6BE1FC58FE50083AAEC /* Home Page Part */,
 				A588A6BF1FC58FFD0083AAEC /* Follower Page Part */,
@@ -237,6 +240,14 @@
 				A5EEB2831FC5E2AA002CB038 /* guestVC.swift */,
 			);
 			name = "Guest Page Part";
+			sourceTree = "<group>";
+		};
+		A5FD76291FCBEA2F007355BF /* Upload Part */ = {
+			isa = PBXGroup;
+			children = (
+				A5FD762A1FCBEA59007355BF /* uploadVC.swift */,
+			);
+			name = "Upload Part";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +345,7 @@
 				A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,
+				A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */,
 				A549C15A1F6AD10200207D42 /* UIButton_Attributes.swift in Sources */,
 				A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */,
 			);
@@ -476,7 +488,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Instagram/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ShaoKahn.Instagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -495,7 +507,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Instagram/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ShaoKahn.Instagram;
 				PRODUCT_NAME = "$(TARGET_NAME)";

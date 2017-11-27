@@ -11,6 +11,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Chalkduster.ttf">
+            <string>Chalkduster</string>
+        </array>
         <array key="Crabmeal.otf">
             <string>Crabmeal</string>
         </array>
@@ -737,8 +740,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.56031829119999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
+                        <segue destination="idH-zD-E3L" kind="relationship" relationship="viewControllers" id="kgW-24-Wx5"/>
                         <segue destination="dY1-NC-p1n" kind="relationship" relationship="viewControllers" id="lHj-fp-eWg"/>
                     </connections>
                 </tabBarController>
@@ -768,9 +773,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NvK-lp-VIb">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pbg" translatesAutoresizingMaskIntoConstraints="NO" id="NvK-lp-VIb">
                                             <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="tintColor" name="BarColor"/>
                                         </imageView>
                                     </subviews>
                                 </view>
@@ -943,7 +949,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tla-dJ-Uj4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3607.1999999999998" y="89.408866995073893"/>
+            <point key="canvasLocation" x="3698" y="1348"/>
         </scene>
         <!--EditVC-->
         <scene sceneID="xJf-Or-vEs">
@@ -1170,7 +1176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="blt-3V-Lie" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5109.6000000000004" y="84.975369458128085"/>
+            <point key="canvasLocation" x="5287" y="1348"/>
         </scene>
         <!--FollowersVC-->
         <scene sceneID="xFx-iX-qjP">
@@ -1246,7 +1252,67 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMT-g3-qVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4356" y="785"/>
+            <point key="canvasLocation" x="5286" y="2034"/>
+        </scene>
+        <!--UploadVC-->
+        <scene sceneID="4eg-mm-FnA">
+            <objects>
+                <viewController id="mMz-YM-p7v" customClass="uploadVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="e8a-hc-9ZE"/>
+                        <viewControllerLayoutGuide type="bottom" id="Km9-wQ-3uz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="caa-eS-OHt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pbg" translatesAutoresizingMaskIntoConstraints="NO" id="QxN-au-5tS">
+                                <rect key="frame" x="16" y="130" width="82" height="82"/>
+                                <color key="tintColor" name="BarColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="82" id="JN9-5f-My8"/>
+                                    <constraint firstAttribute="height" constant="82" id="O2L-TW-UCQ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5Z-OM-lHk">
+                                <rect key="frame" x="0.0" y="683" width="375" height="46"/>
+                                <color key="backgroundColor" red="0.5568627451" green="0.2666666667" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                <state key="normal" title="PUBLISH">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="frz-nd-CaD">
+                                <rect key="frame" x="134" y="130" width="225" height="82"/>
+                                <color key="backgroundColor" name="BarColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="I5Z-OM-lHk" firstAttribute="leading" secondItem="caa-eS-OHt" secondAttribute="leading" id="6CB-z0-j6F"/>
+                            <constraint firstAttribute="trailing" secondItem="frz-nd-CaD" secondAttribute="trailing" constant="16" id="Ayb-BA-DrF"/>
+                            <constraint firstItem="frz-nd-CaD" firstAttribute="width" secondItem="caa-eS-OHt" secondAttribute="width" multiplier="240:400" id="Ki7-aY-HvW"/>
+                            <constraint firstItem="Km9-wQ-3uz" firstAttribute="top" secondItem="I5Z-OM-lHk" secondAttribute="bottom" id="UrF-YP-2yM"/>
+                            <constraint firstItem="QxN-au-5tS" firstAttribute="top" secondItem="e8a-hc-9ZE" secondAttribute="bottom" constant="42" id="VRQ-gF-qCD"/>
+                            <constraint firstItem="frz-nd-CaD" firstAttribute="height" secondItem="QxN-au-5tS" secondAttribute="height" id="Vey-Pu-UHk"/>
+                            <constraint firstItem="I5Z-OM-lHk" firstAttribute="height" secondItem="caa-eS-OHt" secondAttribute="height" multiplier="46:812" id="ihR-84-Cce"/>
+                            <constraint firstAttribute="trailing" secondItem="I5Z-OM-lHk" secondAttribute="trailing" id="kzY-Bo-gqO"/>
+                            <constraint firstItem="frz-nd-CaD" firstAttribute="top" secondItem="QxN-au-5tS" secondAttribute="top" id="prJ-WV-IYR"/>
+                            <constraint firstItem="QxN-au-5tS" firstAttribute="leading" secondItem="caa-eS-OHt" secondAttribute="leading" constant="16" id="wYp-X0-5xz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="uuJ-i3-NNm"/>
+                    <connections>
+                        <outlet property="picImg" destination="QxN-au-5tS" id="oNi-go-z9q"/>
+                        <outlet property="publishBtn" destination="I5Z-OM-lHk" id="ftm-Xs-W9L"/>
+                        <outlet property="titleTxt" destination="frz-nd-CaD" id="gRJ-AO-J2I"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uw8-Ab-7Cl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3892" y="90.886699507389167"/>
         </scene>
         <!--home-->
         <scene sceneID="jPN-fg-0e3">
@@ -1265,7 +1331,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tsl-tx-ac9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2836" y="91"/>
+            <point key="canvasLocation" x="2836" y="1348"/>
         </scene>
         <!--GuestVC-->
         <scene sceneID="HBA-oJ-WYL">
@@ -1289,9 +1355,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pt1-BI-CuF">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pbg" translatesAutoresizingMaskIntoConstraints="NO" id="Pt1-BI-CuF">
                                             <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="tintColor" name="BarColor"/>
                                         </imageView>
                                     </subviews>
                                 </view>
@@ -1457,7 +1524,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddw-wt-n09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3607" y="785"/>
+            <point key="canvasLocation" x="3697" y="2034"/>
         </scene>
         <!--NavVC-->
         <scene sceneID="RPQ-Ln-Qpx">
@@ -1475,14 +1542,38 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zR9-RB-h0Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4356" y="85"/>
+            <point key="canvasLocation" x="4482" y="1348"/>
+        </scene>
+        <!--upload-->
+        <scene sceneID="N5f-W8-fx0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="idH-zD-E3L" customClass="navVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="upload" image="upload" id="UsA-pY-QuM"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9U3-Ro-l4j">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="mMz-YM-p7v" kind="relationship" relationship="rootViewController" id="obl-EH-JaY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f8H-Ri-hmY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3098" y="91"/>
         </scene>
     </scenes>
     <resources>
         <image name="home" width="25" height="25"/>
         <image name="logo.svg" width="2000" height="714"/>
         <image name="logout" width="25" height="25"/>
+        <image name="pbg" width="200" height="200"/>
         <image name="profile" width="683" height="616"/>
+        <image name="upload" width="42" height="42"/>
+        <namedColor name="BarColor">
+            <color red="1" green="0.85500001907348633" blue="0.72500002384185791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="LogoColor">
             <color red="0.017000000923871994" green="0.19799999892711639" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
