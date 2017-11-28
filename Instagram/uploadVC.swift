@@ -17,6 +17,8 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet weak var publishBtn: UIButton_Attributes!
  
+    @IBOutlet weak var removeBtn: UIButton_Attributes!
+        
     @IBOutlet weak var viewAboveScrollView: UIView!
         
     override func viewDidLoad() {
@@ -168,7 +170,7 @@ fileprivate func tapToHideKyeboard(){
   @objc fileprivate func zoomImg() {
     
     // define frame of zoomed image
-    let zoomed = CGRect(x: 0, y: UIScreen.main.bounds.size.height / 2 - UIScreen.main.bounds.size.width / 2, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
+    let zoomed = CGRect(x: 0, y: self.view.center.y - UIScreen.main.bounds.size.width / 2, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
     
     // frame of unzoomed (small) image
     let unzoomed = CGRect(x: 16, y: 54, width: 82, height: 82)
@@ -184,6 +186,7 @@ fileprivate func tapToHideKyeboard(){
             self.viewAboveScrollView.backgroundColor = .black
             self.titleTxt.alpha = 0
             self.publishBtn.alpha = 0
+            self.removeBtn.alpha = 0
         })
         
     }else{
@@ -196,6 +199,7 @@ fileprivate func tapToHideKyeboard(){
             self.viewAboveScrollView.backgroundColor = .white
             self.titleTxt.alpha = 1
             self.publishBtn.alpha = 1
+            self.removeBtn.alpha = 1
         })
     }
  
@@ -235,7 +239,7 @@ extension uploadVC{
         picImg.isUserInteractionEnabled = true
         picImg.addGestureRecognizer(zoomTap)
     }
-    
+   
 }
 
 

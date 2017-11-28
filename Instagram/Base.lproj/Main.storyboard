@@ -1263,11 +1263,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zkv-tU-agR">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="Zkv-tU-agR">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCZ-Ux-R6Z">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="809"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="960"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pbg" translatesAutoresizingMaskIntoConstraints="NO" id="QxN-au-5tS">
                                                 <rect key="frame" x="16" y="54" width="82" height="82"/>
@@ -1278,10 +1278,10 @@
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="frz-nd-CaD">
-                                                <rect key="frame" x="16" y="178" width="343" height="422"/>
+                                                <rect key="frame" x="16" y="178" width="343" height="410"/>
                                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="422" id="CIv-wR-HaN"/>
+                                                    <constraint firstAttribute="height" constant="410" id="CIv-wR-HaN"/>
                                                 </constraints>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                                             </textView>
@@ -1341,7 +1341,7 @@
                                             <constraint firstItem="VpB-Sv-Wni" firstAttribute="leading" secondItem="QxN-au-5tS" secondAttribute="trailing" constant="20" id="Rnm-C5-lOD"/>
                                             <constraint firstItem="frz-nd-CaD" firstAttribute="leading" secondItem="kCZ-Ux-R6Z" secondAttribute="leadingMargin" constant="8" id="UG1-l1-g6F"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="VpB-Sv-Wni" secondAttribute="trailing" constant="8" id="Yh1-mm-l3g"/>
-                                            <constraint firstAttribute="height" constant="809" id="eAE-ID-DGp"/>
+                                            <constraint firstAttribute="height" constant="960" id="eAE-ID-DGp"/>
                                             <constraint firstItem="frz-nd-CaD" firstAttribute="top" secondItem="VpB-Sv-Wni" secondAttribute="bottom" constant="42" id="v5X-bY-rTL"/>
                                             <constraint firstItem="VpB-Sv-Wni" firstAttribute="top" secondItem="QxN-au-5tS" secondAttribute="top" id="yMx-Uc-72Y"/>
                                         </constraints>
@@ -1368,6 +1368,7 @@
                     <connections>
                         <outlet property="picImg" destination="QxN-au-5tS" id="oNi-go-z9q"/>
                         <outlet property="publishBtn" destination="I5Z-OM-lHk" id="ftm-Xs-W9L"/>
+                        <outlet property="removeBtn" destination="bzC-Ns-oNz" id="w93-kB-So3"/>
                         <outlet property="titleTxt" destination="frz-nd-CaD" id="gRJ-AO-J2I"/>
                         <outlet property="viewAboveScrollView" destination="kCZ-Ux-R6Z" id="kuz-ks-bZ5"/>
                     </connections>
