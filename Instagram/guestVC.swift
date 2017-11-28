@@ -164,9 +164,35 @@ self.navigationController?.pushViewController(followers, animated: true)
 self.navigationController?.pushViewController(followings, animated: true)
     }
     
+    fileprivate func loadMore(){
+        
+        // if there is more objects
+        if self.page <= picArray.count{
+            
+            // increase page size
+            page = page + 12
+            // load more posts
+            let query = PFQuery(className: "posts")
+            query.whereKey("username", equalTo: (PFUser.current()!.username)!)
+            query.limit = page
+            query.findObjectsInBackground(block: { (objects, error) in
+                if error == nil {
+                    
+  // clean up
+self.uuidArray.removeAll(keepingCapacity: false)
+self.picArray.removeAll(keepingCapacity: false)
+                    
+        // find related objects
+    for object in objects! {
     
-    
-    
+    self.uuidArray.append(object.value(forKey: "uuid") as! String)
+    self.picArray.append(object.value(forKey: "pic") as! PFFile)
+        }
+    self.collectionView?.reloadData()
+  } else {print(error?.localizedDescription ?? String())}
+            })
+        }
+    }
 }
 
 //collection --data source
@@ -315,8 +341,12 @@ extension guestVC{
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
+        let verticalIndicator: UIImageView = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
         verticalIndicator.backgroundColor = UIColor.red
+        
+        if scrollView.contentOffset.y >= scrollView.contentSize.height - self.view.frame.size.height {
+            loadMore()
+        }
     }
 }
 

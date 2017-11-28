@@ -17,7 +17,7 @@ class homeVC: UICollectionViewController{
     //size of page
     var page = 10
     
-    var uuidArrary = [String]()
+    var uuidArray = [String]()
     var picArray = [PFFile]()
     
     override func viewDidLoad() {
@@ -128,13 +128,12 @@ fileprivate func createObserver(){
         query.findObjectsInBackground { (objects, error) in
             
             if error == nil{
-                
     //clean up
-self.uuidArrary.removeAll(keepingCapacity: false)
+self.uuidArray.removeAll(keepingCapacity: false)
 self.picArray.removeAll(keepingCapacity: false)
                 
 self.picArray = objects!.map{$0.value(forKey: "pic") as! PFFile}
-self.uuidArrary = objects!.map{$0.value(forKey: "uuid") as! String}
+self.uuidArray = objects!.map{$0.value(forKey: "uuid") as! String}
 
     self.collectionView?.reloadData()
             }else{
@@ -305,6 +304,37 @@ let followers = self.storyboard?.instantiateViewController(withIdentifier: "foll
 //present
 navigationController?.show(followers, sender: nil)
     }
+    
+     fileprivate func loadMore(){
+        
+      // if there is more objects
+        if self.page <= picArray.count{
+            
+            // increase page size
+            page = page + 12
+            // load more posts
+            let query = PFQuery(className: "posts")
+            query.whereKey("username", equalTo: (PFUser.current()!.username)!)
+            query.limit = page
+            query.findObjectsInBackground(block: { (objects, error) in
+                if error == nil {
+                    
+        // clean up
+    self.uuidArray.removeAll(keepingCapacity: false)
+    self.picArray.removeAll(keepingCapacity: false)
+                    
+    // find related objects
+    for object in objects! {
+    self.uuidArray.append(object.value(forKey: "uuid") as! String)
+    self.picArray.append(object.value(forKey: "pic") as! PFFile)
+    }
+                    
+     self.collectionView?.reloadData()
+    } else {print(error?.localizedDescription ?? String())}
+          })
+        }
+    }
+
 }
 
 // scroll view --delegate
@@ -314,6 +344,10 @@ extension homeVC{
         
         let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
         verticalIndicator.backgroundColor = UIColor.red
+    
+        if scrollView.contentOffset.y >= scrollView.contentSize.height - self.view.frame.size.height {
+            loadMore()
+        }
     }
 }
 
