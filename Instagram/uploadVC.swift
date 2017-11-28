@@ -15,8 +15,10 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     
     @IBOutlet weak var titleTxt: UITextView!
     
-    @IBOutlet weak var publishBtn: UIButton!
-    
+    @IBOutlet weak var publishBtn: UIButton_Attributes!
+ 
+    @IBOutlet weak var viewAboveScrollView: UIView!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,7 +47,7 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     @IBAction func publishBtn_clicked(_ sender: Any) {
         
         // dissmiss keyboard
-        self.view.endEditing(true)
+        self.viewAboveScrollView.endEditing(true)
         
         // send data to server to "posts" class in Parse
         let object = PFObject(className: "posts")
@@ -77,8 +79,8 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
             if word.hasPrefix("#") {
                 
                 // cut symbold
-                word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
-                word = word.trimmingCharacters(in: CharacterSet.symbols)
+        word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
+    word = word.trimmingCharacters(in: CharacterSet.symbols)
                 
                 let hashtagObj = PFObject(className: "hashtags")
                 hashtagObj["to"] = "\(PFUser.current()!.username!) \(uuid)"
@@ -123,6 +125,7 @@ extension uploadVC{
   self.titleTxt.layer.cornerRadius = 0
   self.titleTxt.layer.borderWidth = 1
   self.titleTxt.backgroundColor = UIColor.white
+  
     }
 
    // init publichBtn
@@ -135,8 +138,8 @@ fileprivate func initPublishBtn(){
 fileprivate func tapToHideKyeboard(){
     let hideTap = UITapGestureRecognizer(target: self, action: #selector(uploadVC.hideKeyboardTap))
     hideTap.numberOfTapsRequired = 1
-    self.view.isUserInteractionEnabled = true
-    self.view.addGestureRecognizer(hideTap)
+    self.viewAboveScrollView.isUserInteractionEnabled = true
+    self.viewAboveScrollView.addGestureRecognizer(hideTap)
 }
    
      // select image tap
@@ -149,7 +152,7 @@ fileprivate func tapToHideKyeboard(){
     
     // hide kyeboard function
 @objc fileprivate func hideKeyboardTap() {
-        self.view.endEditing(true)
+        self.viewAboveScrollView.endEditing(true)
     }
     
     // func to call pickerViewController
@@ -165,10 +168,10 @@ fileprivate func tapToHideKyeboard(){
   @objc fileprivate func zoomImg() {
     
     // define frame of zoomed image
-    let zoomed = CGRect(x: 0, y: self.view.center.y - UIScreen.main.bounds.size.width / 2, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
+    let zoomed = CGRect(x: 0, y: UIScreen.main.bounds.size.height / 2 - UIScreen.main.bounds.size.width / 2, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
     
     // frame of unzoomed (small) image
-    let unzoomed = CGRect(x: 16, y: 130, width: 82, height: 82)
+    let unzoomed = CGRect(x: 16, y: 54, width: 82, height: 82)
     
     // if picture is unzoomed, zoom it
     if picImg.frame == unzoomed {
@@ -178,7 +181,7 @@ fileprivate func tapToHideKyeboard(){
             self.picImg.frame = zoomed
             
             // hide objects from background
-            self.view.backgroundColor = .black
+            self.viewAboveScrollView.backgroundColor = .black
             self.titleTxt.alpha = 0
             self.publishBtn.alpha = 0
         })
@@ -190,7 +193,7 @@ fileprivate func tapToHideKyeboard(){
             self.picImg.frame = unzoomed
             
             // unhide objects from background
-            self.view.backgroundColor = .white
+            self.viewAboveScrollView.backgroundColor = .white
             self.titleTxt.alpha = 1
             self.publishBtn.alpha = 1
         })
