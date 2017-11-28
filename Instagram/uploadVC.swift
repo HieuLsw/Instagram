@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIScrollViewDelegate {
 
     @IBOutlet weak var picImg: UIImageView!
     
@@ -20,7 +20,10 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     @IBOutlet weak var removeBtn: UIButton_Attributes!
         
     @IBOutlet weak var viewAboveScrollView: UIView!
-        
+ 
+    @IBOutlet weak var scrollView: UIScrollView!
+    {didSet{self.scrollView.delegate = self}}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -138,7 +141,7 @@ extension uploadVC{
    // init publichBtn
 fileprivate func initPublishBtn(){
     self.publishBtn.isEnabled = false
-    self.publishBtn.backgroundColor = UIColor.purple
+    self.publishBtn.backgroundColor = UIColor.lightGray
 }
     
     // hide kyeboard tap
@@ -193,7 +196,6 @@ fileprivate func tapToHideKyeboard(){
             self.publishBtn.alpha = 0
             self.removeBtn.alpha = 0
         })
-        
     }else{
         
         UIView.animate(withDuration: 0.3, animations: {
@@ -204,11 +206,12 @@ fileprivate func tapToHideKyeboard(){
             self.viewAboveScrollView.backgroundColor = .white
             self.titleTxt.alpha = 1
             self.publishBtn.alpha = 1
+            self.publishBtn.backgroundColor = UIColor.green
             self.removeBtn.alpha = 1
         })
+        scrollView.scrollsToTop = true
     }
- 
-    }
+  }
     
     // add done button above keyboard
     fileprivate func addDoneButton(){
@@ -247,7 +250,15 @@ extension uploadVC{
    
 }
 
-
+// scroll view --delegate
+extension uploadVC{
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
+        verticalIndicator.backgroundColor = UIColor.red
+    }
+}
 
 
 

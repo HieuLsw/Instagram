@@ -216,5 +216,13 @@ extension followersVC{
     
 }
 
-
+// scroll view --delegate
+extension followersVC{
+  
+   override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
+        verticalIndicator.backgroundColor = UIColor.red
+    }
+}
 

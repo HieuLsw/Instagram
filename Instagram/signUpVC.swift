@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
+class signUpVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UIScrollViewDelegate {
     
 //Auto layout height
     @IBOutlet weak var scrollArea: NSLayoutConstraint!
@@ -244,4 +244,13 @@ _ = [usernameTxt,passwordTxt,repeat_passwordTxt,fullnameTxt,bioTxt,webTxt,emailT
     }
 }
 
+//scroll view --delegate
+extension signUpVC{
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
+        verticalIndicator.backgroundColor = UIColor.red
+    }
+}
 

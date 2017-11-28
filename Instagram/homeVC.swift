@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class homeVC: UICollectionViewController {
+class homeVC: UICollectionViewController{
 
     //declare refresher variable
     var refresher: UIRefreshControl!
@@ -307,6 +307,14 @@ navigationController?.show(followers, sender: nil)
     }
 }
 
-
+// scroll view --delegate
+extension homeVC{
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
+        verticalIndicator.backgroundColor = UIColor.red
+    }
+}
 
 

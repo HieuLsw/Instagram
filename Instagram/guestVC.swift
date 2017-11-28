@@ -310,6 +310,14 @@ return header
     
 }
 
-
+// scroll view --delegate
+extension guestVC{
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
+        verticalIndicator.backgroundColor = UIColor.red
+    }
+}
 
 

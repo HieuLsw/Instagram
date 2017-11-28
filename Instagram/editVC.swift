@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
+class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UIScrollViewDelegate{
 
     @IBOutlet weak var scrollView: UIScrollView!
         
@@ -341,5 +341,15 @@ extension editVC{
 _ = [fullnameTxt,usernameTxt,webTxt,emailTxt,telTxt].map{$0?.resignFirstResponder()
         }
         return true
+    }
+}
+
+//scroll view --delegate
+extension editVC{
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
+        verticalIndicator.backgroundColor = UIColor.red
     }
 }
