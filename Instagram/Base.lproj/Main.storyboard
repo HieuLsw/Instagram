@@ -759,18 +759,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6wf-er-nKY">
-                            <size key="itemSize" width="140" height="127"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="0.0" id="6wf-er-nKY">
+                            <size key="itemSize" width="122" height="122"/>
                             <size key="headerReferenceSize" width="50" height="225"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="lLx-wL-M7o" customClass="pictureCell" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="225" width="125" height="125"/>
+                                <rect key="frame" x="0.0" y="225" width="122" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="122" height="122"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pbg" translatesAutoresizingMaskIntoConstraints="NO" id="NvK-lp-VIb">
@@ -780,7 +780,6 @@
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <size key="customSize" width="125" height="125"/>
                                 <connections>
                                     <outlet property="picImg" destination="NvK-lp-VIb" id="t8n-PF-uyf"/>
                                 </connections>
@@ -1281,25 +1280,29 @@
                                 <state key="normal" title="PUBLISH">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="publishBtn_clicked:" destination="mMz-YM-p7v" eventType="touchUpInside" id="A90-XA-pZl"/>
+                                </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="frz-nd-CaD">
-                                <rect key="frame" x="134" y="130" width="225" height="82"/>
-                                <color key="backgroundColor" name="BarColor"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="frz-nd-CaD">
+                                <rect key="frame" x="16" y="229" width="343" height="370"/>
+                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="frz-nd-CaD" firstAttribute="trailing" secondItem="caa-eS-OHt" secondAttribute="trailingMargin" id="3ar-ow-Tjh"/>
                             <constraint firstItem="I5Z-OM-lHk" firstAttribute="leading" secondItem="caa-eS-OHt" secondAttribute="leading" id="6CB-z0-j6F"/>
-                            <constraint firstAttribute="trailing" secondItem="frz-nd-CaD" secondAttribute="trailing" constant="16" id="Ayb-BA-DrF"/>
-                            <constraint firstItem="frz-nd-CaD" firstAttribute="width" secondItem="caa-eS-OHt" secondAttribute="width" multiplier="240:400" id="Ki7-aY-HvW"/>
                             <constraint firstItem="Km9-wQ-3uz" firstAttribute="top" secondItem="I5Z-OM-lHk" secondAttribute="bottom" id="UrF-YP-2yM"/>
                             <constraint firstItem="QxN-au-5tS" firstAttribute="top" secondItem="e8a-hc-9ZE" secondAttribute="bottom" constant="42" id="VRQ-gF-qCD"/>
-                            <constraint firstItem="frz-nd-CaD" firstAttribute="height" secondItem="QxN-au-5tS" secondAttribute="height" id="Vey-Pu-UHk"/>
+                            <constraint firstItem="frz-nd-CaD" firstAttribute="leading" secondItem="caa-eS-OHt" secondAttribute="leadingMargin" id="cJF-Q1-gWQ"/>
+                            <constraint firstItem="frz-nd-CaD" firstAttribute="top" secondItem="QxN-au-5tS" secondAttribute="bottom" constant="17" id="hEN-SP-gIP"/>
                             <constraint firstItem="I5Z-OM-lHk" firstAttribute="height" secondItem="caa-eS-OHt" secondAttribute="height" multiplier="46:812" id="ihR-84-Cce"/>
                             <constraint firstAttribute="trailing" secondItem="I5Z-OM-lHk" secondAttribute="trailing" id="kzY-Bo-gqO"/>
-                            <constraint firstItem="frz-nd-CaD" firstAttribute="top" secondItem="QxN-au-5tS" secondAttribute="top" id="prJ-WV-IYR"/>
+                            <constraint firstItem="frz-nd-CaD" firstAttribute="height" secondItem="caa-eS-OHt" secondAttribute="height" multiplier="370:812" id="l6x-8Q-rMr"/>
                             <constraint firstItem="QxN-au-5tS" firstAttribute="leading" secondItem="caa-eS-OHt" secondAttribute="leading" constant="16" id="wYp-X0-5xz"/>
                         </constraints>
                     </view>
@@ -1341,18 +1344,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LjH-FC-PWK">
-                            <size key="itemSize" width="140" height="127"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="LjH-FC-PWK">
+                            <size key="itemSize" width="122" height="122"/>
                             <size key="headerReferenceSize" width="50" height="225"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="xtH-e5-4zb" customClass="pictureCell" customModule="Instagram" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="225" width="125" height="125"/>
+                                <rect key="frame" x="0.0" y="225" width="122" height="122"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="122" height="122"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pbg" translatesAutoresizingMaskIntoConstraints="NO" id="Pt1-BI-CuF">
@@ -1362,7 +1365,6 @@
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <size key="customSize" width="125" height="125"/>
                                 <connections>
                                     <outlet property="picImg" destination="Pt1-BI-CuF" id="ral-th-0Fe"/>
                                 </connections>

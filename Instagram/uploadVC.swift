@@ -7,13 +7,15 @@
 //
 
 import UIKit
+import Parse
 
-class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate {
 
     @IBOutlet weak var picImg: UIImageView!
     
     @IBOutlet weak var titleTxt: UITextView!
-
+    {didSet{self.titleTxt.delegate = self}}
+    
     @IBOutlet weak var publishBtn: UIButton!
     
     override func viewDidLoad() {
@@ -27,21 +29,104 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         
          // select image tap
         tapToSelectImg()
+        
+        //set text view layer
+        setTextViewLayer()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+  // clicked publish button
+    @IBAction func publishBtn_clicked(_ sender: Any) {
+        
+        // dissmiss keyboard
+        self.view.endEditing(true)
+        
+        // send data to server to "posts" class in Parse
+        let object = PFObject(className: "posts")
+        object["username"] = PFUser.current()!.username
+        object["ava"] = PFUser.current()!.value(forKey: "ava") as! PFFile
+        
+        let uuid = UUID().uuidString
+        object["uuid"] = "\(PFUser.current()!.username!) \(uuid)"
+        
+        if titleTxt.text.isEmpty {
+            object["title"] = ""
+        } else {
+            object["title"] = titleTxt.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        }
+      
+// send pic to server after converting to FILE and comprassion
+  let imageData = UIImageJPEGRepresentation(picImg.image!, 0.5)
+        let imageFile = PFFile(name: "post.jpg", data: imageData!)
+        object["pic"] = imageFile
+        
+        
+// send #hashtag to server
+        let words:[String] = titleTxt.text!.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+        
+        // define taged word
+        for var word in words {
+            
+            // save #hasthag in server
+            if word.hasPrefix("#") {
+                
+                // cut symbold
+                word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
+                word = word.trimmingCharacters(in: CharacterSet.symbols)
+                
+                let hashtagObj = PFObject(className: "hashtags")
+                hashtagObj["to"] = "\(PFUser.current()!.username!) \(uuid)"
+                hashtagObj["by"] = PFUser.current()?.username
+                hashtagObj["hashtag"] = word.lowercased()
+                hashtagObj["comment"] = titleTxt.text
+                hashtagObj.saveInBackground(block: { (success, error) -> Void in
+                    if success {
+                        print("hashtag \(word) is created")
+                    } else {
+                        print(error!.localizedDescription)
+                    }
+                })
+            }
+        }
+        
+    // finally save information
+ object.saveInBackground (block: { (success, error)  in
+    if error == nil {
+                
+        // send notification wiht name "uploaded"
+    NotificationCenter.default.post(name: Notification.Name(rawValue: "uploaded"), object: nil)
+                
+    // switch to another ViewController at 0 index of tabbar
+    self.tabBarController!.selectedIndex = 1
+                
+        // reset everything
+    self.viewDidLoad()
+self.titleTxt.text = ""
+            }
+        })
+    }
 }// uploadVC class over line
 
 // custom functions
 extension uploadVC{
+    
+    // set text view layer
+  fileprivate func setTextViewLayer(){
+    
+  self.titleTxt.layer.borderColor = UIColor.black.cgColor
+  self.titleTxt.layer.cornerRadius = 0
+  self.titleTxt.layer.borderWidth = 1
+  self.titleTxt.backgroundColor = UIColor.white
+    }
 
    // init publichBtn
 fileprivate func initPublishBtn(){
     self.publishBtn.isEnabled = false
-    self.publishBtn.backgroundColor = UIColor.red
+    self.publishBtn.backgroundColor = UIColor.purple
 }
     
     // hide kyeboard tap
@@ -78,10 +163,10 @@ fileprivate func tapToHideKyeboard(){
   @objc fileprivate func zoomImg() {
     
     // define frame of zoomed image
-    let zoomed = CGRect(x: 0, y: self.view.center.y - self.view.center.x - self.tabBarController!.tabBar.frame.size.height * 1.5, width: self.view.frame.size.width, height: self.view.frame.size.width)
+    let zoomed = CGRect(x: 0, y: self.view.center.y - UIScreen.main.bounds.size.width / 2, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
     
     // frame of unzoomed (small) image
-    let unzoomed = CGRect(x: 15, y: 15, width: self.view.frame.size.width / 4.5, height: self.view.frame.size.width / 4.5)
+    let unzoomed = CGRect(x: 16, y: 130, width: 82, height: 82)
     
     // if picture is unzoomed, zoom it
     if picImg.frame == unzoomed {
@@ -133,7 +218,15 @@ extension uploadVC{
     
 }
 
-
+// text view --delegate
+extension uploadVC{
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        self.titleTxt.resignFirstResponder()
+        return true
+    }
+}
 
 
 

@@ -117,7 +117,8 @@ fileprivate func createObserver(){
    
     //load post func
     fileprivate func loadPosts(){
-    
+     
+        // request infomration from server
         let query = PFQuery(className: "posts")
         
         query.whereKey("username", equalTo: (PFUser.current()?.username)!)
