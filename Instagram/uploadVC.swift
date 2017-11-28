@@ -115,6 +115,11 @@ self.titleTxt.text = ""
             }
         })
     }
+    
+    
+    @IBAction func removeBtn_clicked(_ sender: Any) {
+    self.viewDidLoad()
+    }    
 }// uploadVC class over line
 
 // custom functions

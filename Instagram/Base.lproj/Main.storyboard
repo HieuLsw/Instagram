@@ -1314,7 +1314,7 @@
                                                         <rect key="frame" x="0.0" y="46" width="241" height="36"/>
                                                         <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
-                                                        <state key="normal" title="Reset">
+                                                        <state key="normal" title="RESET">
                                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </state>
                                                         <userDefinedRuntimeAttributes>
@@ -1328,6 +1328,9 @@
                                                                 <real key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="removeBtn_clicked:" destination="mMz-YM-p7v" eventType="touchUpInside" id="SGy-ej-nps"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
