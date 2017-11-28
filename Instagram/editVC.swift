@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate,UITextViewDelegate {
+class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextFieldDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
         
@@ -25,7 +25,6 @@ class editVC: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource,UIIma
     {didSet{self.webTxt.delegate = self}}
     
     @IBOutlet weak var bioTxt: UITextView!
-        {didSet{self.bioTxt.delegate = self}}
     
     @IBOutlet weak var emailTxt: UITextField_Attributes!
     {didSet{self.emailTxt.delegate = self}}
@@ -72,6 +71,9 @@ var genderPicker : UIPickerView!
         
         // call information function
         information()
+        
+        // add done button above keyboard
+        addDoneButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -270,6 +272,21 @@ extension editVC{
         alert.addAction(ok)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    // add done button above keyboard
+    fileprivate func addDoneButton(){
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideKeyboard))
+        
+        toolBar.setItems([flexibleSpace,doneButton], animated: true)
+        
+        self.bioTxt.inputAccessoryView = toolBar
+    }
 }
 
 //pick view --data source
@@ -313,16 +330,6 @@ extension editVC{
         
         avaImg.image = info[UIImagePickerControllerEditedImage] as? UIImage
         self.dismiss(animated: true, completion: nil)
-    }
-}
-
-//text view --delegate
-extension editVC{
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        self.bioTxt.resignFirstResponder()
-        return true
     }
 }
 

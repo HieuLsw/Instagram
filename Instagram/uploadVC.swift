@@ -9,12 +9,11 @@
 import UIKit
 import Parse
 
-class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITextViewDelegate {
+class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
 
     @IBOutlet weak var picImg: UIImageView!
     
     @IBOutlet weak var titleTxt: UITextView!
-    {didSet{self.titleTxt.delegate = self}}
     
     @IBOutlet weak var publishBtn: UIButton!
     
@@ -32,6 +31,9 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         
         //set text view layer
         setTextViewLayer()
+        
+        // add done button above keyboard
+         addDoneButton()
     }
 
     override func didReceiveMemoryWarning() {
@@ -195,6 +197,21 @@ fileprivate func tapToHideKyeboard(){
     }
  
     }
+    
+    // add done button above keyboard
+    fileprivate func addDoneButton(){
+        
+         let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideKeyboardTap))
+        
+        toolBar.setItems([flexibleSpace,doneButton], animated: true)
+        
+        self.titleTxt.inputAccessoryView = toolBar
+    }
 }
 
 //image picker --delegate
@@ -218,15 +235,7 @@ extension uploadVC{
     
 }
 
-// text view --delegate
-extension uploadVC{
-    
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        
-        self.titleTxt.resignFirstResponder()
-        return true
-    }
-}
+
 
 
 
