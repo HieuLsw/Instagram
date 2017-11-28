@@ -33,6 +33,9 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         // hide kyeboard tap
         tapToHideKyeboard()
         
+        // set image view layer
+       setImageViewLayer()
+        
          // select image tap
         tapToSelectImg()
         
@@ -115,6 +118,7 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         // reset everything
     self.viewDidLoad()
 self.titleTxt.text = ""
+self.picImg.image = nil
             }
         })
     }
@@ -122,6 +126,7 @@ self.titleTxt.text = ""
     
     @IBAction func removeBtn_clicked(_ sender: Any) {
     self.viewDidLoad()
+    picImg.image = nil
     }    
 }// uploadVC class over line
 
@@ -136,6 +141,12 @@ extension uploadVC{
   self.titleTxt.layer.borderWidth = 1
   self.titleTxt.backgroundColor = UIColor.white
   
+    }
+    
+    // set image view layer
+    fileprivate func setImageViewLayer(){
+        
+        self.picImg.backgroundColor = #colorLiteral(red: 1, green: 0.8550000191, blue: 0.7250000238, alpha: 1)
     }
 
    // init publichBtn
@@ -193,7 +204,8 @@ fileprivate func tapToHideKyeboard(){
             // hide objects from background
             self.viewAboveScrollView.backgroundColor = .black
             self.titleTxt.alpha = 0
-            self.publishBtn.alpha = 0
+            //self.publishBtn.alpha = 0
+            self.publishBtn.isHidden = true
             self.removeBtn.alpha = 0
         })
     }else{
@@ -204,9 +216,12 @@ fileprivate func tapToHideKyeboard(){
             
             // unhide objects from background
             self.viewAboveScrollView.backgroundColor = .white
+            
             self.titleTxt.alpha = 1
-            self.publishBtn.alpha = 1
-            self.publishBtn.backgroundColor = UIColor.green
+            
+            //self.publishBtn.alpha = 1
+            self.publishBtn.isHidden = false
+            self.publishBtn.backgroundColor = UIColor(hex: "8EFA00")
             self.removeBtn.alpha = 1
         })
         scrollView.scrollsToTop = true
@@ -239,7 +254,7 @@ extension uploadVC{
         
     // enable publish btn
        publishBtn.isEnabled = true
-        publishBtn.backgroundColor = UIColor(red: 52.0/255.0, green: 169.0/255.0, blue: 255.0/255.0, alpha: 1)
+        publishBtn.backgroundColor = UIColor(hex: "8EFA00")
         
     // implement second tap for zooming image
         let zoomTap = UITapGestureRecognizer(target: self, action: #selector(uploadVC.zoomImg))

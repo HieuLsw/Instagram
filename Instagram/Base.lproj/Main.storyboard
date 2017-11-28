@@ -1291,7 +1291,7 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I5Z-OM-lHk" customClass="UIButton_Attributes" customModule="Instagram" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="241" height="36"/>
-                                                        <color key="backgroundColor" red="0.5568627451" green="0.2666666667" blue="0.67843137249999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="backgroundColor" red="0.55686274509803924" green="0.98039215686274506" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
                                                         <state key="normal" title="PUBLISH">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
