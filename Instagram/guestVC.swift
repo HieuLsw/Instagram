@@ -173,7 +173,7 @@ self.navigationController?.pushViewController(followings, animated: true)
             page = page + 12
             // load more posts
             let query = PFQuery(className: "posts")
-            query.whereKey("username", equalTo: (PFUser.current()!.username)!)
+            query.whereKey("username", equalTo: (guestName.last)!)
             query.limit = page
             query.findObjectsInBackground(block: { (objects, error) in
                 if error == nil {

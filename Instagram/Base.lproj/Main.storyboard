@@ -794,11 +794,12 @@
                                         <constraint firstAttribute="height" constant="82" id="qWQ-zm-o7M"/>
                                     </constraints>
                                 </imageView>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="www.bobby.com" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XOr-Ou-Az4">
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="www.bobby.com" translatesAutoresizingMaskIntoConstraints="NO" id="XOr-Ou-Az4">
                                     <rect key="frame" x="0.0" y="136" width="375" height="24"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                 </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bobby Brown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZZ-wm-qd4">
                                     <rect key="frame" x="4" y="112" width="371" height="21"/>
@@ -1445,11 +1446,12 @@
                                         <constraint firstAttribute="width" constant="82" id="oeX-xk-YyN"/>
                                     </constraints>
                                 </imageView>
-                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="www.bobby.com" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLX-Wt-YNz">
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="www.bobby.com" translatesAutoresizingMaskIntoConstraints="NO" id="OLX-Wt-YNz">
                                     <rect key="frame" x="0.0" y="136" width="375" height="24"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                 </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bobby Brown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lh8-nA-p1P">
                                     <rect key="frame" x="4" y="112" width="371" height="21"/>
