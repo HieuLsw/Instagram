@@ -734,6 +734,7 @@
         <scene sceneID="PSJ-tX-Agf">
             <objects>
                 <tabBarController storyboardIdentifier="tabBar" id="nmI-NW-gMy" sceneMemberID="viewController">
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Hh6-hq-zXi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1089,7 +1090,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="black" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="iK7-x8-fUy">
-                                                <rect key="frame" x="8" y="236" width="359" height="85"/>
+                                                <rect key="frame" x="10" y="236" width="355" height="85"/>
                                                 <color key="backgroundColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="85" id="M6N-hu-HPF"/>
@@ -1101,7 +1102,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="yeI-a5-0CV" secondAttribute="trailing" constant="8" id="1mC-Kn-SFJ"/>
-                                            <constraint firstItem="iK7-x8-fUy" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="2eC-2E-gLm"/>
+                                            <constraint firstItem="iK7-x8-fUy" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="10" id="2eC-2E-gLm"/>
                                             <constraint firstItem="mgq-5r-vx0" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="3MN-o6-Wo3"/>
                                             <constraint firstAttribute="trailing" secondItem="yFW-Ku-yQY" secondAttribute="trailing" constant="8" id="3vw-iQ-WLZ"/>
                                             <constraint firstItem="rdM-Zo-bs4" firstAttribute="top" secondItem="PJ2-g9-BuN" secondAttribute="bottom" constant="24" id="6YQ-6O-eK4"/>
@@ -1113,7 +1114,7 @@
                                             <constraint firstItem="IzR-RJ-LXa" firstAttribute="bottom" secondItem="7JE-F6-SB0" secondAttribute="bottom" id="NOH-P8-OTc"/>
                                             <constraint firstItem="mgq-5r-vx0" firstAttribute="top" secondItem="yeI-a5-0CV" secondAttribute="bottom" constant="23" id="Nje-14-Z5b"/>
                                             <constraint firstItem="d0h-n6-LEV" firstAttribute="leading" secondItem="03l-DS-2gP" secondAttribute="leading" constant="8" id="PqD-Ia-pri"/>
-                                            <constraint firstAttribute="trailing" secondItem="iK7-x8-fUy" secondAttribute="trailing" constant="8" id="SUn-6s-0Np"/>
+                                            <constraint firstAttribute="trailing" secondItem="iK7-x8-fUy" secondAttribute="trailing" constant="10" id="SUn-6s-0Np"/>
                                             <constraint firstItem="d0h-n6-LEV" firstAttribute="top" secondItem="03l-DS-2gP" secondAttribute="top" constant="70" id="XGj-y6-KHF"/>
                                             <constraint firstAttribute="height" constant="880" id="ZBd-tY-LKB"/>
                                             <constraint firstItem="IzR-RJ-LXa" firstAttribute="top" secondItem="d0h-n6-LEV" secondAttribute="top" id="aHf-0p-UFY"/>
@@ -1252,7 +1253,7 @@
             </objects>
             <point key="canvasLocation" x="5286" y="2034"/>
         </scene>
-        <!--UploadVC-->
+        <!--Upload-->
         <scene sceneID="4eg-mm-FnA">
             <objects>
                 <viewController id="mMz-YM-p7v" customClass="uploadVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
@@ -1368,7 +1369,7 @@
                             <constraint firstAttribute="trailing" secondItem="Zkv-tU-agR" secondAttribute="trailing" id="f32-Xh-wDn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="uuJ-i3-NNm"/>
+                    <navigationItem key="navigationItem" title="Upload" id="uuJ-i3-NNm"/>
                     <connections>
                         <outlet property="picImg" destination="QxN-au-5tS" id="oNi-go-z9q"/>
                         <outlet property="publishBtn" destination="I5Z-OM-lHk" id="ftm-Xs-W9L"/>
@@ -1385,7 +1386,7 @@
         <!--home-->
         <scene sceneID="jPN-fg-0e3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dY1-NC-p1n" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dY1-NC-p1n" customClass="navVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="home" image="home" id="vV9-gu-Ec8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4sb-ga-6EK">

@@ -13,7 +13,8 @@ class navVC: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+      //set navigation bar attributes
+        setNavBarAtrributes()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,11 +36,11 @@ extension navVC{
         self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         
         // color of buttons in nav controller
-        self.navigationBar.tintColor = .white
+        self.navigationBar.tintColor = UIColor.white
         
         // color of background of nav controller
-        self.navigationBar.barTintColor = #colorLiteral(red: 1, green: 0.8550000191, blue: 0.7250000238, alpha: 1)
-        
+       // self.navigationBar.barTintColor #colorLiteral(red: 0.1920000017, green: 0.275000006, blue: 0.5059999824, alpha: 1)
+        self.navigationBar.barTintColor = #colorLiteral(red: 0.1920000017, green: 0.275000006, blue: 0.5059999824, alpha: 1)
         // disable translucent
         self.navigationBar.isTranslucent = false
     }
