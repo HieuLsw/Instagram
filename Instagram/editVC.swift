@@ -202,7 +202,7 @@ extension editVC{
         keyboard = ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue)!
         
         // move up with animation
-        UIView.animate(withDuration: 0.4, animations: { () -> Void in
+        UIView.animate(withDuration: 0.4, animations: { [unowned self] in
             self.scrollView.contentSize.height = self.view.frame.size.height + self.keyboard.height / 2
         })
     }
@@ -212,7 +212,7 @@ extension editVC{
  @objc fileprivate func keyboardWillHide(_ notification: Notification) {
         
         // move down with animation
-        UIView.animate(withDuration: 0.4, animations: { () -> Void in
+        UIView.animate(withDuration: 0.4, animations: {[unowned self] in
             self.scrollView.contentSize.height = 0
         })
     }

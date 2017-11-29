@@ -17,7 +17,7 @@ class followersCell: UITableViewCell {
     
     @IBOutlet weak var followBtn: UIButton!
     
-    
+    @IBOutlet weak var imagUIView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -83,10 +83,15 @@ object.deleteInBackground(block: { (success, error) in
 extension followersCell{
     
     fileprivate func setImgLayer(){
-avaImg.layer.cornerRadius = avaImg.bounds.size.width / 2
-avaImg.layer.borderWidth = 0.01
+ avaImg.layer.cornerRadius = avaImg.bounds.size.width / 2
+ avaImg.layer.borderWidth = 2
  avaImg.layer.borderColor = UIColor.white.cgColor
  avaImg.clipsToBounds = true
+        
+    imagUIView.layer.cornerRadius = self.imagUIView.bounds.size.width / 2
+    imagUIView.layer.borderWidth = 2
+    imagUIView.layer.borderColor = UIColor.black.cgColor
+    imagUIView.clipsToBounds = true
     }
     
 }

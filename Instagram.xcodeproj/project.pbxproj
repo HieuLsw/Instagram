@@ -205,8 +205,8 @@
 				A54A35981FC27255002DD885 /* Themes.xcassets */,
 				A5C177AD1F680C1D008D93AC /* LaunchScreen.storyboard */,
 				A5C177B01F680C1D008D93AC /* Info.plist */,
-				A526D57F1FC7DCFA00B41468 /* navVC.swift */,
 				A588A6BD1FC58F8E0083AAEC /* Login Part */,
+				A5FD76321FCECC87007355BF /* Tab bar item navigation */,
 				A5FD76291FCBEA2F007355BF /* Upload Part */,
 				A588A6BE1FC58FE50083AAEC /* Home Page Part */,
 				A588A6BF1FC58FFD0083AAEC /* Follower Page Part */,
@@ -251,6 +251,14 @@
 				A5FD762A1FCBEA59007355BF /* uploadVC.swift */,
 			);
 			name = "Upload Part";
+			sourceTree = "<group>";
+		};
+		A5FD76321FCECC87007355BF /* Tab bar item navigation */ = {
+			isa = PBXGroup;
+			children = (
+				A526D57F1FC7DCFA00B41468 /* navVC.swift */,
+			);
+			name = "Tab bar item navigation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

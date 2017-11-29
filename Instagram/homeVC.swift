@@ -66,7 +66,7 @@ loadPosts()
     UserDefaults.standard.removeObject(forKey: "username")
 UserDefaults.standard.synchronize()
         
- let appDelegate : AppDelegate = UIApplication.shared.delegate as! AppDelegate
+ let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window?.rootViewController = signIn
             }
       }
@@ -140,15 +140,12 @@ self.uuidArray = objects!.map{$0.value(forKey: "uuid") as! String}
                 print(error!.localizedDescription)
             }
         }
-        
     }
     
     // reloading func after received notification
  @objc fileprivate func reload(_ notification:Notification) {
         collectionView?.reloadData()
     }
-    
-    
 }
 
 
@@ -180,11 +177,17 @@ extension homeVC {
 //collection view delegate
 extension homeVC{
     
+    // cell size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        let size = CGSize(width: self.view.frame.size.width / 3, height: self.view.frame.size.width / 3)
+        return size
+    }
+    
     //header config
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
        //get header
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! headerView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! headerView
         
         
         //STEP 1. Fetch user data
@@ -203,6 +206,7 @@ extension homeVC{
         avaQuery.getDataInBackground { (data, error) in
             header.avaImg.image = UIImage(data: data!)
         }
+        
         header.button.setTitle("edit profile", for: .normal)
         
         
@@ -218,8 +222,8 @@ extension homeVC{
         }
         
         //count total followers
-        let followers = PFQuery(className: "followers")
-        followers.whereKey("follower", equalTo: (PFUser.current()?.username)!)
+        let followers = PFQuery(className: "follow")
+        followers.whereKey("following", equalTo: (PFUser.current()?.username)!)
         followers.countObjectsInBackground { (count, error) in
             if error == nil{
               header.followers.text = "\(count)"
@@ -227,8 +231,8 @@ extension homeVC{
         }
         
         //count total following
-        let followings = PFQuery(className: "followings")
-        followings.whereKey("following", equalTo: (PFUser.current()?.username)!)
+        let followings = PFQuery(className: "follow")
+        followings.whereKey("follower", equalTo: (PFUser.current()?.username)!)
         followings.countObjectsInBackground { (count, error) in
             if error == nil{
                 header.followings.text = "\(count)"
@@ -289,7 +293,7 @@ extension homeVC{
 let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
     
 //present
- navigationController?.show(followers, sender: nil)
+ navigationController?.pushViewController(followers, animated: true)
     }
   
     //taped following label
@@ -299,10 +303,10 @@ varUser = (PFUser.current()?.username)!
 varShow = "followings"
  
 //make references to followersVC
-let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+let followings = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
         
 //present
-navigationController?.show(followers, sender: nil)
+navigationController?.pushViewController(followings, animated: true)
     }
     
      fileprivate func loadMore(){

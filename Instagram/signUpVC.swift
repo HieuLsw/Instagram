@@ -175,13 +175,16 @@ extension signUpVC{
 extension signUpVC{
     
  fileprivate func setScrollArea(){
+    
         //scrollview scroll area
         scrollArea.constant = 900
     }
     
   fileprivate  func setAvaImgLayer(){
+    
         //round ava
         avaImg.layer.cornerRadius = avaImg.frame.size.width / 2
+    
         //clip image
         avaImg.clipsToBounds = true
     
@@ -202,8 +205,6 @@ _ = [usernameTxt,passwordTxt,repeat_passwordTxt,fullnameTxt,bioTxt,webTxt,emailT
     
     //control sign up button isEnable
    @objc fileprivate func signUpIsEnable(sender: UITextField){
-   
-      //sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
     
     signUpBtn.isEnabled = !((usernameTxt.text?.isEmpty)!) && !((passwordTxt.text?.isEmpty)!) && !((repeat_passwordTxt.text?.isEmpty)!) && !((emailTxt.text?.isEmpty)!) && !((fullnameTxt.text?.isEmpty)!) && !((bioTxt.text?.isEmpty)!) && !((webTxt.text?.isEmpty)!)
     

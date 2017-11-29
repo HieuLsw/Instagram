@@ -11,22 +11,14 @@ import UIKit
 
 
 @IBDesignable
-class UIButton_Attributes: UIButton {
-    
- 
- 
-   
-    
-    
-}
-
+class UIButton_Attributes: UIButton {}
 
 //UIButton
 extension UIButton {
     
 //can get gradient color in default loaction or actual loacation
     func applyGradient(colours: [UIColor], locations: [NSNumber]? = nil, stP:CGPoint, edP:CGPoint){
-        let gradient: CAGradientLayer = CAGradientLayer()
+        let gradient = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = colours.map { $0.cgColor }
         gradient.locations = locations

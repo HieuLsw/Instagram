@@ -30,7 +30,6 @@ class headerView: UICollectionReusableView {
     @IBOutlet weak var followingsTitle: UILabel!
     
     @IBOutlet weak var button: UIButton!
- 
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -120,9 +119,10 @@ extension headerView{
     
     //set image layer
     fileprivate func setImgLayer(){
+        
        avaImg.layer.cornerRadius = self.avaImg.bounds.size.width / 2
         avaImg.layer.borderWidth = 0.01
-        avaImg.layer.borderColor = UIColor.white.cgColor
+        avaImg.layer.borderColor = UIColor.clear.cgColor
         avaImg.clipsToBounds = true
     }
 }

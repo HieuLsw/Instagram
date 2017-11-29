@@ -222,10 +222,16 @@ picArray[indexPath.row].getDataInBackground { (data, error) in
 //collection view --delegate
 extension guestVC{
     
+    // cell size
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        let size = CGSize(width: self.view.frame.size.width / 3, height: self.view.frame.size.width / 3)
+        return size
+    }
+
    //header config
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as! headerView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! headerView
         
         //STEP 1. Load data of guest
         let infoQuery = PFQuery(className: "_User")
@@ -253,8 +259,7 @@ extension guestVC{
         }
             }
     else{print(error!.localizedDescription)}
-        
-        }
+       }
         
     // STEP 2. Show do current user follow guest or do not
         let followQuery = PFQuery(className: "follow")

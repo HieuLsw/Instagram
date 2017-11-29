@@ -165,7 +165,8 @@ signInBtnHeight.constant = 0
             
       //Checking if the textfield is really hidden behind the keyboard
         if editingTextField > keyboardY - 60{
-            UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:
+                {[unowned self] in
                 self.view.frame = CGRect(x: 0.0, y: self.view.frame.origin.y - (editingTextField - (keyboardY - 60)), width: self.view.bounds.size.width, height: self.view.bounds.size.height)
             }, completion: nil)
         }
@@ -173,7 +174,8 @@ signInBtnHeight.constant = 0
         
 }
     @objc fileprivate func keyboardWillHide(argu: Notification){
-        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:
+            {[unowned self] in
             self.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
         }, completion: nil)
     }

@@ -45,6 +45,7 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
+        
         emailTxt.becomeFirstResponder()
         
         //create observers

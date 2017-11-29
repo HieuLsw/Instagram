@@ -39,8 +39,8 @@ extension navVC{
         self.navigationBar.tintColor = UIColor.white
         
         // color of background of nav controller
-       // self.navigationBar.barTintColor #colorLiteral(red: 0.1920000017, green: 0.275000006, blue: 0.5059999824, alpha: 1)
         self.navigationBar.barTintColor = #colorLiteral(red: 0.1920000017, green: 0.275000006, blue: 0.5059999824, alpha: 1)
+        
         // disable translucent
         self.navigationBar.isTranslucent = false
     }

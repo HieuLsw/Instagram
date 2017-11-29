@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 extension UITextView: UITextViewDelegate{
    
     override open var bounds: CGRect {
@@ -17,7 +16,7 @@ extension UITextView: UITextViewDelegate{
         }
     }
     
-    public var placeholder: String? {
+     var placeholder: String? {
         get {
             var placeholderText: String?
             

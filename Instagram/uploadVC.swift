@@ -49,6 +49,21 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
          textViewPlacehold()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(true)
+        //create observers
+createObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(true)
+        
+        //delete observers
+deleteObservers()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -192,7 +207,7 @@ fileprivate func tapToHideKyeboard(){
   @objc fileprivate func zoomImg() {
     
     // define frame of zoomed image
-    let zoomed = CGRect(x: 0, y: self.view.center.y - UIScreen.main.bounds.size.width / 2, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
+    let zoomed = CGRect(x: 0, y: self.view.center.y - UIScreen.main.bounds.size.width, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
     
     // frame of unzoomed (small) image
     let unzoomed = CGRect(x: 16, y: 54, width: 82, height: 82)
@@ -201,6 +216,7 @@ fileprivate func tapToHideKyeboard(){
     if picImg.frame == unzoomed {
     
         UIView.animate(withDuration: 0.3, animations: {
+            [unowned self] in
             // resize image frame
             self.picImg.frame = zoomed
             
@@ -214,6 +230,8 @@ fileprivate func tapToHideKyeboard(){
     }else{
         
         UIView.animate(withDuration: 0.3, animations: {
+            [unowned self] in
+            
             // resize image frame
             self.picImg.frame = unzoomed
             
@@ -227,7 +245,6 @@ fileprivate func tapToHideKyeboard(){
             self.publishBtn.backgroundColor = UIColor(hex: "8EFA00")
             self.removeBtn.alpha = 1
         })
-        scrollView.scrollsToTop = true
     }
   }
     
@@ -251,6 +268,38 @@ fileprivate func tapToHideKyeboard(){
     titleTxt.placeholder = "Write something..."
     }
     
+    //create observers
+    fileprivate func createObservers(){
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    //delete observers
+    fileprivate func deleteObservers(){
+     
+      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    @objc func adjustForKeyboard(notification: Notification) {
+        
+        let userInfo = notification.userInfo!
+        
+        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        
+        if notification.name == Notification.Name.UIKeyboardWillHide {
+            titleTxt.contentInset = UIEdgeInsets.zero
+        } else {
+            titleTxt.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+        }
+        
+        titleTxt.scrollIndicatorInsets = titleTxt.contentInset
+        
+        let selectedRange = titleTxt.selectedRange
+        titleTxt.scrollRangeToVisible(selectedRange)
+    }
 }
 
 //image picker --delegate
