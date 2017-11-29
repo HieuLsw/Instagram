@@ -46,6 +46,7 @@
 		A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEB2831FC5E2AA002CB038 /* guestVC.swift */; };
 		A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD76271FCAB6BD007355BF /* Regex.swift */; };
 		A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762A1FCBEA59007355BF /* uploadVC.swift */; };
+		A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,6 +91,7 @@
 		A5EEB2831FC5E2AA002CB038 /* guestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
 		A5FD76271FCAB6BD007355BF /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		A5FD762A1FCBEA59007355BF /* uploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadVC.swift; sourceTree = "<group>"; };
+		A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,11 +128,12 @@
 		A549C1541F6AC77F00207D42 /* User Defined Attributes */ = {
 			isa = PBXGroup;
 			children = (
-				A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */,
-				A503D8301F8F08880023D232 /* UIView_Attributes.swift */,
-				A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */,
 				A51826871FA091AA005B50D0 /* HexColor.swift */,
 				A5FD76271FCAB6BD007355BF /* Regex.swift */,
+				A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */,
+				A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */,
+				A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */,
+				A503D8301F8F08880023D232 /* UIView_Attributes.swift */,
 			);
 			name = "User Defined Attributes";
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */,
 				A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */,
 				A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */,
+				A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */,
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,
 				A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,

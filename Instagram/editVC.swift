@@ -57,23 +57,26 @@ var genderPicker : UIPickerView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //set views layer
-        setLayer()
+    //set views layer
+    setLayer()
         
-        //declare UIPickerView instance and properities
-        setPickInstance()
+    //declare UIPickerView instance and properities
+    setPickInstance()
         
-        //set up observers
-        createObservers()
+    //set up observers
+    createObservers()
         
-        //some taps
-        setTapGestures()
+    //some taps
+    setTapGestures()
         
-        // call information function
-        information()
+    // call information function
+    information()
         
-        // add done button above keyboard
-        addDoneButton()
+    // add done button above keyboard
+    addDoneButton()
+        
+    // set text view placehold
+    setTextViewPlacehold()
     }
 
     override func didReceiveMemoryWarning() {
@@ -287,6 +290,12 @@ extension editVC{
         
         self.bioTxt.inputAccessoryView = toolBar
     }
+    
+    // set text view placehold
+    fileprivate func setTextViewPlacehold(){
+        
+        bioTxt.placeholder = "Write something..."
+    }
 }
 
 //pick view --data source
@@ -307,8 +316,6 @@ extension editVC{
         
         return genders[row]
     }
-    
-    
 }
 
 //pick view --delegate

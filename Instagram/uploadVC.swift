@@ -27,23 +27,26 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // init publichBtn
+    // init publichBtn
         initPublishBtn()
         
-        // hide kyeboard tap
+    // hide kyeboard tap
         tapToHideKyeboard()
         
-        // set image view layer
+    // set image view layer
        setImageViewLayer()
         
-         // select image tap
+    // select image tap
         tapToSelectImg()
         
-        //set text view layer
+    //set text view layer
         setTextViewLayer()
         
-        // add done button above keyboard
+    // add done button above keyboard
          addDoneButton()
+        
+    //add placehold to text view
+         textViewPlacehold()
     }
 
     override func didReceiveMemoryWarning() {
@@ -242,6 +245,12 @@ fileprivate func tapToHideKyeboard(){
         
         self.titleTxt.inputAccessoryView = toolBar
     }
+    
+    //add placehold to text view
+    fileprivate func textViewPlacehold(){
+    titleTxt.placeholder = "Write something..."
+    }
+    
 }
 
 //image picker --delegate
