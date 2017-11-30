@@ -773,7 +773,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="122" height="122"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pbg" translatesAutoresizingMaskIntoConstraints="NO" id="NvK-lp-VIb">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NvK-lp-VIb">
                                             <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" name="BarColor"/>
@@ -1437,7 +1437,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="122" height="122"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pbg" translatesAutoresizingMaskIntoConstraints="NO" id="Pt1-BI-CuF">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pt1-BI-CuF">
                                             <rect key="frame" x="0.0" y="0.0" width="125" height="125"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <color key="tintColor" name="BarColor"/>
@@ -1655,7 +1655,7 @@
         <image name="gear" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
         <image name="logo.svg" width="2000" height="714"/>
-        <image name="pbg" width="200" height="200"/>
+        <image name="pbg" width="512" height="512"/>
         <image name="profile" width="683" height="616"/>
         <image name="upload" width="42" height="42"/>
         <namedColor name="BarColor">

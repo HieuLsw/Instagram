@@ -144,7 +144,6 @@ self.picImg.image = nil
     
     @IBAction func removeBtn_clicked(_ sender: Any) {
     self.viewDidLoad()
-    picImg.image = nil
     }    
 }// uploadVC class over line
 
@@ -163,8 +162,11 @@ extension uploadVC{
     
     // set image view layer
     fileprivate func setImageViewLayer(){
-        
+        self.picImg.image = #imageLiteral(resourceName: "pbg")
         self.picImg.backgroundColor = #colorLiteral(red: 1, green: 0.8550000191, blue: 0.7250000238, alpha: 1)
+        self.picImg.layer.cornerRadius = 7
+        self.picImg.layer.borderWidth = 0
+        self.picImg.clipsToBounds = true
     }
 
    // init publichBtn
@@ -207,31 +209,29 @@ fileprivate func tapToHideKyeboard(){
   @objc fileprivate func zoomImg() {
     
     // define frame of zoomed image
-    let zoomed = CGRect(x: 0, y: self.view.center.y - UIScreen.main.bounds.size.width, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
+    let zoomed = CGRect(x: 0, y: self.view.center.y - UIScreen.main.bounds.size.width / 1.2, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
     
     // frame of unzoomed (small) image
-    let unzoomed = CGRect(x: 16, y: 54, width: 82, height: 82)
+    let unzoomed = CGRect(x: 16, y: 54, width: 90, height: 90)
     
     // if picture is unzoomed, zoom it
     if picImg.frame == unzoomed {
-    
-        UIView.animate(withDuration: 0.3, animations: {
-            [unowned self] in
+        
+        UIView.animate(withDuration: 0.3){
+           [unowned self] in
             // resize image frame
             self.picImg.frame = zoomed
             
             // hide objects from background
             self.viewAboveScrollView.backgroundColor = .black
             self.titleTxt.alpha = 0
-            //self.publishBtn.alpha = 0
             self.publishBtn.isHidden = true
             self.removeBtn.alpha = 0
-        })
+        }
     }else{
         
-        UIView.animate(withDuration: 0.3, animations: {
+        UIView.animate(withDuration: 0.3){
             [unowned self] in
-            
             // resize image frame
             self.picImg.frame = unzoomed
             
@@ -240,11 +240,10 @@ fileprivate func tapToHideKyeboard(){
             
             self.titleTxt.alpha = 1
             
-            //self.publishBtn.alpha = 1
             self.publishBtn.isHidden = false
             self.publishBtn.backgroundColor = UIColor(hex: "8EFA00")
             self.removeBtn.alpha = 1
-        })
+        }
     }
   }
     
@@ -320,7 +319,6 @@ extension uploadVC{
         picImg.isUserInteractionEnabled = true
         picImg.addGestureRecognizer(zoomTap)
     }
-   
 }
 
 // scroll view --delegate
