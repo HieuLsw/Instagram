@@ -19,12 +19,20 @@ class followersCell: UITableViewCell {
   
     @IBOutlet weak var imageInset: UIView!
     
+    let shape = CAShapeLayer()
+    
+    let gradient = CAGradientLayer()
+    
+    
+    var gradientColor1 = UIColor.init(hex: "833AB4").cgColor
+    var gradientColor2 = UIColor.init(hex: "FCB045").cgColor
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
        
        //round img
-        setImgLayer()
+       // setImgLayer()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -81,30 +89,31 @@ object.deleteInBackground(block: { (success, error) in
 }// followersCell class over line
 
 extension followersCell{
-    
-    fileprivate func setImgLayer(){
+   
+
+     func setImgLayer(){
         
  avaImg.layer.cornerRadius = avaImg.bounds.size.width / 2
- avaImg.layer.borderWidth = 2
- avaImg.layer.borderColor = UIColor.white.cgColor
+ avaImg.layer.borderWidth = 1
+ avaImg.layer.borderColor = UIColor.black.cgColor
  avaImg.clipsToBounds = true
       
-        /*
-        let gradient = CAGradientLayer()
-        gradient.frame =  CGRect(origin: CGPoint.init(x: 1, y: 0), size: self.imageInset.frame.size)
-        gradient.colors = [UIColor.blue.cgColor, UIColor.green.cgColor]
+gradient.frame =  CGRect(origin: CGPoint.init(x: 0, y: 0), size: self.imageInset.frame.size)
+gradient.colors = [gradientColor1, gradientColor2]
+        //833AB4
+        //FCB045
         
-        let shape = CAShapeLayer()
-        shape.lineWidth = 4
-        shape.path = UIBezierPath(ovalIn: self.imageInset.bounds).cgPath
+shape.lineWidth = 3
+    shape.path = UIBezierPath(arcCenter: self.avaImg.center, radius: self.imageInset.bounds.size.width / 2 - 1, startAngle: CGFloat(-80 * Double.pi / 180), endAngle: CGFloat(440 * Double.pi / 180), clockwise: true).cgPath
         
       shape.strokeColor = UIColor.black.cgColor
         shape.fillColor = UIColor.clear.cgColor
         gradient.mask = shape
         
     self.imageInset.layer.addSublayer(gradient)
- */
+        
     }
+ 
     
 }
 
