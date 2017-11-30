@@ -100,8 +100,6 @@ extension followersCell{
       
 gradient.frame =  CGRect(origin: CGPoint.init(x: 0, y: 0), size: self.imageInset.frame.size)
 gradient.colors = [gradientColor1, gradientColor2]
-        //833AB4
-        //FCB045
         
 shape.lineWidth = 3
     shape.path = UIBezierPath(arcCenter: self.avaImg.center, radius: self.imageInset.bounds.size.width / 2 - 1, startAngle: CGFloat(-80 * Double.pi / 180), endAngle: CGFloat(440 * Double.pi / 180), clockwise: true).cgPath

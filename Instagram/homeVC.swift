@@ -55,22 +55,45 @@ loadPosts()
   // clicked log out
     @IBAction func logout(_ sender: Any) {
 
-        // implement log out
-        PFUser.logOutInBackground { (error) in
-            
-    if error == nil {
+     let alert = newAlertVC(title: "", message: "You want to...?", preferredStyle: .alert)
         
- let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
+        let cancelAction = newAlertAction(title: "✓ Cancel!", style: .cancel, bgColor: UIColor.init(hex: "833AB4") ,handler: nil)
      
+        let logoutAction = newAlertAction(title: "✘ Log Out!", style: .default,bgColor: UIColor.init(hex: "FCB045")) { _ in
+            
+// implement log out
+     PFUser.logOutInBackground { (error) in
+                
+if error == nil {
+                    
+let signIn = self.storyboard?.instantiateViewController(withIdentifier: "signInVC") as! signInVC
+                    
     // remove logged in user from App memory
     UserDefaults.standard.removeObject(forKey: "username")
-UserDefaults.standard.synchronize()
-        
- let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.window?.rootViewController = signIn
+    UserDefaults.standard.synchronize()
+                    
+let appDelegate = UIApplication.shared.delegate as! AppDelegate
+appDelegate.window?.rootViewController = signIn
+                }
             }
-      }
-   }
+        }
+
+    alert.alertBackgroundColor = UIColor.black
+    alert.hasRoundedCorners = true
+    alert.dividerColor = UIColor.black
+     alert.titleImage = #imageLiteral(resourceName: "alertIcon")
+    alert.titleViewBackgroundColor = #colorLiteral(red: 0.1920000017, green: 0.275000006, blue: 0.5059999824, alpha: 1)
+    alert.messageTextColor = UIColor.white
+    alert.messageFont = UIFont.init(name: "Pacifico", size: 22)
+    alert.setButtonTextColorFor(.cancel, to: UIColor(hex: "FCB045"))
+    alert.setButtonTextColorFor(.default, to: UIColor(hex: "833AB4"))
+    alert.setButtonFontFor(.cancel, to: .boldSystemFont(ofSize: 19))
+    alert.setButtonFontFor(.default, to: .boldSystemFont(ofSize: 19))
+     alert.addAction(cancelAction)
+        alert.addAction(logoutAction)
+    present(alert, animated: true, completion: nil)
+    }
+    
 }//homeVC class over line
 
 //custom functions

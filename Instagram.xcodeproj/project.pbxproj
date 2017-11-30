@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		1CF33A5144DE88CC15834702 /* Pods_Instagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5A4566BAE4D97A24BDF35AD /* Pods_Instagram.framework */; };
 		A503D8311F8F08880023D232 /* UIView_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A503D8301F8F08880023D232 /* UIView_Attributes.swift */; };
+		A51114311FD043C100DCAC4C /* newAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51114301FD043C100DCAC4C /* newAlertAction.swift */; };
+		A51114331FD043E500DCAC4C /* newAlertAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51114321FD043E500DCAC4C /* newAlertAnimation.swift */; };
+		A51114351FD0442F00DCAC4C /* newAlertVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51114341FD0442E00DCAC4C /* newAlertVC.swift */; };
+		A51114371FD0445100DCAC4C /* newAlertTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51114361FD0445100DCAC4C /* newAlertTextField.swift */; };
+		A51114391FD0447100DCAC4C /* UIColor_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51114381FD0447100DCAC4C /* UIColor_Extension.swift */; };
+		A511143B1FD05B5200DCAC4C /* Pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A511143A1FD05B2F00DCAC4C /* Pacifico.ttf */; };
 		A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */; };
 		A51826881FA091AA005B50D0 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51826871FA091AA005B50D0 /* HexColor.swift */; };
 		A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518268B1FA0D4B8005B50D0 /* homeVC.swift */; };
@@ -54,6 +60,12 @@
 		2499E0990E2A01C620688AE1 /* Pods-Instagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram/Pods-Instagram.release.xcconfig"; sourceTree = "<group>"; };
 		5E8E58BE53DFBC4BD8EDD629 /* Pods-Instagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Instagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Instagram/Pods-Instagram.debug.xcconfig"; sourceTree = "<group>"; };
 		A503D8301F8F08880023D232 /* UIView_Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView_Attributes.swift; sourceTree = "<group>"; };
+		A51114301FD043C100DCAC4C /* newAlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newAlertAction.swift; sourceTree = "<group>"; };
+		A51114321FD043E500DCAC4C /* newAlertAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newAlertAnimation.swift; sourceTree = "<group>"; };
+		A51114341FD0442E00DCAC4C /* newAlertVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newAlertVC.swift; sourceTree = "<group>"; };
+		A51114361FD0445100DCAC4C /* newAlertTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = newAlertTextField.swift; sourceTree = "<group>"; };
+		A51114381FD0447100DCAC4C /* UIColor_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor_Extension.swift; sourceTree = "<group>"; };
+		A511143A1FD05B2F00DCAC4C /* Pacifico.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pacifico.ttf; sourceTree = "<group>"; };
 		A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField_Attributes.swift; sourceTree = "<group>"; };
 		A51826871FA091AA005B50D0 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		A518268B1FA0D4B8005B50D0 /* homeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeVC.swift; sourceTree = "<group>"; };
@@ -137,8 +149,13 @@
 				A5FD76271FCAB6BD007355BF /* Regex.swift */,
 				A549C1591F6AD10200207D42 /* UIButton_Attributes.swift */,
 				A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */,
+				A51114381FD0447100DCAC4C /* UIColor_Extension.swift */,
 				A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */,
 				A503D8301F8F08880023D232 /* UIView_Attributes.swift */,
+				A51114301FD043C100DCAC4C /* newAlertAction.swift */,
+				A51114321FD043E500DCAC4C /* newAlertAnimation.swift */,
+				A51114341FD0442E00DCAC4C /* newAlertVC.swift */,
+				A51114361FD0445100DCAC4C /* newAlertTextField.swift */,
 			);
 			name = "User Defined Attributes";
 			sourceTree = "<group>";
@@ -146,6 +163,7 @@
 		A54A359A1FC2A5F0002DD885 /* Font */ = {
 			isa = PBXGroup;
 			children = (
+				A511143A1FD05B2F00DCAC4C /* Pacifico.ttf */,
 				A54A359B1FC2A69A002DD885 /* Knight Brush Demo.otf */,
 				A54A35A11FC2AF2B002DD885 /* Crabmeal.otf */,
 				A5EEB27F1FC5C542002CB038 /* murdoink.ttf */,
@@ -349,6 +367,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A511143B1FD05B5200DCAC4C /* Pacifico.ttf in Resources */,
 				A5EEB2801FC5C594002CB038 /* murdoink.ttf in Resources */,
 				A54A35A61FC2B572002DD885 /* SG_Alternative_High-Alt.otf in Resources */,
 				A54A35A21FC2AF46002DD885 /* Crabmeal.otf in Resources */,
@@ -426,15 +445,20 @@
 				A588A6BC1FC538670083AAEC /* followersCell.swift in Sources */,
 				A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */,
 				A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */,
+				A51114351FD0442F00DCAC4C /* newAlertVC.swift in Sources */,
+				A51114391FD0447100DCAC4C /* UIColor_Extension.swift in Sources */,
 				A588A6BA1FC5381E0083AAEC /* followersVC.swift in Sources */,
 				A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */,
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,
+				A51114371FD0445100DCAC4C /* newAlertTextField.swift in Sources */,
 				A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,
+				A51114331FD043E500DCAC4C /* newAlertAnimation.swift in Sources */,
 				A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */,
 				A549C15A1F6AD10200207D42 /* UIButton_Attributes.swift in Sources */,
 				A549C1531F692BE000207D42 /* resetPasswordVC.swift in Sources */,
+				A51114311FD043C100DCAC4C /* newAlertAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

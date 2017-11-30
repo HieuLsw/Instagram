@@ -44,6 +44,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Pacifico.ttf</string>
 		<string>murdoink.ttf</string>
 		<string>SG_Alternative_High-Alt.otf</string>
 		<string>Crabmeal.otf</string>

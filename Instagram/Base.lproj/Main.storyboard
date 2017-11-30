@@ -939,7 +939,7 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="WZF-Jj-3o5">
-                        <barButtonItem key="rightBarButtonItem" image="logout" id="xYr-id-TOv">
+                        <barButtonItem key="rightBarButtonItem" image="gear" id="xYr-id-TOv">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="logout:" destination="BEf-b8-oXe" id="zrE-Me-wWx"/>
@@ -1652,9 +1652,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gear" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
         <image name="logo.svg" width="2000" height="714"/>
-        <image name="logout" width="25" height="25"/>
         <image name="pbg" width="200" height="200"/>
         <image name="profile" width="683" height="616"/>
         <image name="upload" width="42" height="42"/>
