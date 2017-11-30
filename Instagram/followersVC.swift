@@ -23,11 +23,9 @@ class followersVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
-      //navigaiton bar information
+ 
+        //navigaiton bar information
       setBarInfo()
-       
     }
 
     override func didReceiveMemoryWarning() {
@@ -145,6 +143,11 @@ self.avaArray.removeAll(keepingCapacity: false)
 
 //table view -- datasource
 extension followersVC{
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return usernameArray.count
     }
@@ -191,6 +194,19 @@ cell.followBtn.setTitle("FOLLOWING", for: .normal)
         cell.setImgLayer()
         return cell
     }
+  
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        cell.alpha = 0
+        let transfer = CATransform3DTranslate(CATransform3DIdentity, -250, 30, 0)
+        cell.layer.transform = transfer
+        
+        UIView.animate(withDuration: 1) {
+            cell.alpha = 1
+            cell.layer.transform = CATransform3DIdentity
+        }
+    }
+    
 }
 
 //tableview --delegate
