@@ -251,7 +251,7 @@ extension signUpVC{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
-        verticalIndicator.backgroundColor = UIColor.red
+        verticalIndicator.backgroundColor = UIColor.orange
     }
 }
 

@@ -20,8 +20,7 @@ class followersVC: UITableViewController {
   
  //arrays for showing who do we follow or who following us
   var followArray = [String]()
-  
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -142,7 +141,6 @@ self.avaArray.removeAll(keepingCapacity: false)
     }else{print(error!.localizedDescription)}
 }
 }
-
 }
 
 //table view -- datasource
@@ -222,7 +220,7 @@ extension followersVC{
    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
-        verticalIndicator.backgroundColor = UIColor.red
+        verticalIndicator.backgroundColor = UIColor.orange
     }
 }
 

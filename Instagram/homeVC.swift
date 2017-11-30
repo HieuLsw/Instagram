@@ -347,7 +347,7 @@ extension homeVC{
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
-        verticalIndicator.backgroundColor = UIColor.red
+        verticalIndicator.backgroundColor = UIColor.orange
     
         if scrollView.contentOffset.y >= scrollView.contentSize.height - self.view.frame.size.height {
             loadMore()

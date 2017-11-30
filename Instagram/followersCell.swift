@@ -16,8 +16,8 @@ class followersCell: UITableViewCell {
     @IBOutlet weak var username: UILabel!
     
     @IBOutlet weak var followBtn: UIButton!
-    
-    @IBOutlet weak var imagUIView: UIView!
+  
+    @IBOutlet weak var imageInset: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -83,15 +83,29 @@ object.deleteInBackground(block: { (success, error) in
 extension followersCell{
     
     fileprivate func setImgLayer(){
+        
  avaImg.layer.cornerRadius = avaImg.bounds.size.width / 2
  avaImg.layer.borderWidth = 2
  avaImg.layer.borderColor = UIColor.white.cgColor
  avaImg.clipsToBounds = true
+      
+        /*
+        let gradient = CAGradientLayer()
+        gradient.frame =  CGRect(origin: CGPoint.init(x: 1, y: 0), size: self.imageInset.frame.size)
+        gradient.colors = [UIColor.blue.cgColor, UIColor.green.cgColor]
         
-    imagUIView.layer.cornerRadius = self.imagUIView.bounds.size.width / 2
-    imagUIView.layer.borderWidth = 2
-    imagUIView.layer.borderColor = UIColor.black.cgColor
-    imagUIView.clipsToBounds = true
+        let shape = CAShapeLayer()
+        shape.lineWidth = 4
+        shape.path = UIBezierPath(ovalIn: self.imageInset.bounds).cgPath
+        
+      shape.strokeColor = UIColor.black.cgColor
+        shape.fillColor = UIColor.clear.cgColor
+        gradient.mask = shape
+        
+    self.imageInset.layer.addSublayer(gradient)
+ */
     }
     
 }
+
+
