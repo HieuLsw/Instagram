@@ -40,6 +40,20 @@ class postVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         findPost()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //create observer
+        createObserver()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //delete observer
+        deleteObserver()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -119,6 +133,23 @@ postQuery.findObjectsInBackground{ (objects, error) in
         }
     }
     
+    //create observer
+    fileprivate func createObserver(){
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue: "liked"), object: nil)
+    }
+    
+    //delete observer
+    fileprivate func deleteObserver(){
+        
+       NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init("liked"), object: nil)
+    }
+    
+    // refreshing function
+    @objc fileprivate func refresh() {
+        self.customTableView.reloadData()
+    }
+
 }
 
 // table view --data source
@@ -161,6 +192,35 @@ cell.dateLbl.text = "\(difference.hour!)h."}
 if (difference.day! > 0) && (difference.weekOfMonth! == 0) {cell.dateLbl.text = "\(difference.day!)d."}
 if difference.weekOfMonth! > 0 {
 cell.dateLbl.text = "\(difference.weekOfMonth!)w."}
+  
+// manipulate like button depending on did user like it or not
+let didLike = PFQuery(className: "likes")
+didLike.whereKey("by", equalTo: PFUser.current()!.username!)
+didLike.whereKey("to", equalTo: cell.uuidLbl.text!)
+didLike.countObjectsInBackground { (count, error) in
+    // if no any likes are found, else found likes
+if count == 0 {
+    cell.likeBtn.setTitle("unlike", for: UIControlState())
+    cell.likeBtn.setBackgroundImage(#imageLiteral(resourceName: "unlike"), for: UIControlState())
+            } else {
+cell.likeBtn.setTitle("like", for: UIControlState())
+cell.likeBtn.setBackgroundImage(#imageLiteral(resourceName: "like"), for: UIControlState())
+            }
+        }
+        
+    // count total likes of shown post
+let countLikes = PFQuery(className: "likes")
+  countLikes.whereKey("to", equalTo: cell.uuidLbl.text!)
+countLikes.countObjectsInBackground { (count, error)  in
+    cell.likeLbl.text = "\(count)"
+    }
+        
+   // asign index
+cell.usernameBtn.layer.setValue(indexPath, forKey: "index")
+cell.commentBtn.layer.setValue(indexPath, forKey: "index")
+cell.moreBtn.layer.setValue(indexPath, forKey: "index")
+   
+        
         
    return cell
     }

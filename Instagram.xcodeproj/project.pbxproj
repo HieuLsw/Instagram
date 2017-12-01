@@ -17,6 +17,7 @@
 		A511143B1FD05B5200DCAC4C /* Pacifico.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A511143A1FD05B2F00DCAC4C /* Pacifico.ttf */; };
 		A511143E1FD0DE5500DCAC4C /* postVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A511143D1FD0DE5500DCAC4C /* postVC.swift */; };
 		A51114401FD0DE8800DCAC4C /* postCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A511143F1FD0DE8800DCAC4C /* postCell.swift */; };
+		A51114431FD100EA00DCAC4C /* tabbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51114421FD100EA00DCAC4C /* tabbarVC.swift */; };
 		A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */; };
 		A51826881FA091AA005B50D0 /* HexColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51826871FA091AA005B50D0 /* HexColor.swift */; };
 		A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A518268B1FA0D4B8005B50D0 /* homeVC.swift */; };
@@ -70,6 +71,7 @@
 		A511143A1FD05B2F00DCAC4C /* Pacifico.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pacifico.ttf; sourceTree = "<group>"; };
 		A511143D1FD0DE5500DCAC4C /* postVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postVC.swift; sourceTree = "<group>"; };
 		A511143F1FD0DE8800DCAC4C /* postCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = postCell.swift; sourceTree = "<group>"; };
+		A51114421FD100EA00DCAC4C /* tabbarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tabbarVC.swift; sourceTree = "<group>"; };
 		A51826851F9F03D5005B50D0 /* UITextField_Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField_Attributes.swift; sourceTree = "<group>"; };
 		A51826871FA091AA005B50D0 /* HexColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HexColor.swift; sourceTree = "<group>"; };
 		A518268B1FA0D4B8005B50D0 /* homeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeVC.swift; sourceTree = "<group>"; };
@@ -145,6 +147,14 @@
 				A511143F1FD0DE8800DCAC4C /* postCell.swift */,
 			);
 			name = "Post Page Part";
+			sourceTree = "<group>";
+		};
+		A51114411FD1008A00DCAC4C /* Tab Bar Part */ = {
+			isa = PBXGroup;
+			children = (
+				A51114421FD100EA00DCAC4C /* tabbarVC.swift */,
+			);
+			name = "Tab Bar Part";
 			sourceTree = "<group>";
 		};
 		A526D5811FC7DD1E00B41468 /* Profile Part */ = {
@@ -242,6 +252,7 @@
 				A5C177AD1F680C1D008D93AC /* LaunchScreen.storyboard */,
 				A5C177B01F680C1D008D93AC /* Info.plist */,
 				A588A6BD1FC58F8E0083AAEC /* Login Part */,
+				A51114411FD1008A00DCAC4C /* Tab Bar Part */,
 				A5FD76381FCED44D007355BF /* Collection Header Part */,
 				A5FD76321FCECC87007355BF /* Tab Bar Item Navigation Part */,
 				A511143C1FD0DE2F00DCAC4C /* Post Page Part */,
@@ -468,6 +479,7 @@
 				A5C177A51F680C1C008D93AC /* AppDelegate.swift in Sources */,
 				A51114371FD0445100DCAC4C /* newAlertTextField.swift in Sources */,
 				A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */,
+				A51114431FD100EA00DCAC4C /* tabbarVC.swift in Sources */,
 				A51826881FA091AA005B50D0 /* HexColor.swift in Sources */,
 				A518268C1FA0D4B8005B50D0 /* homeVC.swift in Sources */,
 				A51114331FD043E500DCAC4C /* newAlertAnimation.swift in Sources */,

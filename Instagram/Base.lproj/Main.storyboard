@@ -732,10 +732,10 @@
             </objects>
             <point key="canvasLocation" x="1434.375" y="90"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--TabbarVC-->
         <scene sceneID="PSJ-tX-Agf">
             <objects>
-                <tabBarController storyboardIdentifier="tabBar" id="nmI-NW-gMy" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBar" id="nmI-NW-gMy" customClass="tabbarVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Hh6-hq-zXi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -1474,7 +1474,12 @@
                                                         <constraint firstAttribute="width" constant="35" id="p0R-ac-aYb"/>
                                                         <constraint firstAttribute="height" constant="35" id="wdb-8v-fFV"/>
                                                     </constraints>
-                                                    <state key="normal" backgroundImage="unlike"/>
+                                                    <state key="normal" backgroundImage="unlike">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="likeBtn_click:" destination="pH9-oW-JWQ" eventType="touchUpInside" id="tdE-0n-UJs"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AA4-ng-Nex">
                                                     <rect key="frame" x="123" y="456" width="35" height="35"/>
