@@ -48,7 +48,7 @@ class postVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewWillDisappear(true)
         
         //delete observer
         deleteObserver()
