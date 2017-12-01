@@ -82,7 +82,7 @@ appDelegate.window?.rootViewController = signIn
     alert.hasRoundedCorners = true
     alert.dividerColor = UIColor.black
      alert.titleImage = #imageLiteral(resourceName: "alertIcon")
-    alert.titleViewBackgroundColor = #colorLiteral(red: 0.1920000017, green: 0.275000006, blue: 0.5059999824, alpha: 1)
+    alert.titleViewBackgroundColor = UIColor.white
     alert.messageTextColor = UIColor.white
     alert.messageFont = UIFont.init(name: "Pacifico", size: 22)
     alert.setButtonTextColorFor(.cancel, to: UIColor(hex: "FCB045"))
@@ -205,6 +205,18 @@ extension homeVC{
         let size = CGSize(width: self.view.frame.size.width / 3, height: self.view.frame.size.width / 3)
         return size
     }
+    
+    //go post
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        // send post uuid to "postuuid" variable
+        postuuid.append(uuidArray[indexPath.row])
+        
+        // navigate to post view controller
+        let post = self.storyboard?.instantiateViewController(withIdentifier: "postVC") as! postVC
+    
+    self.navigationController?.pushViewController(post, animated: true)
+}
     
     //header config
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

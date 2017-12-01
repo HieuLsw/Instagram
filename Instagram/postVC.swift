@@ -125,7 +125,7 @@ postQuery.findObjectsInBackground{ (objects, error) in
 extension postVC{
   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return usernameArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
