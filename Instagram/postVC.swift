@@ -144,7 +144,25 @@ extension postVC{
   picArray[indexPath.row].getDataInBackground { (data, error) in
             cell.picImg.image = UIImage(data: data!)}
     
-    return cell
+    // calculate post date
+    let from = dateArray[indexPath.row]
+    let now = Date()
+    let components : NSCalendar.Unit = [.second, .minute, .hour, .day, .weekOfMonth]
+    let difference = (Calendar.current as NSCalendar).components(components, from: from!, to: now, options: [])
+     
+   // logic what to show: seconds, minuts, hours, days or weeks
+if difference.second! <= 0 {cell.dateLbl.text = "now"}
+if (difference.second! > 0) && (difference.minute! == 0) {
+cell.dateLbl.text = "\(difference.second!)s."}
+if (difference.minute! > 0) && (difference.hour! == 0) {
+cell.dateLbl.text = "\(difference.minute!)m."}
+if (difference.hour! > 0) && (difference.day! == 0) {
+cell.dateLbl.text = "\(difference.hour!)h."}
+if (difference.day! > 0) && (difference.weekOfMonth! == 0) {cell.dateLbl.text = "\(difference.day!)d."}
+if difference.weekOfMonth! > 0 {
+cell.dateLbl.text = "\(difference.weekOfMonth!)w."}
+        
+   return cell
     }
 }
 
