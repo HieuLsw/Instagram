@@ -27,7 +27,9 @@ class postCell: UITableViewCell {
     @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var likeLbl: UILabel!
-        
+ 
+    @IBOutlet weak var uuidLbl: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
