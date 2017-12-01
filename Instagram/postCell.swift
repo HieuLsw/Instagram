@@ -37,6 +37,9 @@ class postCell: UITableViewCell {
        
         //set ava image layer
         setAvaImgLayer()
+        
+        // double tap to like
+        doubleTapLike()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -127,4 +130,66 @@ extension postCell{
         self.avaImg.layer.borderWidth = 0
         self.avaImg.clipsToBounds = true
     }
+   
+ // double tap to like
+    fileprivate func doubleTapLike(){
+   
+    let likeTap = UITapGestureRecognizer(target: self, action: #selector(postCell.likeTap))
+    likeTap.numberOfTapsRequired = 2
+    picImg.isUserInteractionEnabled = true
+    picImg.addGestureRecognizer(likeTap)
+}
+
+    @objc fileprivate func likeTap(){
+        
+  // create large like gray heart
+  let likePic = UIImageView(image: #imageLiteral(resourceName: "unlike"))
+        likePic.frame.size.width = picImg.frame.size.width / 1.5
+        likePic.frame.size.height = picImg.frame.size.width / 1.5
+        likePic.center = picImg.center
+        likePic.alpha = 0.8
+        self.addSubview(likePic)
+        
+        // hide likePic with animation and transform to be smaller
+        UIView.animate(withDuration: 0.4){
+            likePic.alpha = 0
+            likePic.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        }
+        
+        // declare title of button
+        let title = likeBtn.title(for: UIControlState())
+        
+        if title == "unlike" {
+            
+  let object = PFObject(className: "likes")
+  object["by"] = PFUser.current()?.username
+  object["to"] = uuidLbl.text
+object.saveInBackground { (success, error) in
+    if success {
+        print("liked")
+self.likeBtn.setTitle("like", for: UIControlState())
+self.likeBtn.setBackgroundImage(UIImage(named: "like.png"), for: UIControlState())
+                    
+    // send notification if we liked to refresh TableView
+NotificationCenter.default.post(name:
+    Notification.Name(rawValue: "liked"), object: nil)
+                    
+    // send notification as like
+if self.usernameBtn.titleLabel?.text != PFUser.current()?.username {
+let newsObj = PFObject(className: "news")
+    newsObj["by"] = PFUser.current()?.username
+    newsObj["ava"] = PFUser.current()?.object(forKey: "ava") as! PFFile
+    newsObj["to"] = self.usernameBtn.titleLabel!.text
+    newsObj["owner"] = self.usernameBtn.titleLabel!.text
+    newsObj["uuid"] = self.uuidLbl.text
+    newsObj["type"] = "like"
+    newsObj["checked"] = "no"
+newsObj.saveEventually()
+}//send notification as like oveer line
+}//save in background success over line
+}//save in background closure over line
+            
+        } // if title == "unlike" over line
+    }//likeTap function over line
+    
 }
