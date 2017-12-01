@@ -33,6 +33,9 @@ class postCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+       
+        //set ava image layer
+        setAvaImgLayer()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -41,4 +44,14 @@ class postCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+//custom functions
+extension postCell{
+  
+    fileprivate func setAvaImgLayer(){
+        self.avaImg.layer.cornerRadius = self.avaImg.bounds.size.width / 2
+        self.avaImg.layer.borderWidth = 0
+        self.avaImg.clipsToBounds = true
+    }
 }

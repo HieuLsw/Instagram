@@ -82,7 +82,7 @@ extension postVC{
     fileprivate func tableViewCellHeight(){
         
         customTableView.rowHeight = UITableViewAutomaticDimension
-        customTableView.estimatedRowHeight = 582
+        customTableView.estimatedRowHeight = 626
     }
     
     //find post
