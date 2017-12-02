@@ -57,6 +57,16 @@ class commentVC: UIViewController {
     
 // convert commentTxt to first responder
      //createFirstResponder()
+        
+        //create observers
+        createObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //release observers
+        deleteObservers()
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,7 +74,6 @@ class commentVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     @IBAction func sendBtn_click(_ sender: Any) {
     
     
@@ -105,10 +114,10 @@ extension commentVC{
 _ = [tableView,sendBtn,commentTxt].map{$0.translatesAutoresizingMaskIntoConstraints = false}
  
 //table view layout
-  tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+   tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
    tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
    tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-  tableView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 700/812).isActive = true
+   tableView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier:700 / 812).isActive = true
  
 // comment text view layout
   commentTxt.leftAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leftAnchor).isActive = true
@@ -131,6 +140,11 @@ sendBtn.backgroundColor = #colorLiteral(red: 0.1920000017, green: 0.275000006, b
  commentTxt.layer.cornerRadius = sendBtn.bounds.size.width / 2
 commentTxt.layer.borderColor = UIColor.blue.cgColor
 commentTxt.layer.borderWidth = 2
+        
+        // assign reseting values
+        tableViewHeight = tableView.frame.size.height
+        commentHeight = commentTxt.frame.size.height
+        commentY = commentTxt.frame.origin.y
 }
 }
 
@@ -155,5 +169,50 @@ guard commentowner.isEmpty else{
     }
 }
 
+//observers
+extension commentVC{
+    
+    fileprivate func createObservers(){
+        
+        // catch notification if the keyboard is shown or hidden
+        NotificationCenter.default.addObserver(self, selector: #selector(commentVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(commentVC.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    fileprivate func deleteObservers(){
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+}
 
+//observers selectors
+extension commentVC{
+    
+    // func loading when keyboard is shown
+   @objc fileprivate func keyboardWillShow(_ notification : Notification) {
+        
+        // defnine keyboard frame size
+       keyboard = ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue)!
+    
+   // move UI up
+      UIView.animate(withDuration: 0.4)
+        { [unowned self] in
+        self.tableView.frame.size.height = self.tableViewHeight - self.keyboard.height - self.commentTxt.frame.size.height + self.commentHeight
+        self.commentTxt.frame.origin.y = self.commentY - self.keyboard.height - self.commentTxt.frame.size.height + self.commentHeight
+        self.sendBtn.frame.origin.y = self.commentTxt.frame.origin.y
+            }
+    }
+    
+    // func loading when keyboard is hidden
+   @objc fileprivate func keyboardWillHide(_ notification : Notification) {
+    
+       // move UI down
+    UIView.animate(withDuration: 0.4)
+            {[unowned self]  in
+                self.tableView.frame.size.height = self.tableViewHeight
+                self.commentTxt.frame.origin.y = self.commentY
+                self.sendBtn.frame.origin.y = self.commentY
+            }
+   }
+}
 
