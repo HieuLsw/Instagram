@@ -90,22 +90,24 @@ _ = [tableView,sendBtn,commentTxt].map{$0.translatesAutoresizingMaskIntoConstrai
   tableView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 700/812).isActive = true
  
   commentTxt.leftAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leftAnchor).isActive = true
-  commentTxt.heightAnchor.constraint(equalToConstant: 40).isActive = true
+  commentTxt.heightAnchor.constraint(equalToConstant: 50).isActive = true
   commentTxt.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 3).isActive = true
-        
- sendBtn.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 3).isActive = true
- sendBtn.rightAnchor.constraint(equalTo: self.view.layoutMarginsGuide.rightAnchor).isActive = true
-  sendBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
-  sendBtn.heightAnchor.constraint(equalTo: commentTxt.heightAnchor).isActive = true
-  sendBtn.leftAnchor.constraint(equalTo: commentTxt.rightAnchor, constant: 20).isActive = true
-        
- sendBtn.layer.cornerRadius = 5
-  sendBtn.layer.borderWidth = 2
-sendBtn.layer.borderColor = UIColor.black.cgColor
+  commentTxt.rightAnchor.constraint(equalTo: self.view.layoutMarginsGuide.rightAnchor).isActive = true
 
- commentTxt.backgroundColor = UIColor.lightGray
- commentTxt.layer.cornerRadius = 5
-commentTxt.layer.borderWidth = 0
+sendBtn.rightAnchor.constraint(equalTo: commentTxt.rightAnchor).isActive = true
+sendBtn.topAnchor.constraint(equalTo: commentTxt.topAnchor).isActive = true
+sendBtn.bottomAnchor.constraint(equalTo: commentTxt.bottomAnchor).isActive = true
+  sendBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
+  sendBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        
+ sendBtn.layer.cornerRadius = sendBtn.bounds.size.width / 2
+  sendBtn.layer.borderWidth = 1
+sendBtn.backgroundColor = #colorLiteral(red: 0.1920000017, green: 0.275000006, blue: 0.5059999824, alpha: 1)
+    
+ commentTxt.backgroundColor = UIColor.red
+ commentTxt.layer.cornerRadius = sendBtn.bounds.size.width / 2
+commentTxt.layer.borderColor = UIColor.blue.cgColor
+commentTxt.layer.borderWidth = 2
 }
    
     

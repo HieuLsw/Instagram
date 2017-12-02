@@ -1475,20 +1475,19 @@
                                 </prototypes>
                             </tableView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="ssss" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2qc-T5-lPZ">
-                                <rect key="frame" x="16" y="643" width="254" height="40"/>
+                                <rect key="frame" x="24" y="641" width="254" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMu-5V-wbA">
-                                <rect key="frame" x="313" y="643" width="46" height="31"/>
+                                <rect key="frame" x="313" y="650" width="46" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="send">
-                                    <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <state key="normal" backgroundImage="send"/>
                                 <connections>
                                     <action selector="sendBtn_click:" destination="Pou-ZL-bXz" eventType="touchUpInside" id="uO4-UQ-OY3"/>
                                 </connections>
@@ -1920,6 +1919,7 @@
         <image name="more" width="270" height="270"/>
         <image name="pbg" width="96" height="96"/>
         <image name="profile" width="683" height="616"/>
+        <image name="send" width="50" height="50"/>
         <image name="unlike" width="270" height="270"/>
         <image name="upload" width="50" height="50"/>
         <namedColor name="BarColor">
