@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import Parse
+
+var commentuuid = [String]()
+var commentowner = [String]()
 
 class commentVC: UIViewController {
 
@@ -15,8 +19,25 @@ class commentVC: UIViewController {
     @IBOutlet weak var commentTxt: UITextView!
     
     @IBOutlet weak var sendBtn: UIButton!
- 
-    @IBOutlet weak var contentView: UIView!
+    
+    var refresh = UIRefreshControl()
+    
+    // values for reseting UI to default
+    var tableViewHeight : CGFloat = 0
+    var commentY : CGFloat = 0
+    var commentHeight : CGFloat = 0
+    
+    // arrays to hold server data
+    var usernameArray = [String]()
+    var avaArray = [PFFile]()
+    var commentArray = [String]()
+    var dateArray = [Date?]()
+    
+    // variable to hold keybarod frame
+    var keyboard = CGRect()
+    
+    // page size
+    var page:Int32 = 15
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +46,13 @@ class commentVC: UIViewController {
      configueVCAlignment()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    
+// convert commentTxt to first responder
+     //createFirstResponder()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -41,37 +69,44 @@ class commentVC: UIViewController {
 //custom functions
 extension commentVC{
     
+    // convert commentTxt to first responder
+    fileprivate func createFirstResponder(){
+      
+     commentTxt.becomeFirstResponder()
+    }
+
     //set views layout
     fileprivate func configueVCAlignment(){
   
      //avoid the issue to auto layout
-_ = [tableView,sendBtn,commentTxt,contentView].map{$0.translatesAutoresizingMaskIntoConstraints = false}
+_ = [tableView,sendBtn,commentTxt].map{$0.translatesAutoresizingMaskIntoConstraints = false}
  
+        
+        
 //table view layout
   tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
    tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
    tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-    
-  //content view layout
-   contentView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 105 / 812).isActive = true
-    contentView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-     contentView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-      contentView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-     contentView.topAnchor.constraint(equalTo: self.tableView.bottomAnchor).isActive = true
-  
-   //comment text view layout
- commentTxt.leftAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leftAnchor).isActive = true
- commentTxt.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 5).isActive = true
-  commentTxt.centerXAnchor.constraint(equalTo: self.sendBtn.centerXAnchor).isActive = true
-  commentTxt.heightAnchor.constraint(equalToConstant: 43).isActive = true
-
-   //send button layout
-  sendBtn.rightAnchor.constraint(equalTo: self.contentView.layoutMarginsGuide.rightAnchor).isActive = true
-sendBtn.heightAnchor.constraint(equalTo: commentTxt.heightAnchor).isActive = true
-sendBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
-sendBtn.leftAnchor.constraint(equalTo: commentTxt.rightAnchor, constant: 10).isActive = true
+  tableView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 700/812).isActive = true
+ 
+  commentTxt.leftAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leftAnchor).isActive = true
+  commentTxt.heightAnchor.constraint(equalToConstant: 40).isActive = true
+  commentTxt.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 3).isActive = true
         
-    }
-    
+ sendBtn.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 3).isActive = true
+ sendBtn.rightAnchor.constraint(equalTo: self.view.layoutMarginsGuide.rightAnchor).isActive = true
+  sendBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
+  sendBtn.heightAnchor.constraint(equalTo: commentTxt.heightAnchor).isActive = true
+  sendBtn.leftAnchor.constraint(equalTo: commentTxt.rightAnchor, constant: 20).isActive = true
+        
+ sendBtn.layer.cornerRadius = 5
+  sendBtn.layer.borderWidth = 2
+sendBtn.layer.borderColor = UIColor.black.cgColor
+
+ commentTxt.backgroundColor = UIColor.lightGray
+ commentTxt.layer.cornerRadius = 5
+commentTxt.layer.borderWidth = 0
+}
+   
     
 }

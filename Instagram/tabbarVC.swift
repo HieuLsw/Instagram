@@ -14,9 +14,9 @@ class tabbarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //set tab bar attributes
-    setBarAttributes()
-    
+        //set tab bar layer
+   setTabBarLayer()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,11 +26,21 @@ class tabbarVC: UITabBarController {
 
 }// tabbarVC class over line
 
+//custom functions
 extension tabbarVC{
     
-    //set tab bar attributes
-    fileprivate func setBarAttributes(){
+    //set tab bar layer
+     func setTabBarLayer(){
         
-      self.tabBar.isTranslucent = false
+        // color of item
+        self.tabBar.tintColor = .white
+        
+        // color of background
+        self.tabBar.barTintColor = UIColor(red: 37.0 / 255.0, green: 39.0 / 255.0, blue: 42.0 / 255.0, alpha: 1)
+        
+        // disable translucent
+        self.tabBar.isTranslucent = false
     }
+    
+    
 }

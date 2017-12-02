@@ -59,6 +59,22 @@ class postVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func commentBtn_click(_ sender: Any) {
+    
+// call index of button
+let index = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
+        
+// call cell to call further cell data
+let cell = customTableView.cellForRow(at: index) as! postCell
+        
+// send related data to global variables
+commentuuid.append(cell.uuidLbl.text!)
+commentowner.append(cell.usernameBtn.titleLabel!.text!)
+        
+  // go to comments. push vc
+  let comments = self.storyboard?.instantiateViewController(withIdentifier: "commentVC") as! commentVC
+self.navigationController?.pushViewController(comments, animated: true)
+    }
 }//postVC class over line
 
 
@@ -219,8 +235,6 @@ countLikes.countObjectsInBackground { (count, error)  in
 cell.usernameBtn.layer.setValue(indexPath, forKey: "index")
 cell.commentBtn.layer.setValue(indexPath, forKey: "index")
 cell.moreBtn.layer.setValue(indexPath, forKey: "index")
-   
-        
         
    return cell
     }

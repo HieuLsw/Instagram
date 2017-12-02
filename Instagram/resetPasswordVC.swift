@@ -35,8 +35,6 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
  
   //initalize reset btn
  initResetBtn()
-    
-        
     }
 
     
@@ -46,7 +44,8 @@ class resetPasswordVC: UIViewController,UITextFieldDelegate {
         
         super.viewWillAppear(animated)
         
-        emailTxt.becomeFirstResponder()
+  //convert emailTxt to first responder
+         createFirstResponder()
         
         //create observers
         setUpObservers()
@@ -85,8 +84,6 @@ let alert = UIAlertController(title: "Email for reseting password", message: "ha
                 
             }
         }
-        
-        
     }
     
     //click cancel button
@@ -112,6 +109,11 @@ let alert = UIAlertController(title: "Email for reseting password", message: "ha
 //custom functions
 extension resetPasswordVC {
 
+    //convert emailTxt to first responder
+    fileprivate func createFirstResponder(){
+         emailTxt.becomeFirstResponder()
+    }
+    
     //initalize reset button
     fileprivate func initResetBtn(){
         resetBtn.isHidden = true

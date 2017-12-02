@@ -64,6 +64,10 @@ _ = [avaImg,usernameBtn,commentLbl,dateLbl].map{$0.translatesAutoresizingMaskInt
     NSLayoutConstraint(item: commentLbl, attribute: .right, relatedBy: .equal, toItem: commentCell().contentView, attribute: .rightMargin, multiplier: 1.0, constant: 0.0).isActive = true
     NSLayoutConstraint.init(item: commentLbl, attribute: .bottom, relatedBy: .equal, toItem: avaImg, attribute: .bottom, multiplier: 1.0, constant: 0.0).isActive = true
     NSLayoutConstraint(item: commentLbl, attribute: .left, relatedBy: .equal, toItem: avaImg, attribute: .right, multiplier: 1.0, constant: 25.0).isActive = true
+        
+avaImg.layer.cornerRadius = avaImg.bounds.size.width / 2
+avaImg.layer.borderWidth = 0
+avaImg.clipsToBounds = true
 }
 }
 
