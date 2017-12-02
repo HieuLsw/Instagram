@@ -124,22 +124,26 @@ if error == nil {
 
 //custom functions
 extension postCell{
-  
+    
     fileprivate func setAvaImgLayer(){
         self.avaImg.layer.cornerRadius = self.avaImg.bounds.size.width / 2
         self.avaImg.layer.borderWidth = 0
         self.avaImg.clipsToBounds = true
     }
-   
- // double tap to like
+    
+    // double tap to like
     fileprivate func doubleTapLike(){
-   
-    let likeTap = UITapGestureRecognizer(target: self, action: #selector(postCell.likeTap))
-    likeTap.numberOfTapsRequired = 2
-    picImg.isUserInteractionEnabled = true
-    picImg.addGestureRecognizer(likeTap)
+        
+        let likeTap = UITapGestureRecognizer(target: self, action: #selector(postCell.likeTap))
+        likeTap.numberOfTapsRequired = 2
+        picImg.isUserInteractionEnabled = true
+        picImg.addGestureRecognizer(likeTap)
+    }
 }
 
+//custom functions selectors
+extension postCell{
+  
     @objc fileprivate func likeTap(){
         
   // create large like gray heart

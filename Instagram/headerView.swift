@@ -96,22 +96,13 @@ newsQuery.whereKey("to", equalTo: (guestName.last)!)
     
 newsQuery.findObjectsInBackground(block: { (objects, error)  in
 
-if error == nil {
-    
-for object in objects! {object.deleteEventually()}
-     }
+if error == nil {for object in objects! {object.deleteEventually()}}
   })
 } else {print(error!.localizedDescription)}
-    })
+    })}
+} else {print(error!.localizedDescription)}
+    })}
 }
-} else {
-            print(error!.localizedDescription)
-        }
-    })
-    
-        }
-}
-    
 }// headerView class over line
 
 //custom functions

@@ -63,9 +63,6 @@ var genderPicker : UIPickerView!
     //declare UIPickerView instance and properities
     setPickInstance()
         
-    //set up observers
-    createObservers()
-        
     //some taps
     setTapGestures()
         
@@ -79,6 +76,20 @@ var genderPicker : UIPickerView!
     setTextViewPlacehold()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+       super.viewWillAppear(animated)
+        
+        //set up observers
+        createObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        //release observers
+deleteObservers()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -185,38 +196,6 @@ extension editVC{
         self.genderTxt.inputView = genderPicker
     }
     
-    // set up observers
-    fileprivate func createObservers(){
-        
-    // check notifications of keyboard - shown or not
- NotificationCenter.default.addObserver(self, selector: #selector(editVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        
- NotificationCenter.default.addObserver(self, selector: #selector(editVC.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
-    }
-    
-    // func when keyboard is shown
- @objc fileprivate func keyboardWillShow(_ notification: Notification) {
-        
-        // define keyboard frame size
-        keyboard = ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue)!
-        
-        // move up with animation
-        UIView.animate(withDuration: 0.4, animations: { [unowned self] in
-            self.scrollView.contentSize.height = self.view.frame.size.height + self.keyboard.height / 2
-        })
-    }
-    
-    
-    // func when keyboard is hidden
- @objc fileprivate func keyboardWillHide(_ notification: Notification) {
-        
-        // move down with animation
-        UIView.animate(withDuration: 0.4, animations: {[unowned self] in
-            self.scrollView.contentSize.height = 0
-        })
-    }
-    
    //some taps
     fileprivate func setTapGestures(){
         
@@ -231,20 +210,6 @@ extension editVC{
         avaTap.numberOfTapsRequired = 1
         avaImg.isUserInteractionEnabled = true
         avaImg.addGestureRecognizer(avaTap)
-    }
-    
-    // func to hide keyboard
- @objc fileprivate func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-    
-    // func to call UIImagePickerController
-  @objc fileprivate func loadImg (_ recognizer : UITapGestureRecognizer) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .photoLibrary
-        picker.allowsEditing = true
-        present(picker, animated: true, completion: nil)
     }
     
     //user information function
@@ -298,7 +263,71 @@ extension editVC{
     }
 }
 
-//pick view --data source
+//custom functions selectors
+extension editVC{
+    
+    // func to hide keyboard
+    @objc fileprivate func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
+    // func to call UIImagePickerController
+    @objc fileprivate func loadImg (_ recognizer : UITapGestureRecognizer) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+}
+
+//observers
+extension editVC{
+    
+    // set up observers
+    fileprivate func createObservers(){
+        
+        // check notifications of keyboard - shown or not
+        NotificationCenter.default.addObserver(self, selector: #selector(editVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(editVC.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    //release observers
+    fileprivate func deleteObservers(){
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+}
+
+//observers selectors
+extension editVC{
+  
+    // func when keyboard is shown
+    @objc fileprivate func keyboardWillShow(_ notification: Notification) {
+        
+        // define keyboard frame size
+        keyboard = ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue)!
+        
+        // move up with animation
+        UIView.animate(withDuration: 0.4, animations: { [unowned self] in
+            self.scrollView.contentSize.height = self.view.frame.size.height + self.keyboard.height / 2
+        })
+    }
+    
+    
+    // func when keyboard is hidden
+    @objc fileprivate func keyboardWillHide(_ notification: Notification) {
+        
+        // move down with animation
+        UIView.animate(withDuration: 0.4, animations: {[unowned self] in
+            self.scrollView.contentSize.height = 0
+        })
+    }
+}
+
+//UIPickerViewDataSource
 extension editVC{
     
     //pick component num
@@ -318,7 +347,7 @@ extension editVC{
     }
 }
 
-//pick view --delegate
+//UIPickerViewDelegate
 extension editVC{
     
     // picker did selected some value from it
@@ -329,7 +358,7 @@ extension editVC{
     
 }
 
-//image picker -- delegate
+//UIImagePickerControllerDelegate
 extension editVC{
     
     // method to finilize our actions with UIImagePickerController
@@ -340,7 +369,7 @@ extension editVC{
     }
 }
 
-//text field --delegate
+//UITextFieldDelegate
 extension editVC{
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -351,7 +380,7 @@ _ = [fullnameTxt,usernameTxt,webTxt,emailTxt,telTxt].map{$0?.resignFirstResponde
     }
 }
 
-//scroll view --delegate
+//UIScrollViewDelegate
 extension editVC{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

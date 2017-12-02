@@ -16,7 +16,6 @@ class tabbarVC: UITabBarController {
         
         //set tab bar layer
    setTabBarLayer()
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +29,7 @@ class tabbarVC: UITabBarController {
 extension tabbarVC{
     
     //set tab bar layer
-     func setTabBarLayer(){
+    fileprivate func setTabBarLayer(){
         
         // color of item
         self.tabBar.tintColor = .white

@@ -76,8 +76,7 @@ object.deleteInBackground(block: { (success, error) in
     }else{
         print(error!.localizedDescription)
     }
-            })
-            
+})
         }
     }else{
         print(error!.localizedDescription)
@@ -88,10 +87,10 @@ object.deleteInBackground(block: { (success, error) in
  }
 }// followersCell class over line
 
+//custom functions
 extension followersCell{
    
-
-     func setImgLayer(){
+func setImgLayer(){
         
  avaImg.layer.cornerRadius = avaImg.bounds.size.width / 2
  avaImg.layer.borderWidth = 1
@@ -109,10 +108,7 @@ shape.lineWidth = 3
         gradient.mask = shape
         
     self.imageInset.layer.addSublayer(gradient)
-        
-    }
- 
-    
+  }
 }
 
 

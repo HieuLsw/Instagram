@@ -27,6 +27,7 @@ class navVC: UINavigationController {
     }
 }// navVC class over line
 
+//custom functions
 extension navVC{
 
     //set navigation bar attributes

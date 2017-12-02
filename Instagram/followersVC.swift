@@ -39,7 +39,6 @@ class followersVC: UITableViewController {
 //custom functions
 extension followersVC{
     
-    
     fileprivate func setBarInfo(){
     navigationItem.title = varShow.uppercased()
      
@@ -49,9 +48,7 @@ extension followersVC{
         } else if varShow == "followings"{
             fetchFollowings()
         }
-        
     }
-    
     
     fileprivate func fetchFollowers(){
        
@@ -67,7 +64,6 @@ if error == nil{
     //clean up
     self.followArray.removeAll(keepingCapacity: false)
 
-    
   //find related objects depending on query settings
 self.followArray = objects!.map{$0.value(forKey: "follower") as! String}
   
@@ -89,8 +85,7 @@ query?.findObjectsInBackground(block: { (objects, error) in
         self.usernameArray.append(object.object(forKey: "username") as! String)
         self.avaArray.append(object.object(forKey: "ava") as! PFFile)
         self.tableView.reloadData()
-        }
- 
+        } 
     } else{
         print(error!.localizedDescription)
     }
@@ -141,7 +136,7 @@ self.avaArray.removeAll(keepingCapacity: false)
 }
 }
 
-//table view -- datasource
+//UITableViewDatasource
 extension followersVC{
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -206,10 +201,9 @@ cell.followBtn.setTitle("FOLLOWING", for: .normal)
             cell.layer.transform = CATransform3DIdentity
         }
     }
-    
 }
 
-//tableview --delegate
+//UITableViewDelegate
 extension followersVC{
     
     // selected some user
@@ -232,11 +226,9 @@ extension followersVC{
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 110
     }
-    
-    
 }
 
-// scroll view --delegate
+//UIScrollViewDelegate
 extension followersVC{
   
    override func scrollViewDidScroll(_ scrollView: UIScrollView) {

@@ -224,9 +224,7 @@ extension homeVC{
        //get header
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! headerView
         
-        
         //STEP 1. Fetch user data
-        
         //get users data with connections to collumns of PFUser class
         header.fullnameLbl.text = (PFUser.current()?.object(forKey: "fullname") as? String)?.uppercased()
         
@@ -244,9 +242,7 @@ extension homeVC{
         
         header.button.setTitle("edit profile", for: .normal)
         
-        
         //STEP 2. Count statistics
-        
         //count total posts
         let posts = PFQuery(className: "posts")
         posts.whereKey("username", equalTo: (PFUser.current()?.username)!)
@@ -274,9 +270,7 @@ extension homeVC{
             }
         }
         
-        
         //STEP 3. Impelement top gestures
-        
         //tap posts
         let postsTap = UITapGestureRecognizer(target: self, action: #selector(postsT))
         postsTap.numberOfTapsRequired = 1
@@ -303,45 +297,10 @@ return header
 //custom functions
 extension homeVC{
     
-    //hold scroll direction
+    //hold scroll direction attribute
     fileprivate func holdCollectionViewDirection(){
         
       collectionView?.alwaysBounceVertical = true
-    }
-    
-    //taped posts label
-    @objc fileprivate func postsT() {
-        
-        if !picArray.isEmpty{
-         let indexPath = IndexPath(item: 0, section: 0)
-        collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
-            }
-    }
- 
-   //taped followers label
-   @objc fileprivate func followersT() {
-    
-    varUser = (PFUser.current()?.username)!
-    varShow = "followers"
-    
-    //make references to followersVC
-let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
-    
-//present
- navigationController?.pushViewController(followers, animated: true)
-    }
-  
-    //taped following label
-    @objc fileprivate func followingsT() {
-        
-varUser = (PFUser.current()?.username)!
-varShow = "followings"
- 
-//make references to followersVC
-let followings = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
-        
-//present
-navigationController?.pushViewController(followings, animated: true)
     }
     
      fileprivate func loadMore(){
@@ -376,18 +335,56 @@ navigationController?.pushViewController(followings, animated: true)
 
 }
 
-// scroll view --delegate
+//custom functions selectors
+extension homeVC{
+    
+    //taped posts label
+    @objc fileprivate func postsT() {
+        
+        if !picArray.isEmpty{
+            let indexPath = IndexPath(item: 0, section: 0)
+            collectionView?.scrollToItem(at: indexPath, at: .top, animated: true)
+        }
+    }
+    
+    //taped followers label
+    @objc fileprivate func followersT() {
+        
+        varUser = (PFUser.current()?.username)!
+        varShow = "followers"
+        
+        //make references to followersVC
+        let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+        
+        //present
+        navigationController?.pushViewController(followers, animated: true)
+    }
+    
+    //taped following label
+    @objc fileprivate func followingsT() {
+        
+        varUser = (PFUser.current()?.username)!
+        varShow = "followings"
+        
+        //make references to followersVC
+        let followings = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+        
+        //present
+        navigationController?.pushViewController(followings, animated: true)
+    }
+}
+
+//UIScrollViewDelegate
 extension homeVC{
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let verticalIndicator = (scrollView.subviews[(scrollView.subviews.count - 1)] as! UIImageView)
         verticalIndicator.backgroundColor = UIColor.orange
-    
+        
         if scrollView.contentOffset.y >= scrollView.contentSize.height - self.view.frame.size.height {
             loadMore()
         }
     }
 }
-
 

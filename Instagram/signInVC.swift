@@ -35,7 +35,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
         super.viewDidLoad()
  
   //initialize text fields false isEnable input
-        initInputFirst()
+        initInputsFirst()
         
    //check text fields is or not written all
             setupAddTargetIsNotEmptyTextFields()
@@ -44,7 +44,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         
         //observe sign In button if is or not hidden
         createObserver()
@@ -53,7 +53,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
     override func viewWillDisappear(_ animated: Bool) {
         
-        super.viewWillDisappear(true)
+        super.viewWillDisappear(animated)
         
         //delete the observers
       releaseObservers()
@@ -92,7 +92,7 @@ class signInVC: UIViewController,UITextFieldDelegate{
     
 }//signInVC class over line
 
-//textfield - delegate
+//custom functions
 extension signInVC{
     
    fileprivate func setupAddTargetIsNotEmptyTextFields() {
@@ -104,83 +104,19 @@ extension signInVC{
                                     for: .editingChanged)
         passwordTxt.addTarget(self, action: #selector(textFieldsIsOrNotEmpty),
                                      for: .editingChanged)
-    
     }
     
-  //get the currrent textfield whenever
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        activeTextField = textField
-    }
-    
-
-    //click keyboard return to close keyboard
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    //initialize signInt button layout and background
+   fileprivate func initInputsFirst(){
         
-        usernameTxt.resignFirstResponder()
-        passwordTxt.resignFirstResponder()
-        return true
+        signInBtnHeight.constant = 0
+        
+        signInBtn.applyGradient(colours:[UIColor(hex:"00C3FF"), UIColor(hex:"FFFF1C")], locations:[0.0, 1.0], stP:CGPoint(x:0.0, y:0.0), edP:CGPoint(x:1.0, y:0.0))
     }
 }
 
-//custom functions
+//custom functions selectors
 extension signInVC{
-    
-    //observe the sign In button is or not hidden
-  fileprivate  func createObserver(){
-    
-        NotificationCenter.default.addObserver(self, selector: #selector(signInVC.btnHiddenStackLocation(argu:)), name: NSNotification.Name.init("isHidden"), object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(signInVC.btnNotHiddenStackLocation(argu:)), name: NSNotification.Name.init("NotHidden"), object:nil)
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(argu:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-    
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(argu:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    
-    }
-    
-    
-    //if the sign In button is or not hidden, change the stack location
-    @objc fileprivate func btnHiddenStackLocation(argu: Notification){
-        
-signInBtnHeight.constant = 0
-    }
-    
-    @objc fileprivate func btnNotHiddenStackLocation(argu: Notification){
-        
- signInBtnHeight.constant = 60
-        
-    }
-   
-    @objc fileprivate func keyboardDidShow(argu: Notification){
-        
-        let info = argu.userInfo! as NSDictionary
-        
-        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
-        let keyboardY = self.view.frame.size.height - keyboardSize.height
-        
-        guard let editingTextField = activeTextField?.frame.origin.y else
-        {return}
-       
-        if self.view.frame.origin.y >= 0{
-            
-      //Checking if the textfield is really hidden behind the keyboard
-        if editingTextField > keyboardY - 60{
-            UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:
-                {[unowned self] in
-                self.view.frame = CGRect(x: 0.0, y: self.view.frame.origin.y - (editingTextField - (keyboardY - 60)), width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-            }, completion: nil)
-        }
-    }
-        
-}
-    @objc fileprivate func keyboardWillHide(argu: Notification){
-        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:
-            {[unowned self] in
-            self.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-        }, completion: nil)
-    }
-    
-    
     
  //if all text fields has not been written anything, the sign In button will be hidden
     @objc fileprivate func textFieldsIsOrNotEmpty(sender: UITextField) {
@@ -194,6 +130,22 @@ signInBtnHeight.constant = 0
         }
         
     }
+}
+
+//observers
+extension  signInVC{
+    
+    //observe the sign In button is or not hidden
+    fileprivate  func createObserver(){
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(signInVC.btnHiddenStackLocation(argu:)), name: NSNotification.Name.init("isHidden"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(signInVC.btnNotHiddenStackLocation(argu:)), name: NSNotification.Name.init("NotHidden"), object:nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(argu:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(argu:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
     
     //release the observers
     fileprivate func releaseObservers(){
@@ -203,14 +155,69 @@ signInBtnHeight.constant = 0
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "NotHidden"), object: nil)
     }
     
+}
+
+//observers selectors
+extension signInVC{
     
-    //initialize signInt button layout and background
-  fileprivate  func initInputFirst(){
-    
-   signInBtnHeight.constant = 0
- 
-  signInBtn.applyGradient(colours:[UIColor(hex:"00C3FF"), UIColor(hex:"FFFF1C")], locations:[0.0, 1.0], stP:CGPoint(x:0.0, y:0.0), edP:CGPoint(x:1.0, y:0.0))
-    
-    
+    //if the sign In button is or not hidden, change the stack location
+    @objc fileprivate func btnHiddenStackLocation(argu: Notification){
+        
+        signInBtnHeight.constant = 0
     }
+    
+    @objc fileprivate func btnNotHiddenStackLocation(argu: Notification){
+        
+        signInBtnHeight.constant = 60
+        
+    }
+    
+    @objc fileprivate func keyboardDidShow(argu: Notification){
+        
+        let info = argu.userInfo! as NSDictionary
+        
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        let keyboardY = self.view.frame.size.height - keyboardSize.height
+        
+        guard let editingTextField = activeTextField?.frame.origin.y else
+        {return}
+        
+        if self.view.frame.origin.y >= 0{
+            
+            //Checking if the textfield is really hidden behind the keyboard
+            if editingTextField > keyboardY - 60{
+                UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:
+                    {[unowned self] in
+                        self.view.frame = CGRect(x: 0.0, y: self.view.frame.origin.y - (editingTextField - (keyboardY - 60)), width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+                    }, completion: nil)
+            }
+        }
+        
+    }
+    
+    @objc fileprivate func keyboardWillHide(argu: Notification){
+        UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations:
+            {[unowned self] in
+                self.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+            }, completion: nil)
+    }
+
+}
+
+//UITextFieldDelegate
+extension signInVC{
+    
+    //get the currrent textfield whenever
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeTextField = textField
+    }
+    
+    //click keyboard return to close keyboard
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        usernameTxt.resignFirstResponder()
+        passwordTxt.resignFirstResponder()
+        return true
+    }
+    
 }

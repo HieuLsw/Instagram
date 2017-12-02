@@ -44,6 +44,12 @@ class commentVC: UIViewController {
 
       //set views layout
      configueVCAlignment()
+        
+        // set navigation bar
+     configueNavigationBar()
+        
+          //create back swipe gesture
+    createBackSwipeGesture()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -75,32 +81,49 @@ extension commentVC{
      commentTxt.becomeFirstResponder()
     }
 
+    // set navigation bar
+    fileprivate func configueNavigationBar(){
+       
+    self.navigationItem.title = "COMMENTS"
+    self.navigationItem.hidesBackButton = true
+    self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "back", style: .plain, target: self, action: #selector(back(_:)))
+    }
+    
+    //create back swipe gesture
+    fileprivate func createBackSwipeGesture(){
+        
+        // swipe to go back
+        let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(back(_:)))
+        backSwipe.direction = UISwipeGestureRecognizerDirection.right
+        self.view.addGestureRecognizer(backSwipe)
+    }
+    
     //set views layout
     fileprivate func configueVCAlignment(){
   
      //avoid the issue to auto layout
 _ = [tableView,sendBtn,commentTxt].map{$0.translatesAutoresizingMaskIntoConstraints = false}
  
-        
-        
 //table view layout
   tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
    tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
    tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
   tableView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 700/812).isActive = true
  
+// comment text view layout
   commentTxt.leftAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leftAnchor).isActive = true
   commentTxt.heightAnchor.constraint(equalToConstant: 50).isActive = true
   commentTxt.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 3).isActive = true
   commentTxt.rightAnchor.constraint(equalTo: self.view.layoutMarginsGuide.rightAnchor).isActive = true
 
+ // comment text view layout
 sendBtn.rightAnchor.constraint(equalTo: commentTxt.rightAnchor).isActive = true
 sendBtn.topAnchor.constraint(equalTo: commentTxt.topAnchor).isActive = true
 sendBtn.bottomAnchor.constraint(equalTo: commentTxt.bottomAnchor).isActive = true
   sendBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
   sendBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         
- sendBtn.layer.cornerRadius = sendBtn.bounds.size.width / 2
+sendBtn.layer.cornerRadius = sendBtn.bounds.size.width / 2
   sendBtn.layer.borderWidth = 1
 sendBtn.backgroundColor = #colorLiteral(red: 0.1920000017, green: 0.275000006, blue: 0.5059999824, alpha: 1)
     
@@ -109,6 +132,28 @@ sendBtn.backgroundColor = #colorLiteral(red: 0.1920000017, green: 0.275000006, b
 commentTxt.layer.borderColor = UIColor.blue.cgColor
 commentTxt.layer.borderWidth = 2
 }
-   
-    
 }
+
+//custom functions selectors
+extension commentVC{
+    
+    // go back
+    @objc fileprivate func back(_ sender : UIBarButtonItem) {
+    
+self.navigationController?.popViewController(animated: true)
+        
+// clean comment uuid from last holding infromation
+if !commentuuid.isEmpty {
+            commentuuid.removeLast()
+        }
+        
+// clean comment owner from last holding infromation
+guard commentowner.isEmpty else{
+            commentowner.removeLast()
+            return
+        }
+    }
+}
+
+
+

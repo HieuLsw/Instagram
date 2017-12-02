@@ -70,8 +70,6 @@ extension guestVC{
         let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(back(sender:)))
         backSwipe.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(backSwipe)
-       
-    
     }
   
     //add refresh control
@@ -81,27 +79,6 @@ extension guestVC{
         refresher.addTarget(self, action: #selector(afterRefresher), for: .valueChanged)
         collectionView?.addSubview(refresher)
         
-    }
-    
-    //back function
-     @objc fileprivate func back(sender: UIBarButtonItem){
-     
-//push back
-    self.navigationController?.popViewController(animated: true)
-    
-  //clean guest username or detect the last guest username from guestName array
-        if !guestName.isEmpty{
-        
-       guestName.removeLast()
-        
-        }
-}
-  
-  // refresh functions
- @objc fileprivate func afterRefresher(){
-    
-    refresher.endRefreshing()
-    loadPosts()
     }
     
     // post loading function
@@ -130,40 +107,6 @@ self.collectionView?.reloadData()
     })
    }
     
-  
-    // tapped posts label
-   @objc func _postsTap() {
-        
-        if !picArray.isEmpty {
-            let index = IndexPath(item: 0, section: 0)
-            self.collectionView?.scrollToItem(at: index, at: UICollectionViewScrollPosition.top, animated: true)
-        }
-    }
-    
-    // tapped followers label
-    @objc func _followersTap() {
-        varUser = (guestName.last)!
-        varShow = "followers"
-        
-        // defind followersVC
-        let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
-        
-        // navigate to it
-self.navigationController?.pushViewController(followers, animated: true)
-    }
-    
-    // tapped followings label
-    @objc func _followingsTap() {
-        varUser = (guestName.last)!
-        varShow = "followings"
-        
-        // define followersVC
-        let followings = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
-        
-        // navigate to it
-self.navigationController?.pushViewController(followings, animated: true)
-    }
-    
     fileprivate func loadMore(){
         
         // if there is more objects
@@ -171,6 +114,7 @@ self.navigationController?.pushViewController(followings, animated: true)
             
             // increase page size
             page = page + 12
+            
             // load more posts
             let query = PFQuery(className: "posts")
             query.whereKey("username", equalTo: (guestName.last)!)
@@ -195,6 +139,62 @@ self.picArray.removeAll(keepingCapacity: false)
     }
 }
 
+//custom functions selectors
+extension guestVC{
+   
+    //back function
+    @objc fileprivate func back(sender: UIBarButtonItem){
+        
+        //push back
+    self.navigationController?.popViewController(animated: true)
+        
+        //clean guest username or detect the last guest username from guestName array
+        if !guestName.isEmpty{
+            guestName.removeLast()
+        }
+    }
+    
+// refresh functions
+    @objc fileprivate func afterRefresher(){
+        
+        refresher.endRefreshing()
+        loadPosts()
+    }
+    
+    // tapped posts label
+    @objc func _postsTap() {
+        
+        if !picArray.isEmpty {
+            let index = IndexPath(item: 0, section: 0)
+            self.collectionView?.scrollToItem(at: index, at: UICollectionViewScrollPosition.top, animated: true)
+        }
+    }
+    
+    // tapped followers label
+    @objc func _followersTap() {
+        varUser = (guestName.last)!
+        varShow = "followers"
+        
+        // defind followersVC
+        let followers = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+        
+        // navigate to it
+        self.navigationController?.pushViewController(followers, animated: true)
+    }
+    
+    // tapped followings label
+    @objc func _followingsTap() {
+        varUser = (guestName.last)!
+        varShow = "followings"
+        
+        // define followersVC
+        let followings = self.storyboard?.instantiateViewController(withIdentifier: "followersVC") as! followersVC
+        
+  // navigate to it
+self.navigationController?.pushViewController(followings, animated: true)
+    }
+}
+
 //collection --data source
 extension guestVC{
     
@@ -213,13 +213,11 @@ picArray[indexPath.row].getDataInBackground { (data, error) in
         cell.picImg.image = UIImage(data: data!)
     } else{print(error!.localizedDescription)}
         }
-        
         return cell
     }
-    
 }
 
-//collection view --delegate
+//UICollectionViewDelegate
 extension guestVC{
     
     // cell size
@@ -292,7 +290,6 @@ extension guestVC{
             }
         }
         
-        
         // count followers
         let followers = PFQuery(className: "follow")
         followers.whereKey("following", equalTo: (guestName.last)!)
@@ -341,7 +338,7 @@ return header
     
 }
 
-// scroll view --delegate
+//UIScrollViewDelegate
 extension guestVC{
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {

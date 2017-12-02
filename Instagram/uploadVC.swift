@@ -191,62 +191,6 @@ fileprivate func tapToHideKyeboard(){
         picImg.addGestureRecognizer(picTap)
     }
     
-    // hide kyeboard function
-@objc fileprivate func hideKeyboardTap() {
-        self.viewAboveScrollView.endEditing(true)
-    }
-    
-    // func to call pickerViewController
- @objc fileprivate func selectImg() {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .photoLibrary
-        picker.allowsEditing = true
-        present(picker, animated: true, completion: nil)
-    }
-    
-    // zooming in / out function
-  @objc fileprivate func zoomImg() {
-    
-    // define frame of zoomed image
-    let zoomed = CGRect(x: 0, y: self.view.center.y - UIScreen.main.bounds.size.width / 1.2, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
-    
-    // frame of unzoomed (small) image
-    let unzoomed = CGRect(x: 16, y: 54, width: 90, height: 90)
-    
-    // if picture is unzoomed, zoom it
-    if picImg.frame == unzoomed {
-        
-        UIView.animate(withDuration: 0.3){
-           [unowned self] in
-            // resize image frame
-            self.picImg.frame = zoomed
-            
-            // hide objects from background
-            self.viewAboveScrollView.backgroundColor = .black
-            self.titleTxt.alpha = 0
-            self.publishBtn.isHidden = true
-            self.removeBtn.alpha = 0
-        }
-    }else{
-        
-        UIView.animate(withDuration: 0.3){
-            [unowned self] in
-            // resize image frame
-            self.picImg.frame = unzoomed
-            
-            // unhide objects from background
-            self.viewAboveScrollView.backgroundColor = .white
-            
-            self.titleTxt.alpha = 1
-            
-            self.publishBtn.isHidden = false
-            self.publishBtn.backgroundColor = UIColor(hex: "8EFA00")
-            self.removeBtn.alpha = 1
-        }
-    }
-  }
-    
     // add done button above keyboard
     fileprivate func addDoneButton(){
         
@@ -266,6 +210,28 @@ fileprivate func tapToHideKyeboard(){
     fileprivate func textViewPlacehold(){
     titleTxt.placeholder = "Write something..."
     }
+}
+
+//custom functions selectors
+extension uploadVC{
+    
+    // hide kyeboard function
+    @objc fileprivate func hideKeyboardTap() {
+        self.viewAboveScrollView.endEditing(true)
+    }
+    
+    // func to call pickerViewController
+    @objc fileprivate func selectImg() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        picker.allowsEditing = true
+        present(picker, animated: true, completion: nil)
+    }
+}
+
+//observers
+extension uploadVC{
     
     //create observers
     fileprivate func createObservers(){
@@ -276,12 +242,16 @@ fileprivate func tapToHideKyeboard(){
     
     //delete observers
     fileprivate func deleteObservers(){
-     
-      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-      NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
+}
+
+//observers selectors
+extension uploadVC{
     
-    @objc func adjustForKeyboard(notification: Notification) {
+    @objc fileprivate func adjustForKeyboard(notification: Notification) {
         
         let userInfo = notification.userInfo!
         
@@ -301,7 +271,53 @@ fileprivate func tapToHideKyeboard(){
     }
 }
 
-//image picker --delegate
+//image picker delegate selectors
+extension uploadVC{
+    
+    // zooming in / out function
+    @objc fileprivate func zoomImg() {
+        
+        // define frame of zoomed image
+        let zoomed = CGRect(x: 0, y: self.view.center.y - UIScreen.main.bounds.size.width / 1.2, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
+        
+        // frame of unzoomed (small) image
+        let unzoomed = CGRect(x: 16, y: 54, width: 90, height: 90)
+        
+        // if picture is unzoomed, zoom it
+        if picImg.frame == unzoomed {
+            
+            UIView.animate(withDuration: 0.3){
+                [unowned self] in
+                // resize image frame
+                self.picImg.frame = zoomed
+                
+                // hide objects from background
+                self.viewAboveScrollView.backgroundColor = .black
+                self.titleTxt.alpha = 0
+                self.publishBtn.isHidden = true
+                self.removeBtn.alpha = 0
+            }
+        }else{
+            
+            UIView.animate(withDuration: 0.3){
+                [unowned self] in
+                // resize image frame
+                self.picImg.frame = unzoomed
+                
+                // unhide objects from background
+                self.viewAboveScrollView.backgroundColor = .white
+                
+                self.titleTxt.alpha = 1
+                
+                self.publishBtn.isHidden = false
+                self.publishBtn.backgroundColor = UIColor(hex: "8EFA00")
+                self.removeBtn.alpha = 1
+            }
+        }
+    }
+}
+
+//UIImagePickerControllerDelegate
 extension uploadVC{
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -309,11 +325,11 @@ extension uploadVC{
         picImg.image = info[UIImagePickerControllerEditedImage] as? UIImage
         self.dismiss(animated: true, completion: nil)
         
-    // enable publish btn
-       publishBtn.isEnabled = true
+        // enable publish btn
+        publishBtn.isEnabled = true
         publishBtn.backgroundColor = UIColor(hex: "8EFA00")
         
-    // implement second tap for zooming image
+        // implement second tap for zooming image
         let zoomTap = UITapGestureRecognizer(target: self, action: #selector(uploadVC.zoomImg))
         zoomTap.numberOfTapsRequired = 1
         picImg.isUserInteractionEnabled = true
@@ -321,7 +337,7 @@ extension uploadVC{
     }
 }
 
-// scroll view --delegate
+//UIScrollViewDelegate
 extension uploadVC{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -330,12 +346,6 @@ extension uploadVC{
         verticalIndicator.backgroundColor = UIColor.orange
     }
 }
-
-
-
-
-
-
 
 
 

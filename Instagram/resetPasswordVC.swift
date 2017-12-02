@@ -81,7 +81,6 @@ let alert = UIAlertController(title: "Email for reseting password", message: "ha
 })
            alert.addAction(ok)
            self.present(alert, animated: true, completion: nil)
-                
             }
         }
     }
@@ -101,9 +100,7 @@ let alert = UIAlertController(title: "Email for reseting password", message: "ha
         }else {
             NotificationCenter.default.post(name: NSNotification.Name.init("disHidden"), object: nil)
         }
-        
     }
-
 }//class over line
 
 //custom functions
@@ -120,23 +117,44 @@ extension resetPasswordVC {
         resetBtnHeight.constant = 0.0
         distanceOfBtnAndTxtF.constant = 0.0
     }
+
+    //initialize text fields false isEnable input
+    fileprivate  func initInputFirst(){
+       
+        self.resetBtn.applyGradient(colours: [UIColor(hex: "FDFC47"), UIColor(hex: "24FE41")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
+        
+        self.cancelBtn.applyGradient(colours: [UIColor(hex: "004FF9"), UIColor(hex: "833AB4")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
+    }
+}
+
+//observers
+extension resetPasswordVC{
     
-    //create observers
     fileprivate func setUpObservers(){
-    
+        
         NotificationCenter.default.addObserver(self, selector: #selector(didResetBtnHidden(argu:)), name: NSNotification.Name.init("didHidden"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(disResetBtnHidden(argu:)), name: NSNotification.Name.init("disHidden"), object: nil)
-        
-      
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow(argu:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(argu:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+    fileprivate func deallocateObservers(){
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init("didHidden"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init("disHidden"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+}
+
+//observers selectors
+extension resetPasswordVC{
     
     @objc fileprivate func didResetBtnHidden(argu:Notification){
         self.distanceOfBtnAndTxtF.constant = 0.0
         self.resetBtnHeight.constant = 0.0
     }
+    
     @objc fileprivate func disResetBtnHidden(argu:Notification){
         self.distanceOfBtnAndTxtF.constant = 58.0
         self.resetBtnHeight.constant = self.cancelBtn.bounds.size.height
@@ -161,35 +179,17 @@ extension resetPasswordVC {
             }
         }
     }
+    
     @objc fileprivate func keyboardWillHide(argu:Notification){
         
         UIView.animate(withDuration: 0.25, delay: 0.0, options: .curveEaseIn, animations: {
             self.view.frame = CGRect(x: 0.0, y: 0.0, width: self.view.bounds.size.width, height: self.view.bounds.size.height)
         }, completion: nil)
     }
-    
-    
-    
-    //initialize text fields false isEnable input
-    fileprivate  func initInputFirst(){
-       
-        self.resetBtn.applyGradient(colours: [UIColor(hex: "FDFC47"), UIColor(hex: "24FE41")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
-        
-        self.cancelBtn.applyGradient(colours: [UIColor(hex: "004FF9"), UIColor(hex: "833AB4")], locations: [0.0, 1.0], stP: CGPoint(x:0.0, y:0.0), edP: CGPoint(x:1.0, y:0.0))
-    }
-    
-    fileprivate func deallocateObservers(){
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init("didHidden"), object: nil)
-    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init("disHidden"), object: nil)
-        
-    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-    NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
 }
 
-//textfield - delegate
-extension  resetPasswordVC{
+//UITextFieldDelegate
+extension resetPasswordVC{
     
     //get current textfield context
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -201,13 +201,9 @@ extension  resetPasswordVC{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         emailTxt.resignFirstResponder()
-    return true
+        return true
     }
 }
-
-
-
-
 
 
 
