@@ -27,6 +27,12 @@ class followersVC: UITableViewController {
         //navigaiton bar information
       setBarInfo()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+       tableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -73,7 +79,6 @@ let query = PFUser.query()
 query?.whereKey("username", containedIn: self.followArray)
 query?.addDescendingOrder("createdAt")
 query?.findObjectsInBackground(block: { (objects, error) in
-    
     if error == nil{
     
    // clear up
@@ -113,7 +118,9 @@ self.followArray = objects!.map{$0.value(forKey: "following") as! String}
  
  //STEP 3. Find in user class data of users following _user
  //find users follow by user
-    let query = PFQuery(className: "_User")
+   let query = PFQuery(className: "_User")
+      //let query = PFUser.query()
+     query.whereKey("username", containedIn: self.followArray)
      query.addDescendingOrder("createdAt")
 query.findObjectsInBackground(block: { (objects, error) in
     if error == nil{
@@ -152,6 +159,7 @@ extension followersVC{
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! followersCell
         
        //STEP 1. Connect data from server to objects
+        usernameArray = usernameArray.sorted()
         cell.username.text = usernameArray[indexPath.row]
         
         avaArray[indexPath.row].getDataInBackground { (data, error) in

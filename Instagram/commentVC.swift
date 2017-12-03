@@ -12,11 +12,12 @@ import Parse
 var commentuuid = [String]()
 var commentowner = [String]()
 
-class commentVC: UIViewController {
+class commentVC: UIViewController,UITextViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var commentTxt: UITextView!
+   {didSet{self.commentTxt.delegate = self}}
     
     @IBOutlet weak var sendBtn: UIButton!
     
@@ -216,3 +217,49 @@ extension commentVC{
    }
 }
 
+//UITextViewDelegate
+extension commentVC{
+    
+    // while writing something
+    func textViewDidChange(_ textView: UITextView) {
+        
+        // disable button if entered no text
+        let spacing = CharacterSet.whitespacesAndNewlines
+        if !commentTxt.text.trimmingCharacters(in: spacing).isEmpty {
+            sendBtn.isEnabled = true
+        } else {
+            sendBtn.isEnabled = false
+        }
+        
+        // + paragraph
+        if textView.contentSize.height > textView.frame.size.height && textView.frame.height < 130 {
+            
+            // find difference to add
+            let difference = textView.contentSize.height - textView.frame.size.height
+            
+            // redefine frame of commentTxt
+            textView.frame.origin.y = textView.frame.origin.y - difference
+            textView.frame.size.height = textView.contentSize.height
+            
+            // move up tableView
+            if textView.contentSize.height + keyboard.height + commentY >= tableView.frame.size.height {
+                tableView.frame.size.height = tableView.frame.size.height - difference
+            }
+        }
+            // - paragraph
+        else if textView.contentSize.height < textView.frame.size.height {
+            
+            // find difference to deduct
+            let difference = textView.frame.size.height - textView.contentSize.height
+            
+            // redefine frame of commentTxt
+            textView.frame.origin.y = textView.frame.origin.y + difference
+            textView.frame.size.height = textView.contentSize.height
+            
+            // move down tableViwe
+            if textView.contentSize.height + keyboard.height + commentY > tableView.frame.size.height {
+                tableView.frame.size.height = tableView.frame.size.height + difference
+            }
+        }
+    }
+}
