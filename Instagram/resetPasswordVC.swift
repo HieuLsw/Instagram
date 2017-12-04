@@ -92,7 +92,6 @@ let alert = UIAlertController(title: "Email for reseting password", message: "ha
    
     @IBAction func emailTextFieldTap(_ sender: UITextField) {
 
- //sender.text = sender.text?.trimmingCharacters(in: .whitespaces)
         resetBtn.isHidden = (emailTxt.text?.isEmpty)!
         
         if resetBtn.isHidden{

@@ -222,6 +222,7 @@ extension guestVC{
     
     // cell size
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        
         let size = CGSize(width: self.view.frame.size.width / 3, height: self.view.frame.size.width / 3)
         return size
     }
@@ -231,8 +232,8 @@ extension guestVC{
         
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "Header", for: indexPath) as! headerView
         
-        //STEP 1. Load data of guest
-        let infoQuery = PFQuery(className: "_User")
+     //STEP 1. Load data of guest
+   let infoQuery = PFQuery(className: "_User")
         infoQuery.whereKey("username", equalTo: (guestName.last)!)
         infoQuery.findObjectsInBackground { (objects, error) in
             

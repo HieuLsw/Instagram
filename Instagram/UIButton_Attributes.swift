@@ -16,18 +16,6 @@ class UIButton_Attributes: UIButton {}
 //UIButton
 extension UIButton {
     
-//can get gradient color in default loaction or actual loacation
-    func applyGradient(colours: [UIColor], locations: [NSNumber]? = nil, stP:CGPoint, edP:CGPoint){
-        let gradient = CAGradientLayer()
-        gradient.frame = self.bounds
-        gradient.colors = colours.map { $0.cgColor }
-        gradient.locations = locations
-        gradient.startPoint = stP
-        gradient.endPoint = edP
-        self.layer.insertSublayer(gradient, at: 0)
-    }
- 
-    
     @IBInspectable
     var cornerRadius: CGFloat {
         get {

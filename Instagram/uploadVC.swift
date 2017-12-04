@@ -31,7 +31,7 @@ class uploadVC: UIViewController,UIImagePickerControllerDelegate,UINavigationCon
         initPublishBtn()
         
     // hide kyeboard tap
-        tapToHideKyeboard()
+        tapToHideKeyboard()
         
     // set image view layer
        setImageViewLayer()
@@ -176,7 +176,7 @@ fileprivate func initPublishBtn(){
 }
     
     // hide kyeboard tap
-fileprivate func tapToHideKyeboard(){
+fileprivate func tapToHideKeyboard(){
     let hideTap = UITapGestureRecognizer(target: self, action: #selector(uploadVC.hideKeyboardTap))
     hideTap.numberOfTapsRequired = 1
     self.viewAboveScrollView.isUserInteractionEnabled = true

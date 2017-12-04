@@ -17,9 +17,11 @@ class commentVC: UIViewController,UITextViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var commentTxt: UITextView!
-   {didSet{self.commentTxt.delegate = self}}
+{didSet{self.commentTxt.delegate = self}}
     
     @IBOutlet weak var sendBtn: UIButton!
+ 
+    @IBOutlet weak var textViewLocation: NSLayoutConstraint!
     
     var refresh = UIRefreshControl()
     
@@ -46,18 +48,15 @@ class commentVC: UIViewController,UITextViewDelegate {
       //set views layout
      configueVCAlignment()
         
-        // set navigation bar
-     configueNavigationBar()
+        // set text view placehold
+setTextViewPlacehold()
         
-          //create back swipe gesture
-    createBackSwipeGesture()
-    }
+        // add done button above keyboard
+addDoneButton()
+}
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-    
-// convert commentTxt to first responder
-     //createFirstResponder()
         
         //create observers
         createObservers()
@@ -79,95 +78,73 @@ class commentVC: UIViewController,UITextViewDelegate {
     
     
     }
+  
     
+    @IBAction func BACK(_ sender: Any) {
+        
+        // clean comment uuid from last holding infromation
+        if !commentuuid.isEmpty {
+            commentuuid.removeLast()
+        }
+        
+        // clean comment owner from last holding infromation
+        if !commentowner.isEmpty {
+            commentowner.removeLast()
+        }
+        
+        dismiss(animated: true, completion: nil)
+        
+    }
 }//commentVC class over line
 
 //custom functions
 extension commentVC{
     
-    // convert commentTxt to first responder
-    fileprivate func createFirstResponder(){
-      
-     commentTxt.becomeFirstResponder()
-    }
-
-    // set navigation bar
-    fileprivate func configueNavigationBar(){
-       
-    self.navigationItem.title = "COMMENTS"
-    self.navigationItem.hidesBackButton = true
-    self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "back", style: .plain, target: self, action: #selector(back(_:)))
-    }
-    
-    //create back swipe gesture
-    fileprivate func createBackSwipeGesture(){
-        
-        // swipe to go back
-        let backSwipe = UISwipeGestureRecognizer(target: self, action: #selector(back(_:)))
-        backSwipe.direction = UISwipeGestureRecognizerDirection.right
-        self.view.addGestureRecognizer(backSwipe)
-    }
-    
     //set views layout
     fileprivate func configueVCAlignment(){
-  
-     //avoid the issue to auto layout
-_ = [tableView,sendBtn,commentTxt].map{$0.translatesAutoresizingMaskIntoConstraints = false}
- 
-//table view layout
-   tableView.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-   tableView.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-   tableView.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
-   tableView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier:700 / 812).isActive = true
- 
-// comment text view layout
-  commentTxt.leftAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leftAnchor).isActive = true
-  commentTxt.heightAnchor.constraint(equalToConstant: 50).isActive = true
-  commentTxt.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 3).isActive = true
-  commentTxt.rightAnchor.constraint(equalTo: self.view.layoutMarginsGuide.rightAnchor).isActive = true
-
- // comment text view layout
-sendBtn.rightAnchor.constraint(equalTo: commentTxt.rightAnchor).isActive = true
-sendBtn.topAnchor.constraint(equalTo: commentTxt.topAnchor).isActive = true
-sendBtn.bottomAnchor.constraint(equalTo: commentTxt.bottomAnchor).isActive = true
-  sendBtn.widthAnchor.constraint(equalToConstant: 46).isActive = true
-  sendBtn.heightAnchor.constraint(equalToConstant: 46).isActive = true
         
 sendBtn.layer.cornerRadius = sendBtn.bounds.size.width / 2
-  sendBtn.layer.borderWidth = 1
-sendBtn.backgroundColor = #colorLiteral(red: 0.1920000017, green: 0.275000006, blue: 0.5059999824, alpha: 1)
+  sendBtn.layer.borderWidth = 0.01
     
- commentTxt.backgroundColor = UIColor.red
- commentTxt.layer.cornerRadius = sendBtn.bounds.size.width / 2
-commentTxt.layer.borderColor = UIColor.blue.cgColor
-commentTxt.layer.borderWidth = 2
-        
+commentTxt.layer.borderWidth = 0.01
+     
         // assign reseting values
         tableViewHeight = tableView.frame.size.height
         commentHeight = commentTxt.frame.size.height
         commentY = commentTxt.frame.origin.y
 }
+    
+    // add done button above keyboard
+    fileprivate func addDoneButton(){
+        
+        let toolBar = UIToolbar()
+        toolBar.sizeToFit()
+        
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideKeyboard))
+        
+        toolBar.setItems([flexibleSpace,doneButton], animated: true)
+        
+        self.commentTxt.inputAccessoryView = toolBar
+    }
+    
+    // set text view placehold
+    fileprivate func setTextViewPlacehold(){
+        
+        commentTxt.placeholder = "Writing something..."
+    }
+    
 }
 
 //custom functions selectors
 extension commentVC{
-    
-    // go back
-    @objc fileprivate func back(_ sender : UIBarButtonItem) {
-    
-self.navigationController?.popViewController(animated: true)
-        
-// clean comment uuid from last holding infromation
-if !commentuuid.isEmpty {
-            commentuuid.removeLast()
-        }
-        
-// clean comment owner from last holding infromation
-guard commentowner.isEmpty else{
-            commentowner.removeLast()
-            return
-        }
+ 
+    // func to hide keyboard
+    @objc fileprivate func hideKeyboard() {
+        self.view.endEditing(true)
     }
+    
 }
 
 //observers
@@ -184,6 +161,7 @@ extension commentVC{
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
+    
 }
 
 //observers selectors
@@ -198,8 +176,8 @@ extension commentVC{
    // move UI up
       UIView.animate(withDuration: 0.4)
         { [unowned self] in
-        self.tableView.frame.size.height = self.tableViewHeight - self.keyboard.height - self.commentTxt.frame.size.height + self.commentHeight
-        self.commentTxt.frame.origin.y = self.commentY - self.keyboard.height - self.commentTxt.frame.size.height + self.commentHeight
+        self.tableView.frame.size.height = self.tableViewHeight - self.keyboard.height + 30
+        self.commentTxt.frame.origin.y = self.commentY - self.keyboard.height + 30
         self.sendBtn.frame.origin.y = self.commentTxt.frame.origin.y
             }
     }
@@ -222,44 +200,6 @@ extension commentVC{
     
     // while writing something
     func textViewDidChange(_ textView: UITextView) {
-        
-        // disable button if entered no text
-        let spacing = CharacterSet.whitespacesAndNewlines
-        if !commentTxt.text.trimmingCharacters(in: spacing).isEmpty {
-            sendBtn.isEnabled = true
-        } else {
-            sendBtn.isEnabled = false
-        }
-        
-        // + paragraph
-        if textView.contentSize.height > textView.frame.size.height && textView.frame.height < 130 {
-            
-            // find difference to add
-            let difference = textView.contentSize.height - textView.frame.size.height
-            
-            // redefine frame of commentTxt
-            textView.frame.origin.y = textView.frame.origin.y - difference
-            textView.frame.size.height = textView.contentSize.height
-            
-            // move up tableView
-            if textView.contentSize.height + keyboard.height + commentY >= tableView.frame.size.height {
-                tableView.frame.size.height = tableView.frame.size.height - difference
-            }
-        }
-            // - paragraph
-        else if textView.contentSize.height < textView.frame.size.height {
-            
-            // find difference to deduct
-            let difference = textView.frame.size.height - textView.contentSize.height
-            
-            // redefine frame of commentTxt
-            textView.frame.origin.y = textView.frame.origin.y + difference
-            textView.frame.size.height = textView.contentSize.height
-            
-            // move down tableViwe
-            if textView.contentSize.height + keyboard.height + commentY > tableView.frame.size.height {
-                tableView.frame.size.height = tableView.frame.size.height + difference
-            }
-        }
+       
     }
 }
