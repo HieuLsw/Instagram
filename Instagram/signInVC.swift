@@ -150,9 +150,7 @@ extension  signInVC{
     //release the observers
     fileprivate func releaseObservers(){
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "isHidden"), object: nil)
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "NotHidden"), object: nil)
+       NotificationCenter.default.removeObserver(self)
     }
     
 }

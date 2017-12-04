@@ -12,9 +12,10 @@ import Parse
 var commentuuid = [String]()
 var commentowner = [String]()
 
-class commentVC: UIViewController,GrowingTextViewDelegate {
+class commentVC: UIViewController,GrowingTextViewDelegate,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    {didSet{self.tableView.delegate = self;self.tableView.dataSource = self}}
     
     @IBOutlet weak var commentTxt: GrowingTextView!
         {didSet{self.commentTxt.delegate = self}}
@@ -35,9 +36,6 @@ class commentVC: UIViewController,GrowingTextViewDelegate {
     var avaArray = [PFFile]()
     var commentArray = [String]()
     var dateArray = [Date?]()
-    
-    // variable to hold keybarod frame
-    var keyboard = CGRect()
     
     // page size
     var page:Int32 = 15
@@ -109,10 +107,9 @@ sendBtn.layer.cornerRadius = sendBtn.bounds.size.width / 2
     
 commentTxt.layer.borderWidth = 0.01
      
-        // assign reseting values
-        tableViewHeight = tableView.frame.size.height
-        commentHeight = commentTxt.frame.size.height
-        commentY = commentTxt.frame.origin.y
+        self.tableViewHeight = tableView.frame.size.height
+        self.commentHeight = commentTxt.frame.size.height
+        self.commentY = commentTxt.frame.origin.y
 }
     
     // add done button above keyboard
@@ -190,3 +187,54 @@ extension commentVC{
     }
 }
 
+//UITableViewDataSource
+extension commentVC{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return commentArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! commentCell
+ cell.usernameBtn.setTitle(usernameArray[indexPath.row], for: .normal)
+  cell.usernameBtn.sizeToFit()
+cell.commentLbl.text = commentArray[indexPath.row]
+
+avaArray[indexPath.row].getDataInBackground { (data, error) in
+            cell.avaImg.image = UIImage(data: data!)
+    }
+        
+  let from = dateArray[indexPath.row]
+    let now = Date()
+    let components : NSCalendar.Unit = [.second, .minute, .hour, .day, .weekOfMonth]
+    let difference = (Calendar.current as NSCalendar).components(components, from: from!, to: now, options: [])
+   
+        if difference.second! <= 0 {
+            cell.dateLbl.text = "now"
+        }
+        if difference.second! > 0 && difference.minute! == 0 {
+            cell.dateLbl.text = "\(difference.second!)s."
+        }
+        if difference.minute! > 0 && difference.hour! == 0 {
+            cell.dateLbl.text = "\(difference.minute!)m."
+        }
+        if difference.hour! > 0 && difference.day! == 0 {
+            cell.dateLbl.text = "\(difference.hour!)h."
+        }
+        if difference.day! > 0 && difference.weekOfMonth! == 0 {
+            cell.dateLbl.text = "\(difference.day!)d."
+        }
+        if difference.weekOfMonth! > 0 {
+            cell.dateLbl.text = "\(difference.weekOfMonth!)w."
+        }
+        
+        
+        
+        return cell
+    }
+}
