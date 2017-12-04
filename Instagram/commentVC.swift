@@ -126,6 +126,105 @@ commentTxt.layer.borderWidth = 0.01
         
         self.commentTxt.inputAccessoryView = toolBar
     }
+
+
+    // load comments function
+    func loadComments() {
+        
+// STEP 1. Count total comments in order to skip all except (page size = 15)
+let countQuery = PFQuery(className: "comments")
+countQuery.whereKey("to", equalTo: commentuuid.last!)
+countQuery.countObjectsInBackground (block: { (count, error) in
+            
+// if comments on the server for current post are more than (page size 15), implement pull to refresh func
+if self.page < count {
+    self.refresh.addTarget(self, action: #selector(commentVC.loadMore), for: UIControlEvents.valueChanged)
+        self.tableView.addSubview(self.refresh)
+}
+            
+// STEP 2. Request last (page size 15) comments
+let query = PFQuery(className: "comments")
+query.whereKey("to", equalTo: commentuuid.last!)
+query.skip = Int(count - self.page)
+query.addAscendingOrder("createdAt")
+query.findObjectsInBackground(block: { (objects, erro) in
+    if error == nil {
+                    
+    // clean up
+    self.usernameArray.removeAll(keepingCapacity: false)
+    self.avaArray.removeAll(keepingCapacity: false)
+    self.commentArray.removeAll(keepingCapacity: false)
+    self.dateArray.removeAll(keepingCapacity: false)
+                    
+        // find related objects
+    for object in objects! {
+  self.usernameArray.append(object.object(forKey: "username") as! String)
+  self.avaArray.append(object.object(forKey: "ava") as! PFFile)
+  self.commentArray.append(object.object(forKey: "comment") as! String)
+  self.dateArray.append(object.createdAt)
+    self.tableView.reloadData()
+                        
+            // scroll to bottom
+    self.tableView.scrollToRow(at: IndexPath(row: self.commentArray.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
+                    }
+                } else {
+                    print(error?.localizedDescription ?? String())
+                }
+            })
+        })
+        
+    }
+    
+    
+    // pagination
+   @objc fileprivate func loadMore() {
+        
+        // STEP 1. Count total comments in order to skip all except (page size = 15)
+        let countQuery = PFQuery(className: "comments")
+        countQuery.whereKey("to", equalTo: commentuuid.last!)
+        countQuery.countObjectsInBackground (block: { (count, error) in
+            
+            // self refresher
+    self.refresh.endRefreshing()
+            
+        // remove refresher if loaded all comments
+    if self.page >= count {
+    self.refresh.removeFromSuperview()
+    }
+            
+        // STEP 2. Load more comments
+    if self.page < count {
+                
+     // increase page to load 30 as first paging
+      self.page = self.page + 15
+                
+    // request existing comments from the server
+    let query = PFQuery(className: "comments")
+    query.whereKey("to", equalTo: commentuuid.last!)
+    query.skip = Int(count - self.page)
+    query.addAscendingOrder("createdAt")
+    query.findObjectsInBackground(block: { (objects, error) in
+    if error == nil {
+                        
+    // clean up
+    self.usernameArray.removeAll(keepingCapacity: false)
+    self.avaArray.removeAll(keepingCapacity: false)
+    self.commentArray.removeAll(keepingCapacity: false)
+    self.dateArray.removeAll(keepingCapacity: false)
+                        
+        // find related objects
+  for object in objects! {
+    self.usernameArray.append(object.object(forKey: "username") as! String)
+    self.avaArray.append(object.object(forKey: "ava") as! PFFile)
+    self.commentArray.append(object.object(forKey: "comment") as! String)
+    self.dateArray.append(object.createdAt)
+            self.tableView.reloadData()
+                        }
+    } else {print(error?.localizedDescription ?? String())
+        }
+    })
+}
+})}
 }
 
 //custom functions selectors
