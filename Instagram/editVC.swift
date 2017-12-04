@@ -259,7 +259,7 @@ extension editVC{
     // set text view placehold
     fileprivate func setTextViewPlacehold(){
         
-        bioTxt.placeholder = "Write something..."
+        bioTxt.placeholder = "Write or say something..."
     }
 }
 

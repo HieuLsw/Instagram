@@ -119,7 +119,7 @@ self.followArray = objects!.map{$0.value(forKey: "following") as! String}
  //STEP 3. Find in user class data of users following _user
  //find users follow by user
    let query = PFQuery(className: "_User")
-     //query.whereKey("username", containedIn: self.followArray)
+    query.whereKey("username", containedIn: self.followArray)
      query.addDescendingOrder("createdAt")
 query.findObjectsInBackground(block: { (objects, error) in
     if error == nil{

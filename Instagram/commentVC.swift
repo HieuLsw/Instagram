@@ -12,16 +12,16 @@ import Parse
 var commentuuid = [String]()
 var commentowner = [String]()
 
-class commentVC: UIViewController,UITextViewDelegate {
+class commentVC: UIViewController,GrowingTextViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var commentTxt: UITextView!
-{didSet{self.commentTxt.delegate = self}}
+    @IBOutlet weak var commentTxt: GrowingTextView!
+        {didSet{self.commentTxt.delegate = self}}
     
     @IBOutlet weak var sendBtn: UIButton!
  
-    @IBOutlet weak var textViewLocation: NSLayoutConstraint!
+    @IBOutlet weak var bottomConstaints: NSLayoutConstraint!
     
     var refresh = UIRefreshControl()
     
@@ -47,10 +47,7 @@ class commentVC: UIViewController,UITextViewDelegate {
 
       //set views layout
      configueVCAlignment()
-        
-        // set text view placehold
-setTextViewPlacehold()
-        
+            
         // add done button above keyboard
 addDoneButton()
 }
@@ -62,16 +59,13 @@ addDoneButton()
         createObservers()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        //release observers
-        deleteObservers()
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    deinit {
+        deleteObservers()
     }
     
     @IBAction func sendBtn_click(_ sender: Any) {
@@ -128,13 +122,6 @@ commentTxt.layer.borderWidth = 0.01
         
         self.commentTxt.inputAccessoryView = toolBar
     }
-    
-    // set text view placehold
-    fileprivate func setTextViewPlacehold(){
-        
-        commentTxt.placeholder = "Writing something..."
-    }
-    
 }
 
 //custom functions selectors
@@ -152,54 +139,48 @@ extension commentVC{
     
     fileprivate func createObservers(){
         
-        // catch notification if the keyboard is shown or hidden
-        NotificationCenter.default.addObserver(self, selector: #selector(commentVC.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        // *** Listen for keyboard show ***
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+        
+        // *** Listen for keyboard hide ***
         NotificationCenter.default.addObserver(self, selector: #selector(commentVC.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
     fileprivate func deleteObservers(){
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+      NotificationCenter.default.removeObserver(self)
     }
-    
 }
 
 //observers selectors
 extension commentVC{
     
-    // func loading when keyboard is shown
-   @objc fileprivate func keyboardWillShow(_ notification : Notification) {
-        
-        // defnine keyboard frame size
-       keyboard = ((notification.userInfo?[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue)!
-    
-   // move UI up
-      UIView.animate(withDuration: 0.4)
-        { [unowned self] in
-        self.tableView.frame.size.height = self.tableViewHeight - self.keyboard.height + 30
-        self.commentTxt.frame.origin.y = self.commentY - self.keyboard.height + 30
-        self.sendBtn.frame.origin.y = self.commentTxt.frame.origin.y
-            }
+    @objc fileprivate func keyboardWillChangeFrame(_ notification: Notification) {
+        let endFrame = ((notification as NSNotification).userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        bottomConstaints.constant = UIScreen.main.bounds.height - endFrame.origin.y - 35
+        self.view.layoutIfNeeded()
     }
     
-    // func loading when keyboard is hidden
    @objc fileprivate func keyboardWillHide(_ notification : Notification) {
-    
-       // move UI down
-    UIView.animate(withDuration: 0.4)
-            {[unowned self]  in
-                self.tableView.frame.size.height = self.tableViewHeight
-                self.commentTxt.frame.origin.y = self.commentY
-                self.sendBtn.frame.origin.y = self.commentY
-            }
-   }
+        
+        // move UI down
+        UIView.animate(withDuration: 0.4)
+        {self.tableView.frame.size.height = self.tableViewHeight
+            self.commentTxt.frame.origin.y = self.commentY
+            self.sendBtn.frame.origin.y = self.commentY
+            self.bottomConstaints.constant += 35
+        }
+    }
 }
 
-//UITextViewDelegate
+//GrowingTextViewDelegate
 extension commentVC{
     
-    // while writing something
-    func textViewDidChange(_ textView: UITextView) {
-       
+    // *** Call layoutIfNeeded on superview for animation when changing height ***
+    func textViewDidChangeHeight(_ textView: GrowingTextView, height: CGFloat) {
+        
+        UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveLinear], animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
     }
 }
+

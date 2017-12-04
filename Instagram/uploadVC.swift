@@ -208,7 +208,7 @@ fileprivate func tapToHideKeyboard(){
     
     //add placehold to text view
     fileprivate func textViewPlacehold(){
-    titleTxt.placeholder = "Write something..."
+    titleTxt.placeholder = "Write or say something..."
     }
 }
 

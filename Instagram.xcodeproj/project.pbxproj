@@ -58,6 +58,7 @@
 		A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEB2831FC5E2AA002CB038 /* guestVC.swift */; };
 		A5F313F11FD53EE500246E71 /* commentsNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F313F01FD53EE500246E71 /* commentsNav.swift */; };
 		A5F313F31FD548C100246E71 /* UINavigation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F313F21FD548C000246E71 /* UINavigation+Extension.swift */; };
+		A5F313F51FD55D0200246E71 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F313F41FD55D0200246E71 /* GrowingTextView.swift */; };
 		A5FD76281FCAB6BD007355BF /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD76271FCAB6BD007355BF /* Regex.swift */; };
 		A5FD762B1FCBEA59007355BF /* uploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762A1FCBEA59007355BF /* uploadVC.swift */; };
 		A5FD762F1FCE6141007355BF /* UITextView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */; };
@@ -118,6 +119,7 @@
 		A5EEB2831FC5E2AA002CB038 /* guestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = guestVC.swift; sourceTree = "<group>"; };
 		A5F313F01FD53EE500246E71 /* commentsNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = commentsNav.swift; sourceTree = "<group>"; };
 		A5F313F21FD548C000246E71 /* UINavigation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigation+Extension.swift"; sourceTree = "<group>"; };
+		A5F313F41FD55D0200246E71 /* GrowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
 		A5FD76271FCAB6BD007355BF /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		A5FD762A1FCBEA59007355BF /* uploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadVC.swift; sourceTree = "<group>"; };
 		A5FD762E1FCE6141007355BF /* UITextView_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextView_Extension.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				A51114341FD0442E00DCAC4C /* newAlertVC.swift */,
 				A51114361FD0445100DCAC4C /* newAlertTextField.swift */,
 				A5F313F21FD548C000246E71 /* UINavigation+Extension.swift */,
+				A5F313F41FD55D0200246E71 /* GrowingTextView.swift */,
 			);
 			name = "User Defined Attributes";
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				A588A6BC1FC538670083AAEC /* followersCell.swift in Sources */,
 				A5EEB2841FC5E2AA002CB038 /* guestVC.swift in Sources */,
 				A51826861F9F03D5005B50D0 /* UITextField_Attributes.swift in Sources */,
+				A5F313F51FD55D0200246E71 /* GrowingTextView.swift in Sources */,
 				A51114351FD0442F00DCAC4C /* newAlertVC.swift in Sources */,
 				A5F313F31FD548C100246E71 /* UINavigation+Extension.swift in Sources */,
 				A51114391FD0447100DCAC4C /* UIColor_Extension.swift in Sources */,

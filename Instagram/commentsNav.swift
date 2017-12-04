@@ -34,7 +34,6 @@ extension commentsNav{
     fileprivate func setNavBarAtrributes(){
     
         // color of background of nav controller
-        self.navigationBar.setGradientBackground(colors: [UIColor(hex: "833AB
-            4"),UIColor(hex: "FD1D1D"),UIColor(hex: "FCB045")])
+    self.navigationBar.setGradientBackground(colors: [UIColor(hex: "833AB4"),UIColor(hex: "FD1D1D"),UIColor(hex: "FCB045")])
     }
 }

@@ -1429,7 +1429,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bmh-1K-Sgt">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="708"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="712"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="97" id="LwI-k8-Ez4" customClass="commentCell" customModule="Instagram" customModuleProvider="target">
@@ -1495,39 +1495,68 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2qc-T5-lPZ">
-                                <rect key="frame" x="16" y="716" width="301" height="40"/>
-                                <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bnV-qf-2Vc">
+                                <rect key="frame" x="0.0" y="712" width="375" height="66"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2qc-T5-lPZ" customClass="GrowingTextView" customModule="Instagram" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="13" width="316" height="40"/>
+                                        <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="k6q-8c-ZBc"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="trimWhiteSpaceWhenEndEditing" value="YES"/>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="placeHolderColor">
+                                                <color key="value" red="0.1450980392" green="0.20000000000000001" blue="0.43137254899999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeHolders" value="Write or say something..."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="placeHolderLeftMargin">
+                                                <real key="value" value="3"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maxHeight">
+                                                <real key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minHeight">
+                                                <real key="value" value="40"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textView>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMu-5V-wbA">
+                                        <rect key="frame" x="327" y="13" width="40" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="akk-9e-BiN"/>
+                                            <constraint firstAttribute="width" secondItem="fMu-5V-wbA" secondAttribute="height" multiplier="1:1" id="yeO-mv-3jv"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" backgroundImage="send"/>
+                                        <connections>
+                                            <action selector="sendBtn_click:" destination="Pou-ZL-bXz" eventType="touchUpInside" id="uO4-UQ-OY3"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="5tt-Aa-emH"/>
+                                    <constraint firstItem="2qc-T5-lPZ" firstAttribute="centerY" secondItem="bnV-qf-2Vc" secondAttribute="centerY" id="9jm-14-8Sg"/>
+                                    <constraint firstItem="2qc-T5-lPZ" firstAttribute="leading" secondItem="bnV-qf-2Vc" secondAttribute="leadingMargin" id="ORB-x1-MrH"/>
+                                    <constraint firstItem="fMu-5V-wbA" firstAttribute="leading" secondItem="2qc-T5-lPZ" secondAttribute="trailing" constant="3" id="Zfl-Pa-WUi"/>
+                                    <constraint firstItem="fMu-5V-wbA" firstAttribute="trailing" secondItem="bnV-qf-2Vc" secondAttribute="trailingMargin" id="i2b-KG-jk9"/>
+                                    <constraint firstItem="fMu-5V-wbA" firstAttribute="centerY" secondItem="2qc-T5-lPZ" secondAttribute="centerY" id="iz7-hg-OXn"/>
+                                    <constraint firstAttribute="height" constant="66" id="n0O-Kd-7OC"/>
                                 </constraints>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert"/>
-                            </textView>
-                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMu-5V-wbA">
-                                <rect key="frame" x="319" y="716" width="40" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" backgroundImage="send"/>
-                                <connections>
-                                    <action selector="sendBtn_click:" destination="Pou-ZL-bXz" eventType="touchUpInside" id="uO4-UQ-OY3"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="fMu-5V-wbA" firstAttribute="leading" secondItem="2qc-T5-lPZ" secondAttribute="trailing" constant="2" id="23A-JZ-160"/>
                             <constraint firstItem="bmh-1K-Sgt" firstAttribute="leading" secondItem="UVI-kb-xtf" secondAttribute="leading" id="2uY-m2-D0a"/>
                             <constraint firstItem="bmh-1K-Sgt" firstAttribute="top" secondItem="UVI-kb-xtf" secondAttribute="top" id="Moj-T7-8XU"/>
-                            <constraint firstItem="0LI-vq-pXJ" firstAttribute="top" secondItem="2qc-T5-lPZ" secondAttribute="bottom" constant="22" id="NpQ-rv-MNO"/>
-                            <constraint firstItem="fMu-5V-wbA" firstAttribute="height" secondItem="2qc-T5-lPZ" secondAttribute="height" id="a3a-sI-yOy"/>
-                            <constraint firstItem="2qc-T5-lPZ" firstAttribute="top" secondItem="bmh-1K-Sgt" secondAttribute="bottom" constant="8" id="ckZ-nU-geL"/>
-                            <constraint firstItem="fMu-5V-wbA" firstAttribute="centerY" secondItem="2qc-T5-lPZ" secondAttribute="centerY" id="hYw-MO-6ab"/>
+                            <constraint firstItem="0LI-vq-pXJ" firstAttribute="top" secondItem="bnV-qf-2Vc" secondAttribute="bottom" id="QzS-RW-ejX"/>
+                            <constraint firstAttribute="trailing" secondItem="bnV-qf-2Vc" secondAttribute="trailing" id="kgZ-aZ-aTJ"/>
                             <constraint firstAttribute="trailing" secondItem="bmh-1K-Sgt" secondAttribute="trailing" id="klX-3e-E6f"/>
-                            <constraint firstItem="fMu-5V-wbA" firstAttribute="width" secondItem="2qc-T5-lPZ" secondAttribute="height" multiplier="1:1" id="mFA-PW-wgM"/>
-                            <constraint firstItem="2qc-T5-lPZ" firstAttribute="leading" secondItem="UVI-kb-xtf" secondAttribute="leadingMargin" id="rnJ-gR-QwY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="fMu-5V-wbA" secondAttribute="trailing" id="w70-6l-Xyk"/>
+                            <constraint firstItem="bnV-qf-2Vc" firstAttribute="top" secondItem="bmh-1K-Sgt" secondAttribute="bottom" id="ocP-oM-6uM"/>
+                            <constraint firstItem="bnV-qf-2Vc" firstAttribute="leading" secondItem="UVI-kb-xtf" secondAttribute="leading" id="pEY-h2-DVN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="COMMENTS" id="2ZV-Nr-zVa">
@@ -1539,10 +1568,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bottomConstaints" destination="QzS-RW-ejX" id="PW1-zl-LUa"/>
                         <outlet property="commentTxt" destination="2qc-T5-lPZ" id="u1b-5O-7dp"/>
                         <outlet property="sendBtn" destination="fMu-5V-wbA" id="gcA-iG-QTi"/>
                         <outlet property="tableView" destination="bmh-1K-Sgt" id="rhg-7S-RQl"/>
-                        <outlet property="textViewLocation" destination="NpQ-rv-MNO" id="cHr-Np-x9h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j89-oU-0ly" userLabel="First Responder" sceneMemberID="firstResponder"/>
