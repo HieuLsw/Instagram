@@ -57,6 +57,9 @@ addDoneButton()
         
         //create observers
         createObservers()
+        
+        //let text view become firest responder
+setFristResponder()
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,7 +76,6 @@ addDoneButton()
     
     }
   
-    
     @IBAction func BACK(_ sender: Any) {
         
         // clean comment uuid from last holding infromation
@@ -87,12 +89,17 @@ addDoneButton()
         }
         
         dismiss(animated: true, completion: nil)
-        
     }
 }//commentVC class over line
 
 //custom functions
 extension commentVC{
+    
+    //let text view become firest responder
+    fileprivate func setFristResponder(){
+        
+        commentTxt.becomeFirstResponder()
+    }
     
     //set views layout
     fileprivate func configueVCAlignment(){
@@ -131,7 +138,6 @@ extension commentVC{
     @objc fileprivate func hideKeyboard() {
         self.view.endEditing(true)
     }
-    
 }
 
 //observers
