@@ -389,6 +389,21 @@ avaArray[indexPath.row].getDataInBackground { (data, error) in
             cell.dateLbl.text = "\(difference.weekOfMonth!)w."
         }
         
+        // @mention is tapped
+cell.commentLbl.userHandleLinkTapHandler = { label, handle, rang in
+    var mention = handle
+    mention = String(mention.dropFirst())
+            
+   // if tapped on @currentUser go home, else go guest
+if mention.lowercased() == PFUser.current()?.username {
+let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
+self.navigationController?.pushViewController(home, animated: true)
+} else {guestName.append(mention.lowercased())
+let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
+self.navigationController?.show(guest, sender: nil)
+            }
+        }
+    
         // assign indexes of buttons
         cell.usernameBtn.layer.setValue(indexPath, forKey: "index")
         
@@ -429,13 +444,12 @@ extension commentVC{
                     for object in objects! {
                         object.deleteEventually()
                     }
-                } else {
-                    print(error!.localizedDescription)
-                }
-            })
+} else {print(error!.localizedDescription)
+        }
+})
             
-            // STEP 3. Delete comment row from tableView
-            self.commentArray.remove(at: indexPath.row)
+    // STEP 3. Delete comment row from tableView
+    self.commentArray.remove(at: indexPath.row)
             self.dateArray.remove(at: indexPath.row)
             self.usernameArray.remove(at: indexPath.row)
             self.avaArray.remove(at: indexPath.row)
@@ -471,8 +485,8 @@ complainObj.saveInBackground(block: { (success, error) in
 } else {self.alert("ERROR", message: error!.localizedDescription)}
 })
             
-            // close cell
-            tableView.setEditing(false, animated: true)
+    // close cell
+         tableView.setEditing(false, animated: true)
         }
         
         // buttons background
