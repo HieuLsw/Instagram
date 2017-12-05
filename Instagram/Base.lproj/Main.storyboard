@@ -1459,6 +1459,9 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="19"/>
                                                     <state key="normal" title="Bobby Brownsdsd"/>
+                                                    <connections>
+                                                        <action selector="usernameBtn_click:" destination="Pou-ZL-bXz" eventType="touchUpInside" id="pGg-WK-18l"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dJ8-yd-ugx">
                                                     <rect key="frame" x="330" y="19.333333333333332" width="30" height="20.999999999999996"/>

@@ -46,6 +46,9 @@ class commentVC: UIViewController,GrowingTextViewDelegate,UITableViewDelegate,UI
 
       //set views layout
       configueVCAlignment()
+        
+       //call load comments function 
+        loadComments()
 }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +75,30 @@ setFristResponder()
         hideKeyboard()
     }
     
+    @IBAction func usernameBtn_click(_ sender: Any) {
+        
+    // call index of current button
+    let index = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
+        
+    // call cell to call further cell data
+    let cell = tableView.cellForRow(at: index) as! commentCell
+        
+    // if user tapped on his username go home, else go guest
+if cell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
+
+let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
+
+self.navigationController?.pushViewController(home, animated: true)
+        } else {
+
+guestName.append(cell.usernameBtn.titleLabel!.text!)
+
+let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
+
+self.navigationController?.pushViewController(guest, animated: true)
+        }
+    }
+        
     @IBAction func sendBtn_click(_ sender: Any) {
     
 // STEP 1. Add row in tableView
@@ -159,7 +186,7 @@ commentTxt.layer.borderWidth = 0.01
 }
     
     // load comments function
-    func loadComments() {
+   fileprivate func loadComments() {
         
 // STEP 1. Count total comments in order to skip all except (page size = 15)
 let countQuery = PFQuery(className: "comments")
@@ -206,29 +233,35 @@ query.findObjectsInBackground(block: { (objects, erro) in
     }
     
     
-    // pagination
-   @objc fileprivate func loadMore() {
+  
+}
+
+//custom funcitons selectors
+extension commentVC{
+    
+        // pagination
+      @objc fileprivate func loadMore() {
         
-        // STEP 1. Count total comments in order to skip all except (page size = 15)
-        let countQuery = PFQuery(className: "comments")
-        countQuery.whereKey("to", equalTo: commentuuid.last!)
-        countQuery.countObjectsInBackground (block: { (count, error) in
+// STEP 1. Count total comments in order to skip all except (page size = 15)
+let countQuery = PFQuery(className: "comments")
+countQuery.whereKey("to", equalTo: commentuuid.last!)
+ countQuery.countObjectsInBackground (block: { (count, error) in
             
-            // self refresher
+    // self refresher
     self.refresh.endRefreshing()
             
-        // remove refresher if loaded all comments
+// remove refresher if loaded all comments
     if self.page >= count {
     self.refresh.removeFromSuperview()
     }
             
-        // STEP 2. Load more comments
+ // STEP 2. Load more comments
     if self.page < count {
                 
-     // increase page to load 30 as first paging
-      self.page = self.page + 15
+  // increase page to load 30 as first paging
+    self.page = self.page + 15
                 
-    // request existing comments from the server
+// request existing comments from the server
     let query = PFQuery(className: "comments")
     query.whereKey("to", equalTo: commentuuid.last!)
     query.skip = Int(count - self.page)
@@ -236,25 +269,25 @@ query.findObjectsInBackground(block: { (objects, erro) in
     query.findObjectsInBackground(block: { (objects, error) in
     if error == nil {
                         
-    // clean up
-    self.usernameArray.removeAll(keepingCapacity: false)
-    self.avaArray.removeAll(keepingCapacity: false)
-    self.commentArray.removeAll(keepingCapacity: false)
-    self.dateArray.removeAll(keepingCapacity: false)
+        // clean up
+self.usernameArray.removeAll(keepingCapacity: false)
+self.avaArray.removeAll(keepingCapacity: false)
+self.commentArray.removeAll(keepingCapacity: false)
+self.dateArray.removeAll(keepingCapacity: false)
                         
-        // find related objects
-  for object in objects! {
+    // find related objects
+for object in objects! {
     self.usernameArray.append(object.object(forKey: "username") as! String)
     self.avaArray.append(object.object(forKey: "ava") as! PFFile)
     self.commentArray.append(object.object(forKey: "comment") as! String)
     self.dateArray.append(object.createdAt)
-            self.tableView.reloadData()
+    self.tableView.reloadData()
                         }
-    } else {print(error?.localizedDescription ?? String())
-        }
-    })
-}
-})}
+} else {print(error?.localizedDescription ?? String())
+                    }
+                })
+            }
+        })}
 }
 
 //observers
@@ -352,6 +385,10 @@ avaArray[indexPath.row].getDataInBackground { (data, error) in
         if difference.weekOfMonth! > 0 {
             cell.dateLbl.text = "\(difference.weekOfMonth!)w."
         }
+        
+        // assign indexes of buttons
+        cell.usernameBtn.layer.setValue(indexPath, forKey: "index")
+        
         return cell
     }
 }
