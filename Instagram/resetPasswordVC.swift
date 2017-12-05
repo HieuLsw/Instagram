@@ -139,10 +139,7 @@ extension resetPasswordVC{
     
     fileprivate func deallocateObservers(){
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init("didHidden"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init("disHidden"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardDidShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+       NotificationCenter.default.removeObserver(self)
     }
 }
 

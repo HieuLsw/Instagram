@@ -15,7 +15,8 @@ var commentowner = [String]()
 class commentVC: UIViewController,GrowingTextViewDelegate,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    {didSet{self.tableView.delegate = self;self.tableView.dataSource = self}}
+    {didSet{self.tableView.delegate = self
+        self.tableView.dataSource = self}}
     
     @IBOutlet weak var commentTxt: GrowingTextView!
         {didSet{self.commentTxt.delegate = self}}
@@ -44,10 +45,7 @@ class commentVC: UIViewController,GrowingTextViewDelegate,UITableViewDelegate,UI
         super.viewDidLoad()
 
       //set views layout
-     configueVCAlignment()
-            
-        // add done button above keyboard
-addDoneButton()
+      configueVCAlignment()
 }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -68,11 +66,54 @@ setFristResponder()
     deinit {
         deleteObservers()
     }
+ 
+    @IBAction func close_keyboard(_ sender: Any) {
+        
+        hideKeyboard()
+    }
     
     @IBAction func sendBtn_click(_ sender: Any) {
     
-    
+// STEP 1. Add row in tableView
+usernameArray.append(PFUser.current()!.username!)
+avaArray.append(PFUser.current()?.object(forKey: "ava") as! PFFile)
+dateArray.append(Date())
+commentArray.append(commentTxt.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
+    tableView.reloadData()
+        
+        // STEP 2. Send comment to server
+let commentObj = PFObject(className: "comments")
+commentObj["to"] = commentuuid.last
+commentObj["username"] = PFUser.current()?.username
+commentObj["ava"] = PFUser.current()?.value(forKey: "ava")
+commentObj["comment"] = commentTxt.text.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    commentObj.saveEventually()
+        
+// STEP 3. Send #hashtag to server
+let words:[String] = commentTxt.text!.components(separatedBy: CharacterSet.whitespacesAndNewlines)
+        
+    // define taged word
+for var word in words {
+            
+// save #hasthag in server
+if word.hasPrefix("#") {
+                
+        // cut symbold
+word = word.trimmingCharacters(in: CharacterSet.punctuationCharacters)
+word = word.trimmingCharacters(in: CharacterSet.symbols)
+                
+let hashtagObj = PFObject(className: "hashtags")
+hashtagObj["to"] = commentuuid.last
+hashtagObj["by"] = PFUser.current()?.username
+hashtagObj["hashtag"] = word.lowercased()
+ hashtagObj["comment"] = commentTxt.text
+        hashtagObj.saveInBackground(block: { (success, error) in
+if success {print("hashtag \(word) is created")
+    } else {print(error!.localizedDescription)}
+    })
     }
+}
+}
   
     @IBAction func BACK(_ sender: Any) {
         
@@ -93,6 +134,11 @@ setFristResponder()
 //custom functions
 extension commentVC{
     
+    // func to hide keyboard
+    fileprivate func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
     //let text view become firest responder
     fileprivate func setFristResponder(){
         
@@ -112,22 +158,6 @@ commentTxt.layer.borderWidth = 0.01
         self.commentY = commentTxt.frame.origin.y
 }
     
-    // add done button above keyboard
-    fileprivate func addDoneButton(){
-        
-        let toolBar = UIToolbar()
-        toolBar.sizeToFit()
-        
-        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(hideKeyboard))
-        
-        toolBar.setItems([flexibleSpace,doneButton], animated: true)
-        
-        self.commentTxt.inputAccessoryView = toolBar
-    }
-
-
     // load comments function
     func loadComments() {
         
@@ -138,7 +168,7 @@ countQuery.countObjectsInBackground (block: { (count, error) in
             
 // if comments on the server for current post are more than (page size 15), implement pull to refresh func
 if self.page < count {
-    self.refresh.addTarget(self, action: #selector(commentVC.loadMore), for: UIControlEvents.valueChanged)
+    self.refresh.addTarget(self, action: #selector(self.loadMore), for: UIControlEvents.valueChanged)
         self.tableView.addSubview(self.refresh)
 }
             
@@ -227,15 +257,6 @@ query.findObjectsInBackground(block: { (objects, erro) in
 })}
 }
 
-//custom functions selectors
-extension commentVC{
- 
-    // func to hide keyboard
-    @objc fileprivate func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-}
-
 //observers
 extension commentVC{
     
@@ -258,7 +279,7 @@ extension commentVC{
     
     @objc fileprivate func keyboardWillChangeFrame(_ notification: Notification) {
         let endFrame = ((notification as NSNotification).userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        bottomConstaints.constant = UIScreen.main.bounds.height - endFrame.origin.y - 35
+        bottomConstaints.constant = UIScreen.main.bounds.height - endFrame.origin.y - 20
         self.view.layoutIfNeeded()
     }
     
@@ -269,7 +290,7 @@ extension commentVC{
         {self.tableView.frame.size.height = self.tableViewHeight
             self.commentTxt.frame.origin.y = self.commentY
             self.sendBtn.frame.origin.y = self.commentY
-            self.bottomConstaints.constant += 35
+            self.bottomConstaints.constant += 20
         }
     }
 }
@@ -289,14 +310,14 @@ extension commentVC{
 //UITableViewDataSource
 extension commentVC{
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commentArray.count
     }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-    }
-    
+ 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! commentCell
@@ -331,9 +352,18 @@ avaArray[indexPath.row].getDataInBackground { (data, error) in
         if difference.weekOfMonth! > 0 {
             cell.dateLbl.text = "\(difference.weekOfMonth!)w."
         }
-        
-        
-        
         return cell
+    }
+}
+
+//UITableViewDelegate
+extension commentVC{
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }

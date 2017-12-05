@@ -243,8 +243,7 @@ extension uploadVC{
     //delete observers
     fileprivate func deleteObservers(){
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
+       NotificationCenter.default.removeObserver(self)
     }
 }
 
