@@ -25,7 +25,7 @@ class postCell: UITableViewCell {
     
     @IBOutlet weak var moreBtn: UIButton!
     
-    @IBOutlet weak var titleLbl: UILabel!
+    @IBOutlet weak var titleLbl: KILabel!
     
     @IBOutlet weak var likeLbl: UILabel!
  

@@ -70,10 +70,6 @@ let cell = customTableView.cellForRow(at: index) as! postCell
 // send related data to global variables
 commentuuid.append(cell.uuidLbl.text!)
 commentowner.append(cell.usernameBtn.titleLabel!.text!)
-        
-  // go to comments. push vc
-  //let comments = self.storyboard?.instantiateViewController(withIdentifier: "commentVC") as! commentVC
-//self.navigationController?.show(comments, sender: nil)
     }
 }//postVC class over line
 
