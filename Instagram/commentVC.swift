@@ -47,7 +47,7 @@ class commentVC: UIViewController,GrowingTextViewDelegate,UITableViewDelegate,UI
       //set views layout
       configueVCAlignment()
         
-       //call load comments function 
+       //call load comments function
         loadComments()
 }
 
@@ -95,7 +95,7 @@ guestName.append(cell.usernameBtn.titleLabel!.text!)
 
 let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
 
-self.navigationController?.pushViewController(guest, animated: true)
+self.navigationController?.show(guest, sender: sender)
         }
     }
         
@@ -224,16 +224,11 @@ query.findObjectsInBackground(block: { (objects, erro) in
             // scroll to bottom
     self.tableView.scrollToRow(at: IndexPath(row: self.commentArray.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: false)
                     }
-                } else {
-                    print(error?.localizedDescription ?? String())
-                }
+} else {print(error?.localizedDescription ?? String())
+    }
             })
         })
-        
     }
-    
-    
-  
 }
 
 //custom funcitons selectors
@@ -288,6 +283,14 @@ for object in objects! {
                 })
             }
         })}
+    
+    // alert action
+   fileprivate func alert(_ title: String, message : String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 //observers
@@ -402,5 +405,92 @@ extension commentVC{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        
+        // call cell for calling further cell data
+        let cell = tableView.cellForRow(at: indexPath) as! commentCell
+        
+        // ACTION 1. Delete
+        let delete = UITableViewRowAction(style: .normal, title: "    ") { (action:UITableViewRowAction, indexPath:IndexPath) in
+            
+            // STEP 1. Delete comment from server
+            let commentQuery = PFQuery(className: "comments")
+            commentQuery.whereKey("to", equalTo: commentuuid.last!)
+            commentQuery.whereKey("comment", equalTo: cell.commentLbl.text!)
+            commentQuery.findObjectsInBackground (block: { (objects, error) -> Void in
+                if error == nil {
+                    // find related objects
+                    for object in objects! {
+                        object.deleteEventually()
+                    }
+                } else {
+                    print(error!.localizedDescription)
+                }
+            })
+            
+            // STEP 3. Delete comment row from tableView
+            self.commentArray.remove(at: indexPath.row)
+            self.dateArray.remove(at: indexPath.row)
+            self.usernameArray.remove(at: indexPath.row)
+            self.avaArray.remove(at: indexPath.row)
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+
+        // ACTION 2. Mention or address message to someone
+let address = UITableViewRowAction(style: .normal, title: "    ") { (action:UITableViewRowAction, indexPath:IndexPath) -> Void in
+            
+            // include username in textView
+self.commentTxt.text = "\(self.commentTxt.text + "@" + self.usernameArray[indexPath.row] + " ")"
+    
+    // enable button
+self.sendBtn.isEnabled = true
+            
+// close cell
+tableView.setEditing(false, animated: true)
+}
+        
+        // ACTION 3. Complain
+let complain = UITableViewRowAction(style: .normal, title: "    ") { (action:UITableViewRowAction, indexPath:IndexPath) in
+            
+            // send complain to server regarding selected comment
+    let complainObj = PFObject(className: "complain")
+complainObj["by"] = PFUser.current()?.username
+complainObj["to"] = cell.commentLbl.text
+complainObj["post"] = commentuuid.last
+complainObj["owner"] = cell.usernameBtn.titleLabel?.text
+complainObj.saveInBackground(block: { (success, error) in
+        if success {
+    self.alert("Complain has been made successfully", message: "Thank You! We will consider your complain")
+} else {self.alert("ERROR", message: error!.localizedDescription)}
+})
+            
+            // close cell
+            tableView.setEditing(false, animated: true)
+        }
+        
+        // buttons background
+        delete.backgroundColor = UIColor(patternImage: UIImage(named: "delete.png")!)
+        address.backgroundColor = UIColor(patternImage: UIImage(named: "address.png")!)
+        complain.backgroundColor = UIColor(patternImage: UIImage(named: "complain.png")!)
+        
+        // comment beloogs to user
+if cell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
+            return [delete, address]
+}
+            
+    // post belongs to user
+else if commentowner.last == PFUser.current()?.username {
+            return [delete, address, complain]
+        }
+
+    // post belongs to another user
+else  {return [address, complain]}
     }
 }
