@@ -457,15 +457,43 @@ extension commentVC{
         }
 })
             
-    // STEP 3. Delete comment row from tableView
-    self.commentArray.remove(at: indexPath.row)
+    // STEP 2. Delete #hashtag from server
+            let hashtagQuery = PFQuery(className: "hashtags")
+            hashtagQuery.whereKey("to", equalTo: commentuuid.last!)
+            hashtagQuery.whereKey("by", equalTo: cell.usernameBtn.titleLabel!.text!)
+            hashtagQuery.whereKey("comment", equalTo: cell.commentLbl.text!)
+            hashtagQuery.findObjectsInBackground(block: { (objects, error) -> Void in
+                for object in objects! {
+                    object.deleteEventually()
+                }
+            })
+            
+            // STEP 3. Delete notification: mention comment
+            let newsQuery = PFQuery(className: "news")
+            newsQuery.whereKey("by", equalTo: cell.usernameBtn.titleLabel!.text!)
+            newsQuery.whereKey("to", equalTo: commentowner.last!)
+            newsQuery.whereKey("uuid", equalTo: commentuuid.last!)
+            newsQuery.whereKey("type", containedIn: ["comment", "mention"])
+            newsQuery.findObjectsInBackground(block: { (objects, error) -> Void in
+                if error == nil {
+                    for object in objects! {
+                        object.deleteEventually()
+                    }
+                }
+            })
+            
+            // close cell
+            tableView.setEditing(false, animated: true)
+            
+            // STEP 3. Delete comment row from tableView
+            self.commentArray.remove(at: indexPath.row)
             self.dateArray.remove(at: indexPath.row)
             self.usernameArray.remove(at: indexPath.row)
             self.avaArray.remove(at: indexPath.row)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-
+        
         // ACTION 2. Mention or address message to someone
 let address = UITableViewRowAction(style: .normal, title: "    ") { (action:UITableViewRowAction, indexPath:IndexPath) -> Void in
             
@@ -484,19 +512,19 @@ let complain = UITableViewRowAction(style: .normal, title: "    ") { (action:UIT
             
 // send complain to server regarding selected comment
     let complainObj = PFObject(className: "complain")
-complainObj["by"] = PFUser.current()?.username
-complainObj["to"] = cell.commentLbl.text
-complainObj["post"] = commentuuid.last
+    complainObj["by"] = PFUser.current()?.username
+    complainObj["to"] = cell.commentLbl.text
 complainObj["owner"] = cell.usernameBtn.titleLabel?.text
-complainObj.saveInBackground(block: { (success, error) in
-        if success {
+    complainObj.saveInBackground(block: { (success, error) in
+    
+if success {
     self.alert("Complain has been made successfully", message: "Thank You! We will consider your complain")
 } else {self.alert("ERROR", message: error!.localizedDescription)}
 })
             
     // close cell
-         tableView.setEditing(false, animated: true)
-        }
+    tableView.setEditing(false, animated: true)
+}
         
         // buttons background
         delete.backgroundColor = UIColor(patternImage: UIImage(named: "delete.png")!)

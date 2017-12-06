@@ -140,8 +140,8 @@ extension postVC{
     // go back function
     @objc fileprivate func back(_ sender: UIBarButtonItem) {
         
-        // push back
-        self.navigationController?.popViewController(animated: true)
+  // push back
+self.navigationController?.popViewController(animated: true)
         
         // clean post uuid from last hold
         if !postuuid.isEmpty {
@@ -162,7 +162,7 @@ extension postVC{
     //delete observer
     fileprivate func deleteObserver(){
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init("liked"), object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
