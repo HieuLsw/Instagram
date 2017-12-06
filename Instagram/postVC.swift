@@ -58,7 +58,75 @@ class postVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+  
+ 
+    @IBAction func moreBtn_click(_ sender: Any) {
+        
+        // call index of button
+        let i = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
+        
+        // call cell to call further cell date
+        let cell = customTableView.cellForRow(at: i) as! postCell
+        
+        // DELET ACTION
+        let delete = UIAlertAction(title: "Delete", style: .default) { (_) -> Void in
+            
+            // STEP 1. Delete row from tableView
+            self.usernameArray.remove(at: i.row)
+            self.avaArray.remove(at: i.row)
+            self.dateArray.remove(at: i.row)
+            self.picArray.remove(at: i.row)
+            self.titleArray.remove(at: i.row)
+            self.uuidArray.remove(at: i.row)
+            
+            // STEP 2. Delete post from server
+    let postQuery = PFQuery(className: "posts")
+postQuery.whereKey("uuid", equalTo: cell.uuidLbl.text!)
+postQuery.findObjectsInBackground(block: { (objects, error) in
+        if error == nil {
+    for object in objects! {
+object.deleteInBackground(block: { (success, error) in
+        if success {
+                                
+    // send notification to rootViewController to update shown posts
+    NotificationCenter.default.post(name: Notification.Name(rawValue: "uploaded"), object: nil)
+                                
+    // push back
+    _ = self.navigationController?.popViewController(animated: true)
+} else {print(error!.localizedDescription)}})}
+} else {print(error?.localizedDescription ?? String())
+     }
+})
+            
+        // STEP 2. Delete likes of post from server
+    let likeQuery = PFQuery(className: "likes")
+    likeQuery.whereKey("to", equalTo: cell.uuidLbl.text!)
+    likeQuery.findObjectsInBackground(block: { (objects, error) in
+    if error == nil {
+for object in objects! {object.deleteEventually()}
+       }
+})
+            
+        // STEP 3. Delete comments of post from server
+    let commentQuery = PFQuery(className: "comments")
+commentQuery.whereKey("to", equalTo: cell.uuidLbl.text!)
+commentQuery.findObjectsInBackground(block: { (objects, error) in
+    if error == nil {
+    for object in objects! {object.deleteEventually()}
+  }
+})
+            
+    // STEP 4. Delete hashtags of post from server
+    let hashtagQuery = PFQuery(className: "hashtags")
+hashtagQuery.whereKey("to", equalTo: cell.uuidLbl.text!)
+hashtagQuery.findObjectsInBackground(block: { (objects, error) in
+    if error == nil {
+    for object in objects! {object.deleteEventually()}
+        }
+      })
+    }
+}
+
     @IBAction func commentBtn_click(_ sender: Any) {
     
 // call index of button

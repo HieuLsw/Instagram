@@ -1725,6 +1725,9 @@
                                                         <constraint firstAttribute="height" constant="35" id="QYq-qY-Y9Z"/>
                                                     </constraints>
                                                     <state key="normal" backgroundImage="more"/>
+                                                    <connections>
+                                                        <action selector="moreBtn_click:" destination="yPe-wo-oIa" eventType="touchUpInside" id="GyO-3f-z5G"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmn-af-9pd">
                                                     <rect key="frame" x="59" y="463" width="21" height="21"/>
