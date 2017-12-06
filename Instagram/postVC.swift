@@ -244,6 +244,30 @@ extension postVC{
         cell.commentBtn.layer.setValue(indexPath, forKey: "index")
         cell.moreBtn.layer.setValue(indexPath, forKey: "index")
         
+        // @mention is tapped
+        cell.titleLbl.userHandleLinkTapHandler = { label, handle, rang in
+            var mention = handle
+            mention = String(mention.dropFirst())
+            
+            // if tapped on @currentUser go home, else go guest
+            if mention.lowercased() == PFUser.current()?.username {
+                let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
+                self.navigationController?.show(home, sender: nil)
+            } else {guestName.append(mention.lowercased())
+                let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
+                self.navigationController?.show(guest, sender: nil)
+            }
+        }
+        
+        // #hashtag is tapped
+        cell.titleLbl.hashtagLinkTapHandler = { label, handle, range in
+            var mention = handle
+            mention = String(mention.dropFirst())
+            hashtag.append(mention.lowercased())
+            let hashvc = self.storyboard?.instantiateViewController(withIdentifier: "hashtagsVC") as! hashtagsVC
+            self.navigationController?.show(hashvc, sender: nil)
+        }
+        
         return cell
     }
 }

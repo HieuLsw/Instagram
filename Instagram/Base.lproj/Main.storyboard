@@ -1264,7 +1264,55 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dMT-g3-qVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5628" y="2033.497536945813"/>
+            <point key="canvasLocation" x="5286" y="2055"/>
+        </scene>
+        <!--HashtagsVC-->
+        <scene sceneID="2nm-e8-vMh">
+            <objects>
+                <collectionViewController storyboardIdentifier="hashtagsVC" id="XWo-7n-YUb" customClass="hashtagsVC" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="JQj-dy-AZi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5O2-Da-ZI8">
+                            <size key="itemSize" width="120" height="120"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="VDT-XH-Dfq" customClass="pictureCell" customModule="Instagram" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="hashtagsVC" translatesAutoresizingMaskIntoConstraints="NO" id="PZA-Lj-2ne">
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        </imageView>
+                                    </subviews>
+                                </view>
+                                <constraints>
+                                    <constraint firstItem="PZA-Lj-2ne" firstAttribute="leading" secondItem="VDT-XH-Dfq" secondAttribute="leading" id="Avb-4b-7xt"/>
+                                    <constraint firstAttribute="trailing" secondItem="PZA-Lj-2ne" secondAttribute="trailing" id="cS6-P6-uhR"/>
+                                    <constraint firstAttribute="bottom" secondItem="PZA-Lj-2ne" secondAttribute="bottom" id="fFu-dl-296"/>
+                                    <constraint firstItem="PZA-Lj-2ne" firstAttribute="top" secondItem="VDT-XH-Dfq" secondAttribute="top" id="ff6-RS-rbn"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="picImg" destination="PZA-Lj-2ne" id="N7M-39-t2p"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="XWo-7n-YUb" id="FQg-nR-sjl"/>
+                            <outlet property="delegate" destination="XWo-7n-YUb" id="Xkh-sw-osg"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wxp-Qc-9j5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6133.6000000000004" y="2054.9261083743845"/>
         </scene>
         <!--Upload-->
         <scene sceneID="4eg-mm-FnA">
@@ -1591,7 +1639,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j89-oU-0ly" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3178.4000000000001" y="2032.7586206896553"/>
+            <point key="canvasLocation" x="2836" y="2033"/>
         </scene>
         <!--PostVC-->
         <scene sceneID="v7z-DB-nhB">
@@ -1762,7 +1810,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ewc-cc-xpL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4039.1999999999998" y="2032.7586206896553"/>
+            <point key="canvasLocation" x="3697" y="2033"/>
         </scene>
         <!--GuestVC-->
         <scene sceneID="HBA-oJ-WYL">
@@ -1960,7 +2008,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ddw-wt-n09" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4823.1999999999998" y="2032.7586206896553"/>
+            <point key="canvasLocation" x="4481" y="2033"/>
         </scene>
         <!--NavVC-->
         <scene sceneID="RPQ-Ln-Qpx">
@@ -2021,7 +2069,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3pE-i1-RMx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2415" y="2033"/>
+            <point key="canvasLocation" x="2046" y="2033"/>
         </scene>
     </scenes>
     <resources>

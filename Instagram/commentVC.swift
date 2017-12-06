@@ -397,13 +397,22 @@ cell.commentLbl.userHandleLinkTapHandler = { label, handle, rang in
    // if tapped on @currentUser go home, else go guest
 if mention.lowercased() == PFUser.current()?.username {
 let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
-self.navigationController?.pushViewController(home, animated: true)
+self.navigationController?.show(home, sender: nil)
 } else {guestName.append(mention.lowercased())
 let guest = self.storyboard?.instantiateViewController(withIdentifier: "guestVC") as! guestVC
 self.navigationController?.show(guest, sender: nil)
             }
         }
-    
+        
+        // #hashtag is tapped
+cell.commentLbl.hashtagLinkTapHandler = { label, handle, range in
+    var mention = handle
+mention = String(mention.dropFirst())
+hashtag.append(mention.lowercased())
+let hashvc = self.storyboard?.instantiateViewController(withIdentifier: "hashtagsVC") as! hashtagsVC
+self.navigationController?.show(hashvc, sender: nil)
+        }
+        
         // assign indexes of buttons
         cell.usernameBtn.layer.setValue(indexPath, forKey: "index")
         
@@ -473,7 +482,7 @@ tableView.setEditing(false, animated: true)
         // ACTION 3. Complain
 let complain = UITableViewRowAction(style: .normal, title: "    ") { (action:UITableViewRowAction, indexPath:IndexPath) in
             
-            // send complain to server regarding selected comment
+// send complain to server regarding selected comment
     let complainObj = PFObject(className: "complain")
 complainObj["by"] = PFUser.current()?.username
 complainObj["to"] = cell.commentLbl.text
