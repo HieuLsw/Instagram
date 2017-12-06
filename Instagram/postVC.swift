@@ -125,6 +125,42 @@ hashtagQuery.findObjectsInBackground(block: { (objects, error) in
         }
       })
     }
+        
+        
+        // COMPLAIN ACTION
+let complain = UIAlertAction(title: "Complain", style: .default) { (_) in
+            
+        // send complain to server
+    let complainObj = PFObject(className: "complain")
+            complainObj["by"] = PFUser.current()?.username
+            complainObj["to"] = cell.uuidLbl.text
+            complainObj["owner"] = cell.usernameBtn.titleLabel?.text
+            complainObj.saveInBackground(block: { (success, error) in
+                if success {
+                    self.alert("Complain has been made successfully", message: "Thank You! We will consider your complain")
+                } else {
+                    self.alert("ERROR", message: error!.localizedDescription)
+                }
+            })
+        }
+
+// CANCEL ACTION
+let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+    
+// create menu controller
+let menu = UIAlertController(title: "Menu", message: nil, preferredStyle: .actionSheet)
+        
+// if post belongs to user, he can delete post, else he can't
+        if cell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
+            menu.addAction(delete)
+            menu.addAction(cancel)
+        } else {
+            menu.addAction(complain)
+            menu.addAction(cancel)
+        }
+        
+// show menu
+self.present(menu, animated: true, completion: nil)
 }
 
     @IBAction func commentBtn_click(_ sender: Any) {
@@ -200,6 +236,13 @@ postQuery.findObjectsInBackground{ (objects, error) in
         }
     }
 
+    // alert action
+   fileprivate func alert (_ title: String, message : String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let ok = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
 }
 
 //custom functions selectors
