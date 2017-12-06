@@ -78,17 +78,17 @@ setFristResponder()
     @IBAction func usernameBtn_click(_ sender: Any) {
         
     // call index of current button
-    let index = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
+    let i = (sender as AnyObject).layer.value(forKey: "index") as! IndexPath
         
     // call cell to call further cell data
-    let cell = tableView.cellForRow(at: index) as! commentCell
+    let cell = tableView.cellForRow(at: i) as! commentCell
         
     // if user tapped on his username go home, else go guest
 if cell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
 
 let home = self.storyboard?.instantiateViewController(withIdentifier: "homeVC") as! homeVC
 
-self.navigationController?.pushViewController(home, animated: true)
+self.navigationController?.show(home, sender: nil)
         } else {
 
 guestName.append(cell.usernameBtn.titleLabel!.text!)
@@ -434,47 +434,47 @@ extension commentVC{
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         // call cell for calling further cell data
-        let cell = tableView.cellForRow(at: indexPath) as! commentCell
-        
-        // ACTION 1. Delete
-        let delete = UITableViewRowAction(style: .normal, title: "    ") { (action:UITableViewRowAction, indexPath:IndexPath) in
+        let leadingCell = tableView.cellForRow(at: indexPath) as! commentCell
+       
+        // ACTION. Delete
+        let deleteAction = UIContextualAction.init(style: .normal, title: "") { (_, _, _) in
             
             // STEP 1. Delete comment from server
             let commentQuery = PFQuery(className: "comments")
             commentQuery.whereKey("to", equalTo: commentuuid.last!)
-            commentQuery.whereKey("comment", equalTo: cell.commentLbl.text!)
-            commentQuery.findObjectsInBackground (block: { (objects, error) -> Void in
+            commentQuery.whereKey("comment", equalTo: leadingCell.commentLbl.text!)
+            commentQuery.findObjectsInBackground (block: { (objects, error) in
                 if error == nil {
                     // find related objects
                     for object in objects! {
                         object.deleteEventually()
                     }
-} else {print(error!.localizedDescription)
-        }
-})
+                } else {print(error!.localizedDescription)
+                }
+            })
             
-    // STEP 2. Delete #hashtag from server
+            // STEP 2. Delete #hashtag from server
             let hashtagQuery = PFQuery(className: "hashtags")
             hashtagQuery.whereKey("to", equalTo: commentuuid.last!)
-            hashtagQuery.whereKey("by", equalTo: cell.usernameBtn.titleLabel!.text!)
-            hashtagQuery.whereKey("comment", equalTo: cell.commentLbl.text!)
-            hashtagQuery.findObjectsInBackground(block: { (objects, error) -> Void in
+            hashtagQuery.whereKey("by", equalTo: leadingCell.usernameBtn.titleLabel!.text!)
+            hashtagQuery.whereKey("comment", equalTo: leadingCell.commentLbl.text!)
+            hashtagQuery.findObjectsInBackground(block: { (objects, error) in
                 for object in objects! {
                     object.deleteEventually()
                 }
             })
             
             // STEP 3. Delete notification: mention comment
-            let newsQuery = PFQuery(className: "news")
-            newsQuery.whereKey("by", equalTo: cell.usernameBtn.titleLabel!.text!)
+let newsQuery = PFQuery(className: "news")
+newsQuery.whereKey("by", equalTo: leadingCell.usernameBtn.titleLabel!.text!)
             newsQuery.whereKey("to", equalTo: commentowner.last!)
             newsQuery.whereKey("uuid", equalTo: commentuuid.last!)
             newsQuery.whereKey("type", containedIn: ["comment", "mention"])
-            newsQuery.findObjectsInBackground(block: { (objects, error) -> Void in
+            newsQuery.findObjectsInBackground(block: { (objects, error) in
                 if error == nil {
                     for object in objects! {
                         object.deleteEventually()
@@ -482,66 +482,85 @@ extension commentVC{
                 }
             })
             
-            // close cell
-            tableView.setEditing(false, animated: true)
+  // close cell
+tableView.setEditing(false, animated: true)
             
-            // STEP 3. Delete comment row from tableView
-            self.commentArray.remove(at: indexPath.row)
-            self.dateArray.remove(at: indexPath.row)
-            self.usernameArray.remove(at: indexPath.row)
-            self.avaArray.remove(at: indexPath.row)
+  // STEP 4. Delete comment row from tableView
+self.commentArray.remove(at: indexPath.row)
+self.dateArray.remove(at: indexPath.row)
+self.usernameArray.remove(at: indexPath.row)
+self.avaArray.remove(at: indexPath.row)
             
-            tableView.deleteRows(at: [indexPath], with: .fade)
+tableView.deleteRows(at: [indexPath], with: .fade)
         }
         
-        // ACTION 2. Mention or address message to someone
-let address = UITableViewRowAction(style: .normal, title: "    ") { (action:UITableViewRowAction, indexPath:IndexPath) -> Void in
-            
-            // include username in textView
-self.commentTxt.text = "\(self.commentTxt.text + "@" + self.usernameArray[indexPath.row] + " ")"
-    
-    // enable button
-self.sendBtn.isEnabled = true
-            
-// close cell
-tableView.setEditing(false, animated: true)
-}
+        deleteAction.image = #imageLiteral(resourceName: "delete")
+deleteAction.backgroundColor = .red
         
-        // ACTION 3. Complain
-let complain = UITableViewRowAction(style: .normal, title: "    ") { (action:UITableViewRowAction, indexPath:IndexPath) in
+         // post whether belongs to user
+        if (leadingCell.usernameBtn.titleLabel?.text == PFUser.current()?.username) || (commentowner.last == PFUser.current()?.username){
+        let config = UISwipeActionsConfiguration.init(actions: [deleteAction])
+    return config
+            
+        // post whether belongs to others
+        }else {return nil}
+}
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        // call cell for calling further cell data
+        let trailingCell = tableView.cellForRow(at: indexPath) as! commentCell
+        
+       // ACTION. Mention or address message to someone
+        let mentionAction = UIContextualAction.init(style: .normal, title: "") { (_, _, _) in
+           
+            // include username in textView
+            self.commentTxt.text = "\(self.commentTxt.text + "@" + self.usernameArray[indexPath.row] + " ")"
+            
+            // enable button
+            self.sendBtn.isEnabled = true
+            
+            // close cell
+            tableView.setEditing(false, animated: true)
+        }
+       
+        //Action.Complain
+ let complainAction = UIContextualAction(style: .normal, title: "") { (_, _, _) in
             
 // send complain to server regarding selected comment
-    let complainObj = PFObject(className: "complain")
-    complainObj["by"] = PFUser.current()?.username
-    complainObj["to"] = cell.commentLbl.text
-complainObj["owner"] = cell.usernameBtn.titleLabel?.text
-    complainObj.saveInBackground(block: { (success, error) in
-    
-if success {
-    self.alert("Complain has been made successfully", message: "Thank You! We will consider your complain")
+let complainObj = PFObject(className: "complain")
+complainObj["by"] = PFUser.current()?.username
+complainObj["to"] = trailingCell.commentLbl.text
+complainObj["owner"] = trailingCell.usernameBtn.titleLabel?.text
+complainObj.saveInBackground(block: { (success, error) in
+    if success {
+self.alert("Complain has been made successfully", message: "Thank You! We will consider your complain")
 } else {self.alert("ERROR", message: error!.localizedDescription)}
-})
+            })
             
     // close cell
     tableView.setEditing(false, animated: true)
 }
         
         // buttons background
-        delete.backgroundColor = UIColor(patternImage: UIImage(named: "delete.png")!)
-        address.backgroundColor = UIColor(patternImage: UIImage(named: "address.png")!)
-        complain.backgroundColor = UIColor(patternImage: UIImage(named: "complain.png")!)
+       mentionAction.image = #imageLiteral(resourceName: "address")
+        complainAction.image = #imageLiteral(resourceName: "complain")
+        mentionAction.backgroundColor = .green
+        complainAction.backgroundColor = .purple
         
-        // comment beloogs to user
-if cell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
-            return [delete, address]
-}
-            
-    // post belongs to user
-else if commentowner.last == PFUser.current()?.username {
-            return [delete, address, complain]
+        // comment belogs to user
+        if trailingCell.usernameBtn.titleLabel?.text == PFUser.current()?.username {
+let config = UISwipeActionsConfiguration(actions: [mentionAction])
+config.performsFirstActionWithFullSwipe = false
+        return config
         }
-
-    // post belongs to another user
-else  {return [address, complain]}
+       
+     // post belongs to user or others
+        else  {
+let config = UISwipeActionsConfiguration.init(actions: [mentionAction,complainAction])
+config.performsFirstActionWithFullSwipe = false
+    return config
+        }
     }
+
 }
